@@ -1,4 +1,4 @@
-package isw2.persistencia;
+package isw2.repositorios;
 
 import tdg.contract.semanticAnnotations.Pos;
 import tdg.contract.semanticAnnotations.Pre;

@@ -2,7 +2,7 @@ package isw2.servicio.producto;
 
 import java.util.Set;
 
-import isw2.entidades.Procedimiento;
+import isw2.entidades.contratos.Procedimiento;
 
 public interface AltaProductos {
 

@@ -2,7 +2,7 @@ package isw2.servicio.incidencia;
 
 import java.util.Set;
 
-import isw2.entidades.Incidencia;
+import isw2.entidades.contratos.Incidencia;
 
 public interface BuscarCatalogoIncidencia {
 

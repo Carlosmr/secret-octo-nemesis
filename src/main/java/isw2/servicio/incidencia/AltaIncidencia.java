@@ -2,9 +2,9 @@ package isw2.servicio.incidencia;
 
 import java.util.Set;
 
-import isw2.entidades.Incidencia;
-import isw2.entidades.Procedimiento;
-import isw2.entidades.Producto;
+import isw2.entidades.contratos.Incidencia;
+import isw2.entidades.contratos.Procedimiento;
+import isw2.entidades.contratos.Producto;
 
 public interface AltaIncidencia {
 

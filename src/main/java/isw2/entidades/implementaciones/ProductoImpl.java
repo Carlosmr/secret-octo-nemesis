@@ -1,17 +1,26 @@
-package isw2.implementaciones;
+package isw2.entidades.implementaciones;
 
 import java.util.HashSet;
 import java.util.Set;
-import isw2.entidades.Procedimiento;
-import isw2.entidades.Producto;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import isw2.entidades.contratos.Procedimiento;
+import isw2.entidades.contratos.Producto;
+
+@Entity
 public class ProductoImpl implements Producto {
 
+	private static final long serialVersionUID = -2836206777902337583L;
+	@Id
 	private String codigo;
 	private String nombre;
 	private String descripcion;
 	private Boolean dadoDeBaja;
-	private Set<Procedimiento> procedimientos = new HashSet<Procedimiento>();
+	@OneToMany
+	private Set<Procedimiento> procedimientos;
 
 	public ProductoImpl(String codigo, String nombre, String descripcion) {
 
@@ -19,9 +28,11 @@ public class ProductoImpl implements Producto {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.dadoDeBaja = false;
+		procedimientos = new HashSet<Procedimiento>();
 
 	}
 
+	
 	public String getCodigo() {
 		return codigo;
 	}
@@ -92,6 +103,33 @@ public class ProductoImpl implements Producto {
 		else if (!getProcedimientos().contains(procedimiento))
 			throw new IllegalArgumentException();
 
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductoImpl other = (ProductoImpl) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
 	}
 
 }

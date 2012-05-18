@@ -1,12 +1,13 @@
 package isw2;
 
-import isw2.implementaciones.ProcedimientoImpl;
-import isw2.implementaciones.ProductoImpl;
 
 import org.junit.Before;
 import org.junit.Test;
-import isw2.entidades.Procedimiento;
-import isw2.entidades.Producto;
+
+import isw2.entidades.contratos.Procedimiento;
+import isw2.entidades.contratos.Producto;
+import isw2.entidades.implementaciones.ProcedimientoImpl;
+import isw2.entidades.implementaciones.ProductoImpl;
 
 public class TestProducto {
 

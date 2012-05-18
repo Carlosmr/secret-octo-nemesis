@@ -1,4 +1,6 @@
-package isw2.entidades;
+package isw2.entidades.contratos;
+
+import java.io.Serializable;
 
 import isw2.excepciones.InvalidStateException;
 import tdg.contract.semanticAnnotations.Init;
@@ -9,7 +11,7 @@ import tdg.contract.semanticAnnotations.Query;
 
 @Init({ "getValoracion()==0" })
 @Inv({ "getValoracion()>=-5 && getValoracion()<=5" })
-public interface Respuesta {
+public interface Respuesta extends Serializable{
 
 	@Query
 	@Pre({ "true" })

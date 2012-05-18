@@ -1,18 +1,22 @@
-package isw2.implementaciones;
+package isw2.entidades.implementaciones;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import isw2.entidades.Incidencia;
-import isw2.entidades.Procedimiento;
-import isw2.entidades.Producto;
-import isw2.entidades.Respuesta;
-import isw2.entidades.Tecnico;
+import isw2.entidades.contratos.Incidencia;
+import isw2.entidades.contratos.Procedimiento;
+import isw2.entidades.contratos.Producto;
+import isw2.entidades.contratos.Respuesta;
+import isw2.entidades.contratos.Tecnico;
 import isw2.excepciones.InvalidStateException;
 
 public class IncidenciaImpl implements Incidencia {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8865654199937133316L;
 	private Integer id;
 	private String nombre;
 	private String dni;
@@ -127,6 +131,31 @@ public class IncidenciaImpl implements Incidencia {
 
 	public Integer getId() {
 		return id;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		IncidenciaImpl other = (IncidenciaImpl) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 
 }

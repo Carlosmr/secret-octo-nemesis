@@ -1,16 +1,16 @@
 package isw2;
 
-import isw2.entidades.Incidencia;
-import isw2.entidades.Procedimiento;
-import isw2.entidades.Producto;
-import isw2.entidades.Respuesta;
-import isw2.entidades.Tecnico;
+import isw2.entidades.contratos.Incidencia;
+import isw2.entidades.contratos.Procedimiento;
+import isw2.entidades.contratos.Producto;
+import isw2.entidades.contratos.Respuesta;
+import isw2.entidades.contratos.Tecnico;
+import isw2.entidades.implementaciones.IncidenciaImpl;
+import isw2.entidades.implementaciones.ProcedimientoImpl;
+import isw2.entidades.implementaciones.ProductoImpl;
+import isw2.entidades.implementaciones.RespuestaImpl;
+import isw2.entidades.implementaciones.TecnicoImpl;
 import isw2.excepciones.InvalidStateException;
-import isw2.implementaciones.IncidenciaImpl;
-import isw2.implementaciones.ProcedimientoImpl;
-import isw2.implementaciones.ProductoImpl;
-import isw2.implementaciones.RespuestaImpl;
-import isw2.implementaciones.TecnicoImpl;
 
 import java.util.Date;
 

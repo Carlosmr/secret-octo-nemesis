@@ -1,4 +1,4 @@
-package isw2.entidades;
+package isw2.entidades.contratos;
 
 import tdg.contract.semanticAnnotations.Model;
 import tdg.contract.semanticAnnotations.Pre;

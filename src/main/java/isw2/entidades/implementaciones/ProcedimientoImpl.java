@@ -1,9 +1,13 @@
-package isw2.implementaciones;
+package isw2.entidades.implementaciones;
 
-import isw2.entidades.Procedimiento;
+import isw2.entidades.contratos.Procedimiento;
 
 public class ProcedimientoImpl implements Procedimiento {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6554950050057541840L;
 	private String codigo;
 	private String nombre;
 	private String descripcion;
@@ -62,6 +66,31 @@ public class ProcedimientoImpl implements Procedimiento {
 		if (dadoDeBaja == null)
 			throw new NullPointerException();
 		this.dadoDeBaja = dadoDeBaja;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProcedimientoImpl other = (ProcedimientoImpl) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
 	}
 
 }

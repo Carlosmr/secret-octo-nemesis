@@ -1,5 +1,6 @@
-package isw2.entidades;
+package isw2.entidades.contratos;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import tdg.contract.semanticAnnotations.Init;
@@ -8,7 +9,7 @@ import tdg.contract.semanticAnnotations.Pre;
 import tdg.contract.semanticAnnotations.Query;
 
 @Init({ "getDadoDeBaja()==false" })
-public interface Producto {
+public interface Producto extends Serializable{
 
 	@Query
 	@Pre({ "true" })

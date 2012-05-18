@@ -1,15 +1,15 @@
 package isw2;
 
-import isw2.implementaciones.ProcedimientoImpl;
-import isw2.implementaciones.TecnicoImpl;
 
 import java.util.Date;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import isw2.entidades.Procedimiento;
-import isw2.entidades.Tecnico;
+import isw2.entidades.contratos.Procedimiento;
+import isw2.entidades.contratos.Tecnico;
+import isw2.entidades.implementaciones.ProcedimientoImpl;
+import isw2.entidades.implementaciones.TecnicoImpl;
 
 @SuppressWarnings("deprecation")
 public class TestTecnico {

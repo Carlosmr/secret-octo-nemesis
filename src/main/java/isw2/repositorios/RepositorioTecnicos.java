@@ -1,11 +1,11 @@
-package isw2.persistencia;
+package isw2.repositorios;
 
 
 import java.util.Date;
 import java.util.Set;
 
-import isw2.entidades.ModeloTecnico;
-import isw2.entidades.Tecnico;
+import isw2.entidades.contratos.ModeloTecnico;
+import isw2.entidades.contratos.Tecnico;
 
 import tdg.contract.semanticAnnotations.Pos;
 import tdg.contract.semanticAnnotations.Pre;

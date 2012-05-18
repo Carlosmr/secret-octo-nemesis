@@ -1,13 +1,22 @@
-package isw2.implementaciones;
+package isw2.entidades.implementaciones;
 
-import isw2.entidades.Incidencia;
-import isw2.entidades.Respuesta;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+import isw2.entidades.contratos.Incidencia;
+import isw2.entidades.contratos.Respuesta;
 import isw2.excepciones.InvalidStateException;
 
+@Entity
 public class RespuestaImpl implements Respuesta {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3336398393774226876L;
 	private Integer valoracion;
 	private String descripcion;
+	@OneToOne
 	private Incidencia incidencia;
 
 	public RespuestaImpl(Integer val, String desc) {

@@ -1,13 +1,24 @@
-package isw2.implementaciones;
+package isw2.entidades.implementaciones;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import isw2.entidades.Procedimiento;
-import isw2.entidades.Tecnico;
 
-public class TecnicoImpl implements Tecnico {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
+import isw2.entidades.contratos.Procedimiento;
+import isw2.entidades.contratos.Tecnico;
+
+@Entity
+public class TecnicoImpl implements Tecnico{
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6690842934791759879L;
+	@Id
 	private String user;
 	private String password;
 	private String nombre;
@@ -16,7 +27,33 @@ public class TecnicoImpl implements Tecnico {
 	private String direccion;
 	private String telefono;
 	private Boolean dadoDeBaja;
+	@ManyToMany
 	private Set<Procedimiento> procedimientos;
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		TecnicoImpl other = (TecnicoImpl) obj;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
+		return true;
+	}
 
 	public TecnicoImpl(String user, String password, String nombre,
 			String apellidos, Date fechaNacimiento, String direccion,

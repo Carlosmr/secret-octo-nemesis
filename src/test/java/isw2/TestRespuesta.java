@@ -5,12 +5,12 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
-import isw2.entidades.Incidencia;
-import isw2.entidades.Respuesta;
+import isw2.entidades.contratos.Incidencia;
+import isw2.entidades.contratos.Respuesta;
+import isw2.entidades.implementaciones.IncidenciaImpl;
+import isw2.entidades.implementaciones.RespuestaImpl;
 import isw2.excepciones.InvalidStateException;
 
-import isw2.implementaciones.IncidenciaImpl;
-import isw2.implementaciones.RespuestaImpl;
 
 @SuppressWarnings("deprecation")
 public class TestRespuesta {
