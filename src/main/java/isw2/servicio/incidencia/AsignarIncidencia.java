@@ -1,0 +1,15 @@
+package isw2.servicio.incidencia;
+
+import java.util.Set;
+
+import isw2.entidades.Incidencia;
+
+public interface AsignarIncidencia {
+
+	Set<Incidencia> listarIncidenciasSinAsignar();
+
+	void seleccionarIncidencia(String idIncidencia);
+
+	void asociarIncidenciaTecnico(String user);
+
+}
