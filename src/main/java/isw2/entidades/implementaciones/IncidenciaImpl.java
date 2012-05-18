@@ -4,6 +4,11 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Embedded;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
 import isw2.entidades.contratos.Incidencia;
 import isw2.entidades.contratos.Procedimiento;
 import isw2.entidades.contratos.Producto;
@@ -13,20 +18,22 @@ import isw2.excepciones.InvalidStateException;
 
 public class IncidenciaImpl implements Incidencia {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8865654199937133316L;
+	@Id
 	private Integer id;
 	private String nombre;
 	private String dni;
 	private String email;
 	private String descripcion;
 	private Date fecha;
+	@Embedded
 	private Respuesta respuesta;
+	@ManyToOne
 	private Tecnico tecnico;
+	@ManyToOne
 	private Procedimiento procedimiento;
+	@ManyToOne
 	private Producto producto;
+	@ManyToMany
 	private Set<Incidencia> incidencias;
 
 	public IncidenciaImpl(Integer id, String nombre, String dni, String email,

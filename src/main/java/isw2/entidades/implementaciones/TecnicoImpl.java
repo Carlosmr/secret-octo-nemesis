@@ -14,10 +14,6 @@ import isw2.entidades.contratos.Tecnico;
 @Entity
 public class TecnicoImpl implements Tecnico{
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6690842934791759879L;
 	@Id
 	private String user;
 	private String password;

@@ -1,18 +1,21 @@
 package isw2.entidades.implementaciones;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 import isw2.entidades.contratos.Procedimiento;
 
+@Entity
 public class ProcedimientoImpl implements Procedimiento {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -6554950050057541840L;
+	@Id
 	private String codigo;
 	private String nombre;
 	private String descripcion;
 	private Boolean dadoDeBaja;
 
+	public ProcedimientoImpl(){}
+	
 	public ProcedimientoImpl(String codigo, String nombre, String descripcion) {
 
 		this.codigo = codigo;

@@ -1,18 +1,10 @@
 package isw2;
 
-import java.util.Date;
-
 import org.junit.Before;
 import org.junit.Test;
-
-import isw2.entidades.contratos.Incidencia;
 import isw2.entidades.contratos.Respuesta;
-import isw2.entidades.implementaciones.IncidenciaImpl;
 import isw2.entidades.implementaciones.RespuestaImpl;
-import isw2.excepciones.InvalidStateException;
 
-
-@SuppressWarnings("deprecation")
 public class TestRespuesta {
 
 	Respuesta r;
@@ -46,28 +38,6 @@ public class TestRespuesta {
 	@Test
 	public void testSetValoracion5() {
 		r.setValoracion(-5);
-	}
-
-	@Test
-	public void testSetIncidencia1() throws InvalidStateException {
-		Incidencia i = new IncidenciaImpl(1, "Jorge Martinez", "54869468F",
-				"jmartinez@gmail.com", "El conector USB no funciona.",
-				new Date(2012, 3, 12));
-		r.setIncidencia(i);
-	}
-
-	@Test(expected = NullPointerException.class)
-	public void testSetIncidencia2() throws InvalidStateException {
-		r.setIncidencia(null);
-	}
-
-	@Test(expected = InvalidStateException.class)
-	public void testSetIncidencia3() throws InvalidStateException {
-		Incidencia i = new IncidenciaImpl(1, "Jorge Martinez", "54869468F",
-				"jmartinez@gmail.com", "El conector USB no funciona.",
-				new Date(2012, 3, 12));
-		r.setIncidencia(i);
-		r.setIncidencia(i);
 	}
 
 }

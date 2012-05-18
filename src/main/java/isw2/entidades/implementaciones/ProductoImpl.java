@@ -13,7 +13,6 @@ import isw2.entidades.contratos.Producto;
 @Entity
 public class ProductoImpl implements Producto {
 
-	private static final long serialVersionUID = -2836206777902337583L;
 	@Id
 	private String codigo;
 	private String nombre;
@@ -22,6 +21,8 @@ public class ProductoImpl implements Producto {
 	@OneToMany
 	private Set<Procedimiento> procedimientos;
 
+	public ProductoImpl(){}
+	
 	public ProductoImpl(String codigo, String nombre, String descripcion) {
 
 		this.codigo = codigo;

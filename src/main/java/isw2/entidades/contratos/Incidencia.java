@@ -1,6 +1,5 @@
 package isw2.entidades.contratos;
 
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
@@ -10,10 +9,10 @@ import tdg.contract.semanticAnnotations.Pos;
 import tdg.contract.semanticAnnotations.Pre;
 import tdg.contract.semanticAnnotations.Query;
 
-public interface Incidencia extends Serializable{
+public interface Incidencia {
 
 	Integer getId();
-	
+
 	@Query
 	@Pre({ "true" })
 	String getNombreCliente();

@@ -2,7 +2,6 @@ package isw2.entidades.contratos;
 
 import java.io.Serializable;
 
-import isw2.excepciones.InvalidStateException;
 import tdg.contract.semanticAnnotations.Init;
 import tdg.contract.semanticAnnotations.Inv;
 import tdg.contract.semanticAnnotations.Pos;
@@ -26,16 +25,5 @@ public interface Respuesta extends Serializable{
 	@Query
 	@Pre({ "true" })
 	String getDescripcion();
-
-	@Query
-	@Pre({ "true" })
-	Incidencia getIncidencia();
-
-	@Pre({ "incidencia!=null #NullPointerException",
-			"getIncidencia()==null #InvalidStateException"})
-	@Pos({ "getIncidencia().equals(incidencia)",
-			"getValoracion()==getValoracion()@Pre",
-			"getDescripcion()==getDescripcion()@Pre" })
-	void setIncidencia(Incidencia incidencia) throws InvalidStateException;
 
 }

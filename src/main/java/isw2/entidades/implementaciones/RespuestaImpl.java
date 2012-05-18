@@ -1,13 +1,9 @@
 package isw2.entidades.implementaciones;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-
-import isw2.entidades.contratos.Incidencia;
+import javax.persistence.Embeddable;
 import isw2.entidades.contratos.Respuesta;
-import isw2.excepciones.InvalidStateException;
 
-@Entity
+@Embeddable
 public class RespuestaImpl implements Respuesta {
 
 	/**
@@ -16,8 +12,8 @@ public class RespuestaImpl implements Respuesta {
 	private static final long serialVersionUID = -3336398393774226876L;
 	private Integer valoracion;
 	private String descripcion;
-	@OneToOne
-	private Incidencia incidencia;
+	
+	public RespuestaImpl(){}
 
 	public RespuestaImpl(Integer val, String desc) {
 		valoracion = val;
@@ -39,19 +35,6 @@ public class RespuestaImpl implements Respuesta {
 
 	public String getDescripcion() {
 		return descripcion;
-	}
-
-	public Incidencia getIncidencia() {
-		return incidencia;
-	}
-
-	public void setIncidencia(Incidencia incidencia)
-			throws InvalidStateException {
-		if (incidencia == null)
-			throw new NullPointerException();
-		else if (getIncidencia() != null)
-			throw new InvalidStateException();
-		this.incidencia = incidencia;
 	}
 
 }
