@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Embedded;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -19,6 +20,7 @@ import isw2.excepciones.InvalidStateException;
 public class IncidenciaImpl implements Incidencia {
 
 	@Id
+	@GeneratedValue
 	private Integer id;
 	private String nombre;
 	private String dni;
@@ -36,9 +38,11 @@ public class IncidenciaImpl implements Incidencia {
 	@ManyToMany
 	private Set<Incidencia> incidencias;
 
-	public IncidenciaImpl(Integer id, String nombre, String dni, String email,
+	
+	public IncidenciaImpl(){}
+	
+	public IncidenciaImpl(String nombre, String dni, String email,
 			String descripcion, Date fecha) {
-		this.id = id;
 		this.nombre = nombre;
 		this.dni = dni;
 		this.email = email;

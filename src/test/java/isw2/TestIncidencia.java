@@ -24,14 +24,14 @@ public class TestIncidencia {
 
 	@Before
 	public void setup() {
-		i = new IncidenciaImpl(1, "Jorge Martinez", "54869468F",
+		i = new IncidenciaImpl("Jorge Martinez", "54869468F",
 				"jmartinez@gmail.com", "El conector USB no funciona.",
 				new Date(2012, 3, 12));
 	}
 
 	@Test
 	public void testAñadirIncidencia1() {
-		Incidencia e = new IncidenciaImpl(1, "Jorge Martinez", "54869468F",
+		Incidencia e = new IncidenciaImpl("Jorge Martinez", "54869468F",
 				"jmartinez@gmail.com", "La pantalla se ve en negro.", new Date(
 						2011, 9, 13));
 		i.añadirIncidencia(e);
@@ -39,7 +39,7 @@ public class TestIncidencia {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testAñadirIncidencia2() {
-		Incidencia e = new IncidenciaImpl(1, "Jorge Martinez", "54869468F",
+		Incidencia e = new IncidenciaImpl("Jorge Martinez", "54869468F",
 				"jmartinez@gmail.com", "La pantalla se ve en negro.", new Date(
 						2011, 9, 13));
 		i.añadirIncidencia(e);

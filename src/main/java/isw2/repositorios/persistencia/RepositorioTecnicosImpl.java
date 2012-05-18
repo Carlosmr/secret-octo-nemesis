@@ -1,9 +1,11 @@
 package isw2.repositorios.persistencia;
 
 import isw2.entidades.contratos.Tecnico;
+import isw2.entidades.implementaciones.TecnicoImpl;
 import isw2.repositorios.RepositorioTecnicos;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
@@ -16,9 +18,12 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 	}
 
 	public Boolean credencialesValidos(String user, String password) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return getEntityManager()
+				.createQuery("SELECT t FROM Tecnico t WHERE t.user = :user AND t.password = :password", Tecnico.class)
+				.setParameter("user", user)
+				.setParameter("password", password)
+				.getResultList().size()>0;
+		}
 
 	public Boolean isTecnicoLogged() {
 		// TODO Auto-generated method stub
@@ -27,28 +32,27 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 
 	public Tecnico crearTecnico(String user, String password, String nombre,
 			String apellidos, Date fechaNac, String direccion, String telefono) {
-		// TODO Auto-generated method stub
-		return null;
+		return new TecnicoImpl(user, password, nombre, apellidos, fechaNac,
+				direccion, telefono);
 	}
 
 	public void logIn(String user, String password) {
-		// TODO Auto-generated method stub
-
+		if(credencialesValidos(user,password)){
+			// TODO: Loguear usuario.
+		}
 	}
 
 	public Set<Tecnico> getTecnicos() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return new HashSet<Tecnico>(getEntityManager().createQuery("from Tecnico", Tecnico.class)
+				.getResultList());
+		}
 
 	public void guardar(Tecnico tecnico) {
-		// TODO Auto-generated method stub
-
+		getEntityManager().persist(tecnico);
 	}
 
 	public Tecnico getTecnico(String user) {
-		// TODO Auto-generated method stub
-		return null;
+		return getEntityManager().find(Tecnico.class, user);
 	}
 
 }

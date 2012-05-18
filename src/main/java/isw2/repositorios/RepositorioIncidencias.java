@@ -13,10 +13,6 @@ public interface RepositorioIncidencias {
 
 	@Query
 	@Pre({ "true" })
-	boolean dniEsValido(String dni);
-
-	@Query
-	@Pre({ "true" })
 	Set<Incidencia> buscarIncidenciasPorDni(String dni);
 
 	@Pre({ "busqueda!=\"\" # IllegalArgumentException",
