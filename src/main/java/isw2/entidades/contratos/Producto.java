@@ -66,7 +66,7 @@ public interface Producto{
 			"getNombre()==getNombre()@Pre", "getCodigo()==getCodigo()@Pre",
 			"getDescripcion()==getDescripcion()@Pre",
 			"getIncidencias()==getIncidencias()@Pre" })
-	void añadirProcedimiento(Procedimiento procedimiento);
+	void anadirProcedimiento(Procedimiento procedimiento);
 
 	@Pre({ "procedimiento != null #NullPointerException",
 			"getProcedimientos().contains(procedimiento) #IllegalArgumentException" })

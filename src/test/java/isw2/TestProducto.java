@@ -1,6 +1,5 @@
 package isw2;
 
-
 import org.junit.Before;
 import org.junit.Test;
 
@@ -69,32 +68,32 @@ public class TestProducto {
 	}
 
 	@Test(expected = NullPointerException.class)
-	public void testAñadirProcedimiento1() {
-		p.añadirProcedimiento(null);
+	public void testAnadirProcedimiento1() {
+		p.anadirProcedimiento(null);
 
 	}
 
 	@Test
-	public void testAñadirProcedimiento2() {
+	public void testAnadirProcedimiento2() {
 		Procedimiento proc1 = new ProcedimientoImpl("1234", "MON-01",
 				"repacion conector usb");
 
-		p.añadirProcedimiento(proc1);
+		p.anadirProcedimiento(proc1);
 
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testAñadirProcedimiento3() {
+	public void testAnadirProcedimiento3() {
 		Procedimiento proc1 = new ProcedimientoImpl("1234", "MON-01",
 				"repacion conector usb");
-		p.añadirProcedimiento(proc1);
-		p.añadirProcedimiento(proc1);
+		p.anadirProcedimiento(proc1);
+		p.anadirProcedimiento(proc1);
 
 	}
 
 	@Test(expected = NullPointerException.class)
 	public void testEliminarProcedimiento1() {
-		p.añadirProcedimiento(null);
+		p.anadirProcedimiento(null);
 
 	}
 
@@ -102,7 +101,7 @@ public class TestProducto {
 	public void testEliminarProcedimiento2() {
 		Procedimiento proc1 = new ProcedimientoImpl("1234", "MON-01",
 				"repacion conector usb");
-		p.añadirProcedimiento(proc1);
+		p.anadirProcedimiento(proc1);
 		p.eliminarProcedimiento(proc1);
 
 	}

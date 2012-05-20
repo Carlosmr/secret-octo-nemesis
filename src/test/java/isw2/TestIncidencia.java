@@ -30,25 +30,25 @@ public class TestIncidencia {
 	}
 
 	@Test
-	public void testAñadirIncidencia1() {
+	public void testAnadirIncidencia1() {
 		Incidencia e = new IncidenciaImpl("Jorge Martinez", "54869468F",
 				"jmartinez@gmail.com", "La pantalla se ve en negro.", new Date(
 						2011, 9, 13));
-		i.añadirIncidencia(e);
+		i.anadirIncidencia(e);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testAñadirIncidencia2() {
+	public void testAnadirIncidencia2() {
 		Incidencia e = new IncidenciaImpl("Jorge Martinez", "54869468F",
 				"jmartinez@gmail.com", "La pantalla se ve en negro.", new Date(
 						2011, 9, 13));
-		i.añadirIncidencia(e);
-		i.añadirIncidencia(e);
+		i.anadirIncidencia(e);
+		i.anadirIncidencia(e);
 	}
 
 	@Test(expected = NullPointerException.class)
-	public void testAñadirIncidencia3() {
-		i.añadirIncidencia(null);
+	public void testAnadirIncidencia3() {
+		i.anadirIncidencia(null);
 	}
 
 	@Test

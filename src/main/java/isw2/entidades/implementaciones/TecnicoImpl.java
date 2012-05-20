@@ -152,7 +152,7 @@ public class TecnicoImpl implements Tecnico{
 		return procedimientos;
 	}
 
-	public void añadirProcedimiento(Procedimiento procedimiento) {
+	public void anadirProcedimiento(Procedimiento procedimiento) {
 
 		if (procedimiento == null)
 

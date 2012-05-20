@@ -10,7 +10,7 @@ public interface ResponderIncidencia {
 
 	void seleccionarIncidencia(Integer id);
 
-	void añadirDescripcion(String descripcion);
+	void anadirDescripcion(String descripcion);
 
 	void registrarRespuesta();
 }

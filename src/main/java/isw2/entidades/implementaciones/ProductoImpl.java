@@ -86,7 +86,7 @@ public class ProductoImpl implements Producto {
 		return procedimientos;
 	}
 
-	public void añadirProcedimiento(Procedimiento procedimiento) {
+	public void anadirProcedimiento(Procedimiento procedimiento) {
 
 		if (procedimiento == null)
 			throw new NullPointerException();

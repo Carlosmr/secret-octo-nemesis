@@ -1,6 +1,5 @@
 package isw2;
 
-
 import java.util.Date;
 
 import org.junit.Before;
@@ -134,35 +133,35 @@ public class TestTecnico {
 	}
 
 	@Test
-	public void testAñadirProcedimiento1() {
+	public void testAnadirProcedimiento1() {
 		Procedimiento p = new ProcedimientoImpl("1", "MON-01",
 				"Reparación conector USB");
-		t.añadirProcedimiento(p);
+		t.anadirProcedimiento(p);
 	}
 
 	@Test(expected = NullPointerException.class)
-	public void testAñadirProcedimiento2() {
-		t.añadirProcedimiento(null);
+	public void testAnadirProcedimiento2() {
+		t.anadirProcedimiento(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testAñadirProcedimiento3() {
+	public void testAnadirProcedimiento3() {
 		Procedimiento p = new ProcedimientoImpl("1", "MON-01",
 				"Reparación conector USB");
 		p.setDadoDeBaja(true);
-		t.añadirProcedimiento(p);
+		t.anadirProcedimiento(p);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testAñadirProcedimiento4() {
+	public void testAnadirProcedimiento4() {
 		Procedimiento p = new ProcedimientoImpl("1", "MON-01",
 				"Reparación conector USB");
-		t.añadirProcedimiento(p);
-		t.añadirProcedimiento(p);
+		t.anadirProcedimiento(p);
+		t.anadirProcedimiento(p);
 	}
 
 	@Test
-	public void testAñadirProcedimiento5() {
+	public void testAnadirProcedimiento5() {
 		Procedimiento p1 = new ProcedimientoImpl("1", "MON-01",
 				"Reparación conector USB");
 		Procedimiento p2 = new ProcedimientoImpl("2", "MON-02",
@@ -183,20 +182,20 @@ public class TestTecnico {
 				"Reparación conector USB");
 		Procedimiento p10 = new ProcedimientoImpl("10", "MON-10",
 				"Reparación conector USB");
-		t.añadirProcedimiento(p1);
-		t.añadirProcedimiento(p2);
-		t.añadirProcedimiento(p3);
-		t.añadirProcedimiento(p4);
-		t.añadirProcedimiento(p5);
-		t.añadirProcedimiento(p6);
-		t.añadirProcedimiento(p7);
-		t.añadirProcedimiento(p8);
-		t.añadirProcedimiento(p9);
-		t.añadirProcedimiento(p10);
+		t.anadirProcedimiento(p1);
+		t.anadirProcedimiento(p2);
+		t.anadirProcedimiento(p3);
+		t.anadirProcedimiento(p4);
+		t.anadirProcedimiento(p5);
+		t.anadirProcedimiento(p6);
+		t.anadirProcedimiento(p7);
+		t.anadirProcedimiento(p8);
+		t.anadirProcedimiento(p9);
+		t.anadirProcedimiento(p10);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testAñadirProcedimiento6() {
+	public void testAnadirProcedimiento6() {
 		Procedimiento p1 = new ProcedimientoImpl("1", "MON-01",
 				"Reparación conector USB");
 		Procedimiento p2 = new ProcedimientoImpl("2", "MON-02",
@@ -219,24 +218,24 @@ public class TestTecnico {
 				"Reparación conector USB");
 		Procedimiento p11 = new ProcedimientoImpl("11", "MON-11",
 				"Reparación conector USB");
-		t.añadirProcedimiento(p1);
-		t.añadirProcedimiento(p2);
-		t.añadirProcedimiento(p3);
-		t.añadirProcedimiento(p4);
-		t.añadirProcedimiento(p5);
-		t.añadirProcedimiento(p6);
-		t.añadirProcedimiento(p7);
-		t.añadirProcedimiento(p8);
-		t.añadirProcedimiento(p9);
-		t.añadirProcedimiento(p10);
-		t.añadirProcedimiento(p11);
+		t.anadirProcedimiento(p1);
+		t.anadirProcedimiento(p2);
+		t.anadirProcedimiento(p3);
+		t.anadirProcedimiento(p4);
+		t.anadirProcedimiento(p5);
+		t.anadirProcedimiento(p6);
+		t.anadirProcedimiento(p7);
+		t.anadirProcedimiento(p8);
+		t.anadirProcedimiento(p9);
+		t.anadirProcedimiento(p10);
+		t.anadirProcedimiento(p11);
 	}
 
 	@Test
 	public void testEliminaProcedimiento1() {
 		Procedimiento p = new ProcedimientoImpl("1", "MON-01",
 				"Reparación conector USB");
-		t.añadirProcedimiento(p);
+		t.anadirProcedimiento(p);
 		t.eliminaProcedimiento(p);
 	}
 
@@ -244,7 +243,7 @@ public class TestTecnico {
 	public void testEliminaProcedimiento2() {
 		Procedimiento p = new ProcedimientoImpl("1", "MON-01",
 				"Reparación conector USB");
-		t.añadirProcedimiento(p);
+		t.anadirProcedimiento(p);
 		t.eliminaProcedimiento(null);
 	}
 

@@ -66,7 +66,7 @@ public interface Incidencia {
 			"getRespuesta()==getRespuesta()@Pre",
 			"getProcedimiento()==getProcedimiento()@Pre",
 			"getProducto==getProducto()@Pre", "getTecnico()==getTecnico()@Pre" })
-	void añadirIncidencia(Incidencia incidencia);
+	void anadirIncidencia(Incidencia incidencia);
 
 	@Pre({ "tecnico!=null #NullPointerException",
 			"getTecnico()==null #InvalidStateException",

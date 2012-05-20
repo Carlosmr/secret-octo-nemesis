@@ -91,7 +91,7 @@ public class IncidenciaImpl implements Incidencia {
 		return incidencias;
 	}
 
-	public void añadirIncidencia(Incidencia incidencia) {
+	public void anadirIncidencia(Incidencia incidencia) {
 		if (incidencia == null)
 			throw new NullPointerException();
 		else if (getIncidencias().contains(incidencia))

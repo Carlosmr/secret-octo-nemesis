@@ -164,7 +164,7 @@ public interface Tecnico{
 			"getTelefono()==getTelefono()@Pre",
 			"getIncidencias()==getIncidencias()@Pre",
 			"getNombre()==getNombre()@Pre" })
-	void añadirProcedimiento(Procedimiento procedimiento);
+	void anadirProcedimiento(Procedimiento procedimiento);
 
 	@Pre({ "procedimiento!=null # NullPointerException",
 			"getProcedimientos().contains(procedimiento) # IllegalArgumentException" })
