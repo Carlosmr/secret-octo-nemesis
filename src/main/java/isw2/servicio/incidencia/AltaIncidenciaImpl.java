@@ -87,6 +87,7 @@ public class AltaIncidenciaImpl implements AltaIncidencia {
 		} catch (InvalidStateException e1) {
 			e1.printStackTrace();
 		}
+		ri.guardar(i);
 
 	}
 }
