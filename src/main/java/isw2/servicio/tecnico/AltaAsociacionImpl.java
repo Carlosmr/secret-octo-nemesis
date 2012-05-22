@@ -6,6 +6,7 @@ import isw2.repositorios.RepositorioProcedimientos;
 import isw2.repositorios.RepositorioTecnicos;
 import isw2.repositorios.persistencia.RepositorioProcedimientosImpl;
 import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
+import isw2.repositorios.persistencia.SingleEntityManager;
 
 import java.util.Set;
 
@@ -14,14 +15,14 @@ import javax.persistence.Persistence;
 
 public class AltaAsociacionImpl implements AltaAsociacion {
 
-	RepositorioTecnicos rt;
-	RepositorioProcedimientos rp;
-	Tecnico t;
+	private RepositorioTecnicos rt;
+	private RepositorioProcedimientos rp;
+	private Tecnico t;
 
 	public AltaAsociacionImpl() {
 
-		EntityManager em = Persistence.createEntityManagerFactory("isw2.acme")
-				.createEntityManager();
+		EntityManager em = SingleEntityManager.getEntityManager();
+
 		rt = new RepositorioTecnicosImpl(em);
 		rp = new RepositorioProcedimientosImpl(em);
 
