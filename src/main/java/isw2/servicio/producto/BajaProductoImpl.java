@@ -19,6 +19,11 @@ public class BajaProductoImpl implements BajaProducto {
 
 	public Set<Producto> listarProductos() {
 		return rp.getProductos();
+	
+	}
+	
+	public Set<Producto> listarProductosDadosDeAlta() {
+		return rp.getProductosDadosDeAlta();
 	}
 
 	public void darDeBajaProducto(String codigo) {

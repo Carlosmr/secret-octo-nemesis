@@ -53,7 +53,7 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 	}
 
 	public Set<Tecnico> getTecnicosActivos() {
-
+		// TODO revisar consulta
 		return new HashSet<Tecnico>(getEntityManager().createQuery(
 				"SELECT t FROM Tecnico WHERE t.dadoDeBaja = false",
 				Tecnico.class).getResultList());

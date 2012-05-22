@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.EntityManager;
 
 import isw2.entidades.contratos.Producto;
+import isw2.entidades.contratos.Tecnico;
 import isw2.entidades.implementaciones.ProductoImpl;
 import isw2.repositorios.RepositorioProductos;
 
@@ -32,6 +33,14 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 
 	public Producto getProducto(String codigo) {
 		return getEntityManager().find(Producto.class, codigo);
+	}
+
+	public Set<Producto> getProductosDadosDeAlta() {
+
+		return new HashSet<Producto>(getEntityManager().createQuery(
+				// TODO revisar consulta
+				"SELECT p FROM Producto WHERE p.dadoDeBaja = false",
+				Producto.class).getResultList());
 	}
 
 }

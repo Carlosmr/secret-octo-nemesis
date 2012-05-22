@@ -33,6 +33,8 @@ public interface RepositorioProcedimientos {
 	@Pre({ "true" })
 	Set<Procedimiento> getProcedimientos();
 
+	Set<Procedimiento> getProcedimientosDadosDeAlta();
+
 	Set<Procedimiento> getProcedimientosNoAsociadosAlTecnico(String user);
 
 	void guardar(Procedimiento procedimiento);

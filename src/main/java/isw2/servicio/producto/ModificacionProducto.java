@@ -9,6 +9,8 @@ public interface ModificacionProducto {
 
 	Set<Producto> listarProductos();
 
+	Set<Producto> listarProductosDadosDeAlta();
+
 	Producto seleccionaProducto(String codigo);
 
 	void guardarDatosProducto(String nombre, String descripcion);

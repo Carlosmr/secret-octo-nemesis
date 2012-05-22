@@ -25,6 +25,10 @@ public class ModificacionProductoImpl implements ModificacionProducto {
 		rpr = new RepositorioProcedimientosImpl(em);
 	}
 
+	public Set<Producto> listarProductosDadosDeAlta() {
+		return rp.getProductosDadosDeAlta();
+	}
+
 	public Set<Producto> listarProductos() {
 		return rp.getProductos();
 	}
@@ -37,6 +41,10 @@ public class ModificacionProductoImpl implements ModificacionProducto {
 	public void guardarDatosProducto(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+	}
+
+	public Set<Procedimiento> listarProcedimientosDadosDeAlta() {
+		return rpr.getProcedimientosDadosDeAlta();
 	}
 
 	public Set<Procedimiento> listarProcedimientos() {
