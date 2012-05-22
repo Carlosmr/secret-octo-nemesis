@@ -34,4 +34,12 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 		return getEntityManager().find(Procedimiento.class, codigo);
 	}
 
+	public Set<Procedimiento> getProcedimientosNoAsociadosAlTecnico(String user) {
+
+		return new HashSet<Procedimiento>(getEntityManager().createQuery(
+				//TODO revisar esta consulta porque tiene pinta de que esté mal
+				"SELECT * FROM Procedimiento WHERE NOT tecnico = :user",
+				Procedimiento.class).getResultList());
+	}
+
 }

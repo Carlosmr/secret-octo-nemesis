@@ -32,10 +32,11 @@ public interface RepositorioProcedimientos {
 	@Query
 	@Pre({ "true" })
 	Set<Procedimiento> getProcedimientos();
-	
-	void guardar(Procedimiento procedimiento);
-	
-	Procedimiento getProcedimiento(String codigo);
 
+	Set<Procedimiento> getProcedimientosNoAsociadosAlTecnico(String user);
+
+	void guardar(Procedimiento procedimiento);
+
+	Procedimiento getProcedimiento(String codigo);
 
 }

@@ -15,5 +15,4 @@ public interface AltaAsociacion {
 
 	void asignarProcedimientos(Set<Procedimiento> procedimientos);
 
-
 }

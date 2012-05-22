@@ -16,6 +16,7 @@ public class AltaAsociacionImpl implements AltaAsociacion {
 
 	RepositorioTecnicos rt;
 	RepositorioProcedimientos rp;
+	Tecnico t;
 
 	public AltaAsociacionImpl() {
 
@@ -33,18 +34,22 @@ public class AltaAsociacionImpl implements AltaAsociacion {
 	}
 
 	public void seleccionarTecnico(String user) {
-		// TODO Auto-generated method stub
+
+		this.t = rt.getTecnico(user);
 
 	}
 
 	public Set<Procedimiento> listarProcedimientosNoAsociadosAlTecnico() {
-		// TODO Auto-generated method stub
-		return null;
+
+		return rp.getProcedimientosNoAsociadosAlTecnico(this.t.getUser());
 	}
 
 	public void asignarProcedimientos(Set<Procedimiento> procedimientos) {
-		// TODO Auto-generated method stub
+
+		for (Procedimiento p : procedimientos) {
+
+			t.anadirProcedimiento(p);
+		}
 
 	}
-
 }
