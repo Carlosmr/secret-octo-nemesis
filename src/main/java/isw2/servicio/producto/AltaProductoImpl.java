@@ -36,6 +36,10 @@ public class AltaProductoImpl implements AltaProducto {
 		return rpr.getProcedimientos();
 	}
 
+	public Set<Procedimiento> listarProcedimientosDadosDeAlta() {
+		return rpr.getProcedimientosDadosDeAlta();
+	}
+
 	public void seleccionarProcedimientos(Set<String> idProcedimientos) {
 		procedimientos = new HashSet<Procedimiento>();
 		for (String s : idProcedimientos)
