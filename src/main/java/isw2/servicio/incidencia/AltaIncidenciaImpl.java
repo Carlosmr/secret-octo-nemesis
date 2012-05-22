@@ -80,7 +80,7 @@ public class AltaIncidenciaImpl implements AltaIncidencia {
 		Incidencia i = ri.crearIncidencia(nombreCliente, dni, email,
 				descripcion, fechaCompra);
 		for(Incidencia e:incidencias)
-			i.añadirIncidencia(e);
+			i.anadirIncidencia(e);
 		try {
 			i.setProcedimiento(procedimiento);
 			i.setProducto(producto);

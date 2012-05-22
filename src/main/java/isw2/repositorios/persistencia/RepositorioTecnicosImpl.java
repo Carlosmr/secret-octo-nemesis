@@ -19,11 +19,11 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 
 	public Boolean credencialesValidos(String user, String password) {
 		return getEntityManager()
-				.createQuery("SELECT t FROM Tecnico t WHERE t.user = :user AND t.password = :password", Tecnico.class)
-				.setParameter("user", user)
-				.setParameter("password", password)
-				.getResultList().size()>0;
-		}
+				.createQuery(
+						"SELECT t FROM Tecnico t WHERE t.user = :user AND t.password = :password",
+						Tecnico.class).setParameter("user", user)
+				.setParameter("password", password).getResultList().size() > 0;
+	}
 
 	public Boolean isTecnicoLogged() {
 		// TODO Auto-generated method stub
@@ -37,15 +37,22 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 	}
 
 	public void logIn(String user, String password) {
-		if(credencialesValidos(user,password)){
+		if (credencialesValidos(user, password)) {
 			// TODO: Loguear usuario.
 		}
 	}
 
 	public Set<Tecnico> getTecnicos() {
-		return new HashSet<Tecnico>(getEntityManager().createQuery("from Tecnico", Tecnico.class)
-				.getResultList());
-		}
+		return new HashSet<Tecnico>(getEntityManager().createQuery(
+				"from Tecnico", Tecnico.class).getResultList());
+	}
+
+	public Set<Tecnico> getTecnicosActivos() {
+
+		return new HashSet<Tecnico>(getEntityManager().createQuery(
+				"SELECT t FROM Tecnico WHERE t.dadoDeBaja = false",
+				Tecnico.class).getResultList());
+	}
 
 	public void guardar(Tecnico tecnico) {
 		getEntityManager().persist(tecnico);

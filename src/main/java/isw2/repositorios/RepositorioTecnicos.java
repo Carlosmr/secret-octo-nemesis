@@ -47,6 +47,8 @@ public interface RepositorioTecnicos extends ModeloTecnico {
 	@Pre({ "true" })
 	Set<Tecnico> getTecnicos();
 	
+	Set<Tecnico> getTecnicosActivos();
+	
 	void guardar(Tecnico tecnico);
 
 	Tecnico getTecnico(String user);
