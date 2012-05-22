@@ -8,7 +8,7 @@ public interface AsignarIncidencia {
 
 	Set<Incidencia> listarIncidenciasSinAsignar();
 
-	void seleccionarIncidencia(String idIncidencia);
+	void seleccionarIncidencia(Integer idIncidencia);
 
 	void asociarIncidenciaTecnico(String user);
 

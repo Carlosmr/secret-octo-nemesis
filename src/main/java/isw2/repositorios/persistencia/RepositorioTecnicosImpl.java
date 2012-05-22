@@ -15,6 +15,11 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 
 	public RepositorioTecnicosImpl(EntityManager em) {
 		super(em);
+		if (getEntityManager().find(Tecnico.class, "SYSTEM") == null) {
+			Tecnico t = new TecnicoImpl("SYSTEM", "", "SYSTEM", "SYSTEM",
+					new Date(), "", "");
+			em.persist(t);
+		}
 	}
 
 	public Boolean credencialesValidos(String user, String password) {

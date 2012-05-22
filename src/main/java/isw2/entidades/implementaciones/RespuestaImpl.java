@@ -12,11 +12,11 @@ public class RespuestaImpl implements Respuesta {
 	private static final long serialVersionUID = -3336398393774226876L;
 	private Integer valoracion;
 	private String descripcion;
-	
-	public RespuestaImpl(){}
 
-	public RespuestaImpl(Integer val, String desc) {
-		valoracion = val;
+	public RespuestaImpl() {
+	}
+
+	public RespuestaImpl(String desc) {
 		descripcion = desc;
 	}
 

@@ -8,6 +8,6 @@ public interface ValorarIncidencia {
 
 	Set<Incidencia> listarIncidenciaPorDni(String dni);
 
-	void registrarValoracion(Integer val);
+	void registrarValoracion(Integer id, Integer val);
 
 }
