@@ -16,7 +16,7 @@ public class AltaProcedimientoImpl implements AltaProcedimiento {
 
 	public void introducirDatosProcedimiento(String codigo, String nombre,
 			String descripcion) {
-		rp.crearProcedimiento(codigo, nombre, descripcion);
+		rp.guardar(rp.crearProcedimiento(codigo, nombre, descripcion));
 
 	}
 
