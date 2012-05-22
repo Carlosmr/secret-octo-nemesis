@@ -31,7 +31,7 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 	}
 
 	public Boolean isTecnicoLogged() {
-		// TODO Auto-generated method stub
+		// TODO Completar el LogIn usuario
 		return null;
 	}
 
@@ -53,9 +53,8 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 	}
 
 	public Set<Tecnico> getTecnicosActivos() {
-		// TODO revisar consulta
 		return new HashSet<Tecnico>(getEntityManager().createQuery(
-				"SELECT t FROM Tecnico WHERE t.dadoDeBaja = false",
+				"SELECT t FROM Tecnico t WHERE t.dadoDeBaja = false",
 				Tecnico.class).getResultList());
 	}
 

@@ -11,7 +11,6 @@ import isw2.repositorios.persistencia.SingleEntityManager;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 
 public class AltaAsociacionImpl implements AltaAsociacion {
 

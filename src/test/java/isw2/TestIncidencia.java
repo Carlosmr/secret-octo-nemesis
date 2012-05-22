@@ -143,7 +143,7 @@ public class TestIncidencia {
 
 	@Test
 	public void testSetRespuesta1() throws InvalidStateException {
-		Respuesta r = new RespuestaImpl(3,
+		Respuesta r = new RespuestaImpl(
 				"Problema solucionado, todo muy rapido.");
 		i.setRespuesta(r);
 	}
@@ -155,9 +155,8 @@ public class TestIncidencia {
 
 	@Test(expected = InvalidStateException.class)
 	public void testSetRespuesta3() throws InvalidStateException {
-		Respuesta r1 = new RespuestaImpl(3,
-				"Problema solucionado, todo muy rapido.");
-		Respuesta r2 = new RespuestaImpl(-3, "Sigue funcionando mal.");
+		Respuesta r1 = new RespuestaImpl("Problema solucionado, todo muy rapido.");
+		Respuesta r2 = new RespuestaImpl("Sigue funcionando mal.");
 		i.setRespuesta(r1);
 		i.setRespuesta(r2);
 	}

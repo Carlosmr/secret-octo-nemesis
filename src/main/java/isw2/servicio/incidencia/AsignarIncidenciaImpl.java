@@ -24,8 +24,7 @@ public class AsignarIncidenciaImpl implements AsignarIncidencia {
 	}
 
 	public Set<Incidencia> listarIncidenciasSinAsignar() {
-		// TODO este metodo no es el correcto.
-		return ri.getIncidencias();
+		return ri.getIncidenciasSinAsignar();
 	}
 
 	public void seleccionarIncidencia(Integer idIncidencia) {

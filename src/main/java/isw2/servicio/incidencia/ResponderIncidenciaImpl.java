@@ -23,7 +23,6 @@ public class ResponderIncidenciaImpl implements ResponderIncidencia {
 	}
 
 	public Set<Incidencia> listarIncidenciasTecnicoSinRespuesta(String user) {
-		// TODO: Implementar método.
 		return ri.getIncidenciasSinRespuesta(user);
 	}
 

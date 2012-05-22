@@ -54,7 +54,6 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 	public Set<Incidencia> getIncidencias(String user) {
 
-		// TODO: Repasar si esto es correcto.
 		return new HashSet<Incidencia>(getEntityManager()
 				.createQuery(
 						"SELECT i FROM Incidencia i WHERE i.tecnico = :user",
@@ -62,4 +61,21 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 				.getResultList());
 	}
 
+	public Set<Incidencia> getIncidenciasSinRespuesta(String user) {
+		return new HashSet<Incidencia>(
+				getEntityManager()
+						.createQuery(
+								"SELECT i FROM Incidencia i WHERE i.respuesta = :respuesta AND i.tecnico = :user",
+								Incidencia.class)
+						.setParameter("respuesta", null)
+						.setParameter("tecnico", user).getResultList());
+	}
+
+	public Set<Incidencia> getIncidenciasSinAsignar() {
+		return new HashSet<Incidencia>(getEntityManager()
+				.createQuery(
+						"SELECT i FROM Incidencia i WHERE i.tecnico = :user",
+						Incidencia.class).setParameter("user", null)
+				.getResultList());
+	}
 }

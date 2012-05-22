@@ -11,7 +11,7 @@ public class TestRespuesta {
 
 	@Before
 	public void setup() {
-		r = new RespuestaImpl(4,
+		r = new RespuestaImpl(
 				"Trato muy correcto, en dos d�as estaba reparado.");
 	}
 

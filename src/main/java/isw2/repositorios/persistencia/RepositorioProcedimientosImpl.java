@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.persistence.EntityManager;
 
 import isw2.entidades.contratos.Procedimiento;
-import isw2.entidades.contratos.Producto;
+import isw2.entidades.contratos.Tecnico;
 import isw2.entidades.implementaciones.ProcedimientoImpl;
 import isw2.repositorios.RepositorioProcedimientos;
 
@@ -30,8 +30,7 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 	public Set<Procedimiento> getProcedimientosDadosDeAlta() {
 
 		return new HashSet<Procedimiento>(getEntityManager().createQuery(
-				// TODO revisar consulta
-				"SELECT pr FROM Procedimiento WHERE pr.dadoDeBaja = false",
+				"SELECT pr FROM Procedimiento pr WHERE pr.dadoDeBaja = false",
 				Procedimiento.class).getResultList());
 	}
 
@@ -44,11 +43,13 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 	}
 
 	public Set<Procedimiento> getProcedimientosNoAsociadosAlTecnico(String user) {
+		Set<Procedimiento> procedimientosUsuario = getEntityManager().find(
+				Tecnico.class, user).getProcedimientos();
+		Set<Procedimiento> procedimientos = new HashSet<Procedimiento>(
+				getEntityManager().createQuery("from Procedimiento",
+						Procedimiento.class).getResultList());
+		procedimientos.removeAll(procedimientosUsuario);
+		return procedimientos;
 
-		return new HashSet<Procedimiento>(getEntityManager().createQuery(
-				// TODO revisar esta consulta porque tiene pinta de que esté mal
-				"SELECT * FROM Procedimiento WHERE NOT tecnico = :user",
-				Procedimiento.class).getResultList());
 	}
-
 }
