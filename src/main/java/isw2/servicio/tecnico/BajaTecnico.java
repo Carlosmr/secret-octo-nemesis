@@ -7,7 +7,9 @@ import isw2.entidades.contratos.Tecnico;
 public interface BajaTecnico {
 
 	Set<Tecnico> listarTecnicos();
-	
+
+	Set<Tecnico> listarTecnicosActivos();
+
 	void darDeBajaTecnico(String user);
-	
+
 }

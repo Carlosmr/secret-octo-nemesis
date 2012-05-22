@@ -26,6 +26,11 @@ public class BajaAsociacionImpl implements BajaAsociacion {
 
 	}
 
+	public Set<Tecnico> listarTecnicosActivos() {
+
+		return rt.getTecnicosActivos();
+	}
+
 	public Set<Tecnico> listarTecnicos() {
 
 		return rt.getTecnicos();
@@ -46,7 +51,7 @@ public class BajaAsociacionImpl implements BajaAsociacion {
 		for (Procedimiento p : procedimientos) {
 			t.eliminaProcedimiento(p);
 		}
-		rt.guardar(t);
+
 	}
 
 }
