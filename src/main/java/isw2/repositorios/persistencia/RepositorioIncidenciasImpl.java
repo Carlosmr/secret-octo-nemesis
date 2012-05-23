@@ -11,6 +11,8 @@ import isw2.entidades.contratos.Incidencia;
 import isw2.entidades.implementaciones.IncidenciaImpl;
 import isw2.repositorios.RepositorioIncidencias;
 
+//TODO revisar al menos esta clase sus transacciones para ver si son correctas o no, las demás siguen la misma estructura.
+
 public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 		RepositorioIncidencias {
 

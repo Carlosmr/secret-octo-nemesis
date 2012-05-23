@@ -29,7 +29,7 @@ public class AltaAsociacionImpl implements AltaAsociacion {
 
 	public Set<Tecnico> listarTecnicosRegistrados() {
 
-		return rt.getTecnicosActivos();
+		return rt.getTecnicosDadosDeAlta();
 
 	}
 

@@ -23,7 +23,7 @@ public class BajaTecnicoImpl implements BajaTecnico {
 
 	public Set<Tecnico> listarTecnicosActivos() {
 
-		return rt.getTecnicosActivos();
+		return rt.getTecnicosDadosDeAlta();
 	}
 
 	public Set<Tecnico> listarTecnicos() {

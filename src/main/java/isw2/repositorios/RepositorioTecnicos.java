@@ -1,6 +1,5 @@
 package isw2.repositorios;
 
-
 import java.util.Date;
 import java.util.Set;
 
@@ -26,12 +25,17 @@ public interface RepositorioTecnicos extends ModeloTecnico {
 			"direccion!=null # NullPointerException",
 			"telefono!=null # NullPointerException",
 			"telefono.matches(\"\\d{9}\\d{3}?\")" })
-	@Pos({ "result.getUser()==user", "result.getPassword()==password",
-			"result.getNombre()==nombre", "result.getApellidos()==apellidos",
+	@Pos({
+			"result.getUser()==user",
+			"result.getPassword()==password",
+			"result.getNombre()==nombre",
+			"result.getApellidos()==apellidos",
 			"result.getFechaNacimiento()==fechaNac",
 			"result.getDireccion()==direccion",
-			"result.getTelefono()==telefono", "getTecnicos().contains(result)",
-			"!result.getDadoDeBaja()", "result.getProcedimientos().size()==0",
+			"result.getTelefono()==telefono",
+			"getTecnicos().contains(result)",
+			"!result.getDadoDeBaja()",
+			"result.getProcedimientos().size()==0",
 			"result.getIncidencias().size()==0",
 			"forall Tecnico t: getTecnicos()@Pre � getTecnicos().contains(t)",
 			"getTecnicos().size()==getTecnicos().size()@Pre+1" })
@@ -46,9 +50,9 @@ public interface RepositorioTecnicos extends ModeloTecnico {
 	@Query
 	@Pre({ "true" })
 	Set<Tecnico> getTecnicos();
-	
-	Set<Tecnico> getTecnicosActivos();
-	
+
+	Set<Tecnico> getTecnicosDadosDeAlta();
+
 	void guardar(Tecnico tecnico);
 
 	Tecnico getTecnico(String user);
