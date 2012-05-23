@@ -19,7 +19,6 @@ import isw2.entidades.contratos.Respuesta;
 import isw2.entidades.contratos.Tecnico;
 import isw2.excepciones.InvalidStateException;
 
-//TODO he añadido @Entity porque Incidencia es una entidad pero como no domino bien el tema de las anotaciones te lo dejo aqui para que borres el to do si esta bien.
 @Entity
 @Table(name = "Incidencia")
 public class IncidenciaImpl implements Incidencia {
