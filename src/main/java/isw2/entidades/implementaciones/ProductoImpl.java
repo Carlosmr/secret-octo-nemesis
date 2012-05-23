@@ -6,11 +6,13 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import isw2.entidades.contratos.Procedimiento;
 import isw2.entidades.contratos.Producto;
 
 @Entity
+@Table(name = "Producto")
 public class ProductoImpl implements Producto {
 
 	@Id
@@ -21,8 +23,9 @@ public class ProductoImpl implements Producto {
 	@OneToMany
 	private Set<Procedimiento> procedimientos;
 
-	public ProductoImpl(){}
-	
+	public ProductoImpl() {
+	}
+
 	public ProductoImpl(String codigo, String nombre, String descripcion) {
 
 		this.codigo = codigo;
@@ -33,7 +36,6 @@ public class ProductoImpl implements Producto {
 
 	}
 
-	
 	public String getCodigo() {
 		return codigo;
 	}
@@ -106,7 +108,6 @@ public class ProductoImpl implements Producto {
 
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -114,7 +115,6 @@ public class ProductoImpl implements Producto {
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {

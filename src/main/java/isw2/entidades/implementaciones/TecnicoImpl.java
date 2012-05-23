@@ -7,12 +7,14 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 import isw2.entidades.contratos.Procedimiento;
 import isw2.entidades.contratos.Tecnico;
 
 @Entity
-public class TecnicoImpl implements Tecnico{
+@Table(name = "Tecnico")
+public class TecnicoImpl implements Tecnico {
 
 	@Id
 	private String user;
@@ -26,7 +28,8 @@ public class TecnicoImpl implements Tecnico{
 	@ManyToMany
 	private Set<Procedimiento> procedimientos;
 
-	public TecnicoImpl(){}
+	public TecnicoImpl() {
+	}
 
 	public TecnicoImpl(String user, String password, String nombre,
 			String apellidos, Date fechaNacimiento, String direccion,

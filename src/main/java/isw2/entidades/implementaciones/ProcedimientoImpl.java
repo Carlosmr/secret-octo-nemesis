@@ -2,10 +2,12 @@ package isw2.entidades.implementaciones;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import isw2.entidades.contratos.Procedimiento;
 
 @Entity
+@Table(name = "Procedimiento")
 public class ProcedimientoImpl implements Procedimiento {
 
 	@Id
@@ -14,8 +16,9 @@ public class ProcedimientoImpl implements Procedimiento {
 	private String descripcion;
 	private Boolean dadoDeBaja;
 
-	public ProcedimientoImpl(){}
-	
+	public ProcedimientoImpl() {
+	}
+
 	public ProcedimientoImpl(String codigo, String nombre, String descripcion) {
 
 		this.codigo = codigo;
