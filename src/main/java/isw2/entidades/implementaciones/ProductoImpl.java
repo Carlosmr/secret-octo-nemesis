@@ -20,7 +20,7 @@ public class ProductoImpl implements Producto {
 	private String nombre;
 	private String descripcion;
 	private Boolean dadoDeBaja;
-	@OneToMany
+	@OneToMany(targetEntity = ProcedimientoImpl.class)
 	private Set<Procedimiento> procedimientos;
 
 	public ProductoImpl() {

@@ -25,7 +25,7 @@ public class TecnicoImpl implements Tecnico {
 	private String direccion;
 	private String telefono;
 	private Boolean dadoDeBaja;
-	@ManyToMany
+	@ManyToMany(targetEntity = ProcedimientoImpl.class)
 	private Set<Procedimiento> procedimientos;
 
 	public TecnicoImpl() {

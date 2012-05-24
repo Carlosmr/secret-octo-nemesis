@@ -1,27 +1,29 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
-             version="2.0">
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
 
-    <persistence-unit name="isw2.acme">
-        <description>
+	<persistence-unit name="isw2.acme">
+	
+		<description>
             Persistence unit para la empresa ACME.
         </description>
 
-        <class>isw2.entidades.implementaciones.IncidenciaImpl</class>
-        <class>isw2.entidades.implementaciones.ProcedimientoImpl</class>
-        <class>isw2.entidades.implementaciones.ProductoImpl</class>
-        <class>isw2.entidades.implementaciones.RespuestaImpl</class>
-        <class>isw2.entidades.implementaciones.TecnicoImpl</class>
+		<class>isw2.entidades.implementaciones.IncidenciaImpl</class>
+		<class>isw2.entidades.implementaciones.ProcedimientoImpl</class>
+		<class>isw2.entidades.implementaciones.ProductoImpl</class>
+		<class>isw2.entidades.implementaciones.RespuestaImpl</class>
+		<class>isw2.entidades.implementaciones.TecnicoImpl</class>
 
-
-        <properties>
-            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/taskManager" />
-            <property name="javax.persistence.jdbc.user" value="root" />
-            <property name="javax.persistence.jdbc.password" value="" />
-
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.hbm2ddl.auto" value="create" />
-        </properties>
-    </persistence-unit>
+		
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/acme" />
+			<property name="javax.persistence.jdbc.user" value="root" />
+			<property name="javax.persistence.jdbc.password" value="" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.hbm2ddl.auto" value="create" />
+		</properties>
+	</persistence-unit>
+</persistence>

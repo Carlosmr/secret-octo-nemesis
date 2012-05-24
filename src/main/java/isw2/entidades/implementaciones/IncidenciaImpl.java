@@ -33,13 +33,13 @@ public class IncidenciaImpl implements Incidencia {
 	private Date fecha;
 	@Embedded
 	private Respuesta respuesta;
-	@ManyToOne
+	@ManyToOne(targetEntity = TecnicoImpl.class)
 	private Tecnico tecnico;
-	@ManyToOne
+	@ManyToOne(targetEntity = ProcedimientoImpl.class)
 	private Procedimiento procedimiento;
-	@ManyToOne
+	@ManyToOne(targetEntity = ProductoImpl.class)
 	private Producto producto;
-	@ManyToMany
+	@ManyToMany(targetEntity = IncidenciaImpl.class)
 	private Set<Incidencia> incidencias;
 
 	public IncidenciaImpl() {

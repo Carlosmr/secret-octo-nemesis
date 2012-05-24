@@ -16,7 +16,7 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 
 	public RepositorioTecnicosImpl(EntityManager em) {
 		super(em);
-		if (getEntityManager().find(Tecnico.class, "SYSTEM") == null) {
+		if (getEntityManager().find(TecnicoImpl.class, "SYSTEM") == null) {
 			Tecnico t = new TecnicoImpl("SYSTEM", "", "SYSTEM", "SYSTEM",
 					new Date(), "", "");
 			em.persist(t);
@@ -28,12 +28,11 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 		Boolean result = false;
 
 		try {
-
 			getEntityManager().getTransaction().begin();
 			result = getEntityManager()
 					.createQuery(
 							"SELECT t FROM Tecnico t WHERE t.user = :user AND t.password = :password",
-							Tecnico.class).setParameter("user", user)
+							TecnicoImpl.class).setParameter("user", user)
 					.setParameter("password", password).getResultList().size() > 0;
 			getEntityManager().getTransaction().commit();
 
@@ -44,9 +43,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
 
 		return result;
 	}
@@ -76,10 +72,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-
-		}
 
 		return result;
 
@@ -109,9 +101,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
 
 		return result;
 
@@ -139,9 +128,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
 
 		return result;
 
@@ -163,9 +149,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
 	}
 
 	public Tecnico getTecnico(String user) {
@@ -184,10 +167,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
-		}
-
-		finally {
-			getEntityManager().close();
 		}
 
 		return result;

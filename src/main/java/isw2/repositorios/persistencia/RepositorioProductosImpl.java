@@ -18,27 +18,8 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 
 	public Producto crearProducto(String codigo, String nombre,
 			String descripcion) {
-		Producto result = new ProductoImpl();
 
-		try {
-
-			getEntityManager().getTransaction().begin();
-			result = new ProductoImpl(codigo, nombre, descripcion);
-			getEntityManager().getTransaction().commit();
-
-		}
-
-		catch (Exception oops) {
-
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
-		}
-
-		finally {
-			getEntityManager().close();
-		}
-
-		return result;
+		return new ProductoImpl(codigo, nombre, descripcion);
 
 	}
 
@@ -61,10 +42,6 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
-
 		return result;
 
 	}
@@ -85,9 +62,6 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
 
 	}
 
@@ -98,7 +72,7 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			result = getEntityManager().find(Producto.class, codigo);
+			result = getEntityManager().find(ProductoImpl.class, codigo);
 			getEntityManager().getTransaction().commit();
 
 		}
@@ -109,9 +83,6 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
 
 		return result;
 
@@ -137,10 +108,6 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 		catch (Exception oops) {
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
-		}
-
-		finally {
-			getEntityManager().close();
 		}
 
 		return result;

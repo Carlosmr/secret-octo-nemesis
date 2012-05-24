@@ -18,7 +18,7 @@ public class AltaProductoImpl implements AltaProducto {
 	private String codigo;
 	private String nombre;
 	private String descripcion;
-	private HashSet<Procedimiento> procedimientos;
+	private Set<Procedimiento> procedimientos = new HashSet<Procedimiento>();
 
 	public AltaProductoImpl() {
 		EntityManager em = SingleEntityManager.getEntityManager();

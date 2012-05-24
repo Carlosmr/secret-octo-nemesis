@@ -11,7 +11,7 @@ import isw2.entidades.contratos.Incidencia;
 import isw2.entidades.implementaciones.IncidenciaImpl;
 import isw2.repositorios.RepositorioIncidencias;
 
-//TODO revisar al menos esta clase sus transacciones para ver si son correctas o no, las demás siguen la misma estructura.
+//TODO revisar al menos esta clase sus transacciones para ver si son correctas o no, las demï¿½s siguen la misma estructura.
 
 public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 		RepositorioIncidencias {
@@ -42,9 +42,6 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
 		return result;
 
 	}
@@ -72,11 +69,6 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-
-		}
-
 		return result;
 	}
 
@@ -98,11 +90,6 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
-		}
-
-		finally {
-			getEntityManager().close();
-
 		}
 
 		return result;
@@ -129,11 +116,6 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-
-		}
-
 		return result;
 	}
 
@@ -153,11 +135,6 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-
-		}
-
 	}
 
 	public Incidencia getIncidencia(Integer id) {
@@ -167,7 +144,7 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			result = getEntityManager().find(Incidencia.class, id);
+			result = getEntityManager().find(IncidenciaImpl.class, id);
 			getEntityManager().getTransaction().commit();
 
 		}
@@ -176,11 +153,6 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
-		}
-
-		finally {
-			getEntityManager().close();
-
 		}
 
 		return result;
@@ -207,11 +179,6 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
-		}
-
-		finally {
-			getEntityManager().close();
-
 		}
 
 		return result;
@@ -241,10 +208,6 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-
-		}
 		return result;
 
 	}
@@ -269,11 +232,6 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
-		}
-
-		finally {
-			getEntityManager().close();
-
 		}
 
 		return result;

@@ -37,10 +37,6 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
-
 		return result;
 	}
 
@@ -63,9 +59,6 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
 
 		return result;
 	}
@@ -92,10 +85,6 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
-
 		return result;
 
 	}
@@ -116,10 +105,6 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			getEntityManager().close();
-		}
-
 	}
 
 	public Procedimiento getProcedimiento(String codigo) {
@@ -129,7 +114,7 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			result = getEntityManager().find(Procedimiento.class, codigo);
+			result = getEntityManager().find(ProcedimientoImpl.class, codigo);
 			getEntityManager().getTransaction().commit();
 
 		}
@@ -138,10 +123,6 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
-		}
-
-		finally {
-			getEntityManager().close();
 		}
 
 		return result;
@@ -170,11 +151,7 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
 		}
-
-		finally {
-			getEntityManager().close();
-		}
-
+		
 		return result;
 	}
 
