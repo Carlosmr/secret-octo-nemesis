@@ -11,11 +11,11 @@ public class EntryPoint {
 
 	public static void main(String[] args) {
 
-		// AltaTecnico a = new AltaTecnicoImpl();
-		// a.introducirCredenciales("benito", "benito");
-		// a.introducirDatosPersonales("benito", "benito", new Date(), "a",
-		// "9");
-		// a.registrarTecnico();
+		 AltaTecnico a = new AltaTecnicoImpl();
+		 a.introducirCredenciales("benito", "benito");
+		 a.introducirDatosPersonales("benito", "benito", new Date(), "a",
+		 "9");
+		 a.registrarTecnico();
 		AltaProducto p = new AltaProductoImpl();
 		p.datosProducto("132", "test", "pfff");
 		p.registrarProducto();

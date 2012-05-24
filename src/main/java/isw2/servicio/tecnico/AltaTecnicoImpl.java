@@ -31,15 +31,9 @@ public class AltaTecnicoImpl implements AltaTecnico {
 	}
 
 	public void introducirCredenciales(String user, String password) {
-
-		if (rt.getTecnico(user) == null) {
-			// no existe ese tecnico
+		
 			this.user = user;
 			this.password = password;
-		} else {
-
-			System.err.print("El técnico con user " + user + " ya existe.");
-		}
 
 	}
 
