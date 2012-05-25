@@ -30,8 +30,8 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			Collection<Producto> clientRepository = getEntityManager()
-					.createQuery("from Producto", Producto.class)
+			Collection<ProductoImpl> clientRepository = getEntityManager()
+					.createQuery("from ProductoImpl", ProductoImpl.class)
 					.getResultList();
 			result = new HashSet<Producto>(clientRepository);
 			getEntityManager().getTransaction().commit();

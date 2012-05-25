@@ -90,8 +90,8 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			Collection<Tecnico> clientRepository = getEntityManager()
-					.createQuery("from Tecnico", Tecnico.class).getResultList();
+			Collection<TecnicoImpl> clientRepository = getEntityManager()
+					.createQuery("from TecnicoImpl", TecnicoImpl.class).getResultList();
 			result = new HashSet<Tecnico>(clientRepository);
 			getEntityManager().getTransaction().commit();
 

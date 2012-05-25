@@ -102,8 +102,8 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			Collection<Incidencia> clientRepository = getEntityManager()
-					.createQuery("from Incidencia", Incidencia.class)
+			Collection<IncidenciaImpl> clientRepository = getEntityManager()
+					.createQuery("from IncidenciaImpl", IncidenciaImpl.class)
 					.getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
 			getEntityManager().getTransaction().commit();

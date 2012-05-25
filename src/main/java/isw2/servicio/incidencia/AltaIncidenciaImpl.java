@@ -87,6 +87,11 @@ public class AltaIncidenciaImpl implements AltaIncidencia {
 		} catch (InvalidStateException e1) {
 			e1.printStackTrace();
 		}
+		if (procedimiento == null) {
+			ResponderIncidenciaSinProcedimiento ri = new ResponderIncidenciaSinProcedimientoImpl();
+			ri.responderIncidenciaSinMantenimiento(i);
+		}
+
 		ri.guardar(i);
 
 	}

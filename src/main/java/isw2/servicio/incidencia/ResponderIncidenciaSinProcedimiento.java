@@ -1,6 +1,8 @@
 package isw2.servicio.incidencia;
 
+import isw2.entidades.contratos.Incidencia;
+
 public interface ResponderIncidenciaSinProcedimiento {
 
-	void responderIncidenciaSinMantenimiento(Integer id);
+	void responderIncidenciaSinMantenimiento(Incidencia i);
 }

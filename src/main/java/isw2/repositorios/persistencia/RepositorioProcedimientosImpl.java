@@ -47,9 +47,10 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			Collection<Procedimiento> clientRepository = getEntityManager()
-					.createQuery("from Procedimiento", Procedimiento.class)
+			Collection<ProcedimientoImpl> clientRepository = getEntityManager()
+					.createQuery("from ProcedimientoImpl", ProcedimientoImpl.class)
 					.getResultList();
+			System.out.println(clientRepository.size());
 			result = new HashSet<Procedimiento>(clientRepository);
 			getEntityManager().getTransaction().commit();
 
@@ -58,7 +59,6 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
 		}
-
 
 		return result;
 	}
@@ -151,7 +151,7 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
 		}
-		
+
 		return result;
 	}
 
