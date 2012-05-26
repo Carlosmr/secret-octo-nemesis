@@ -127,10 +127,7 @@ public class TestTecnico {
 		t.setDadoDeBaja(true);
 	}
 
-	@Test(expected = NullPointerException.class)
-	public void testSetDadoDeBaja2() {
-		t.setDadoDeBaja(null);
-	}
+
 
 	@Test
 	public void testAnadirProcedimiento1() {

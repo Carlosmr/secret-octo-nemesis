@@ -38,7 +38,7 @@ public interface Tecnico{
 
 	@Query
 	@Pre({ "true" })
-	Boolean getDadoDeBaja();
+	boolean getDadoDeBaja();
 
 	@Query
 	@Pre({ "true" })
@@ -95,7 +95,7 @@ public interface Tecnico{
 			"getProcedimientos()==getProcedimientos()@pre" })
 	void setApellidos(String apellidos);
 
-//	@Pre({ "fechaNac!= null # NullPointerException" })
+	@Pre({ "fechaNac!= null # NullPointerException" })
 	@Pos({ "getFechaNacimiento()==fechaNac", "getUser()==getUser()@pre",
 			"getPassword()==getPassword()@pre",
 			"getApellidos()==getApellidos()@pre",
@@ -138,7 +138,7 @@ public interface Tecnico{
 			"getDireccion()==getDireccion()@pre",
 			"getNombre()==getNombre()@pre", "getTelefono()==getTelefono()@pre",
 			"getProcedimientos()==getProcedimientos()@pre" })
-	void setDadoDeBaja(Boolean dadobaja);
+	void setDadoDeBaja(boolean dadobaja);
 
 	@Pre({ "procedimiento!=null # NullPointerException",
 			"getProcedimientos().size()<10 # IllegalArgumentException",

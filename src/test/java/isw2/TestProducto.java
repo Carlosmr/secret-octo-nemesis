@@ -55,12 +55,6 @@ public class TestProducto {
 
 	}
 
-	@Test(expected = NullPointerException.class)
-	public void testSetDadoDeBaja1() {
-		p.setDadoDeBaja(null);
-
-	}
-
 	@Test()
 	public void testSetDadoDeBaja2() {
 		p.setDadoDeBaja(true);

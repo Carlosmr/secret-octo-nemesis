@@ -52,12 +52,6 @@ public class TestProcedimiento {
 
 	}
 
-	@Test(expected = NullPointerException.class)
-	public void testSetDadoDeBaja1() {
-		p.setDadoDeBaja(null);
-
-	}
-
 	public void testSetDadoDeBaja2() {
 		p.setDadoDeBaja(true);
 

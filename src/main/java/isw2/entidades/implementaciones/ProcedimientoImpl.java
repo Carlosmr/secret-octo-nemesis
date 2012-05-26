@@ -20,7 +20,7 @@ public class ProcedimientoImpl implements Procedimiento, Serializable {
 	private String codigo;
 	private String nombre;
 	private String descripcion;
-	private Boolean dadoDeBaja;
+	private boolean dadoDeBaja;
 
 	public ProcedimientoImpl() {
 	}
@@ -70,13 +70,11 @@ public class ProcedimientoImpl implements Procedimiento, Serializable {
 		this.descripcion = descripcion;
 	}
 
-	public Boolean getDadoDeBaja() {
+	public boolean getDadoDeBaja() {
 		return dadoDeBaja;
 	}
 
-	public void setDadoDeBaja(Boolean dadoDeBaja) {
-		if (dadoDeBaja == null)
-			throw new NullPointerException();
+	public void setDadoDeBaja(boolean dadoDeBaja) {
 		this.dadoDeBaja = dadoDeBaja;
 	}
 

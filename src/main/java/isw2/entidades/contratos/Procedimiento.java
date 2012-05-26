@@ -23,7 +23,7 @@ public interface Procedimiento{
 
 	@Query
 	@Pre({ "true" })
-	Boolean getDadoDeBaja();
+	boolean getDadoDeBaja();
 
 	@Pre({ "nombre!=\"\" # IllegalArgumentException",
 			"nombre!=null # NullPointerException" })
@@ -39,11 +39,11 @@ public interface Procedimiento{
 			"getDadoDeBaja()==getDadoDeBaja()@pre" })
 	void setDescripcion(String descripcion);
 
-//	@Pre({ "dadobaja!=null # NullPointerException" })
+	@Pre({ "dadobaja!=null # NullPointerException" })
 	@Pos({ "getDadoDeBaja()==dadobaja", "getCodigo()==getCodigo()@pre",
 			"getDescripcion()==getDescripcion()@pre",
 			"getNombre()==getNombre()@pre" })
-	void setDadoDeBaja(Boolean dadobaja);
+	void setDadoDeBaja(boolean dadobaja);
 
 
 }

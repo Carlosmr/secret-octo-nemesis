@@ -29,7 +29,7 @@ public class TecnicoImpl implements Tecnico, Serializable {
 	private Date fechaNacimiento;
 	private String direccion;
 	private String telefono;
-	private Boolean dadoDeBaja;
+	private boolean dadoDeBaja;
 	@ManyToMany(targetEntity = ProcedimientoImpl.class)
 	private Set<Procedimiento> procedimientos = new HashSet<Procedimiento>();
 
@@ -147,13 +147,11 @@ public class TecnicoImpl implements Tecnico, Serializable {
 		this.telefono = telefono;
 	}
 
-	public Boolean getDadoDeBaja() {
+	public boolean getDadoDeBaja() {
 		return dadoDeBaja;
 	}
 
-	public void setDadoDeBaja(Boolean dadoDeBaja) {
-		if (dadoDeBaja == null)
-			throw new NullPointerException();
+	public void setDadoDeBaja(boolean dadoDeBaja) {
 		this.dadoDeBaja = dadoDeBaja;
 	}
 
