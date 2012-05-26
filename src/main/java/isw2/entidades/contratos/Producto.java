@@ -24,7 +24,7 @@ public interface Producto{
 
 	@Query
 	@Pre({ "true" })
-	Boolean getDadoDeBaja();
+	boolean getDadoDeBaja();
 
 	@Query
 	@Pre({ "true" })
@@ -32,52 +32,47 @@ public interface Producto{
 
 	@Pre({ "nombre!=\"\" # IllegalArgumentException",
 			"nombre!=null # NullPointerException" })
-	@Pos({ "getNombre()==nombre", "getCodigo()==getCodigo()@Pre",
-			"getDescripcion()==getDescripcion()@Pre",
-			"getDadoDeBaja()==getDadoDeBaja()@Pre",
-			"getProcedimiento()==getProcedimiento()@Pre",
-			"getIncidencias()==getIncidencias()@Pre" })
+	@Pos({ "getNombre()==nombre", "getCodigo()==getCodigo()@pre",
+			"getDescripcion()==getDescripcion()@pre",
+			"getDadoDeBaja()==getDadoDeBaja()@pre",
+			"getProcedimientos()==getProcedimientos()@pre"})
 	void setNombre(String nombre);
 
 	@Pre({ "descripcion!=\"\" # IllegalArgumentException",
 			"descripcion!=null # NullPointerException" })
-	@Pos({ "getDescripcion()==descripcion", "getNombre()==getNombre()@Pre",
-			"getCodigo()==getCodigo()@Pre",
-			"getDadoDeBaja()==getDadoDeBaja()@Pre",
-			"getProcedimiento()==getProcedimiento()@Pre",
-			"getIncidencias()==getIncidencias()@Pre" })
+	@Pos({ "getDescripcion()==descripcion", "getNombre()==getNombre()@pre",
+			"getCodigo()==getCodigo()@pre",
+			"getDadoDeBaja()==getDadoDeBaja()@pre",
+			"getProcedimientos()==getProcedimientos()@pre"})
 	void setDescripcion(String descripcion);
 
-	@Pre({ "dadobaja!=null # NullPointerException" })
-	@Pos({ "getDadoBaja()==dadobaja", "getNombre()==getNombre()@Pre",
-			"getCodigo()==getCodigo()@Pre",
-			"getDescripcion()==getDescripcion()@Pre",
-			"getProcedimiento()==getProcedimiento()@Pre",
-			"getIncidencias()==getIncidencias()@Pre" })
-	void setDadoDeBaja(Boolean dadobaja);
+
+	@Pos({ "getDadoBaja()==dadobaja", "getNombre()==getNombre()@pre",
+			"getCodigo()==getCodigo()@pre",
+			"getDescripcion()==getDescripcion()@pre",
+			"getProcedimientos()==getProcedimientos()@pre" })
+	void setDadoDeBaja(boolean dadobaja);
 
 	@Pre({ "procedimiento != null #NullPointerException",
 			"!getProcedimientos().contains(procedimiento) #IllegalArgumentException" })
 	@Pos({
-			"getProcedimiento().contains(procedimiento)",
-			"forall Procedimiento p: getProcedimiento()@Pre � getProcedimientos().contains(p)",
-			"getProcedimiento().size()==getProcedimiento().size()@Pre+1",
-			"getDadoBaja()==getDadoDeBaja()@Pre",
-			"getNombre()==getNombre()@Pre", "getCodigo()==getCodigo()@Pre",
-			"getDescripcion()==getDescripcion()@Pre",
-			"getIncidencias()==getIncidencias()@Pre" })
+			"getProcedimientos().contains(procedimiento)",
+			"forall Procedimiento p: getProcedimientos()@pre � getProcedimientos().contains(p)",
+			"getProcedimientos().size()==getProcedimientos().size()@pre+1",
+			"getDadoBaja()==getDadoDeBaja()@pre",
+			"getNombre()==getNombre()@pre", "getCodigo()==getCodigo()@pre",
+			"getDescripcion()==getDescripcion()@pre"})
 	void anadirProcedimiento(Procedimiento procedimiento);
 
 	@Pre({ "procedimiento != null #NullPointerException",
 			"getProcedimientos().contains(procedimiento) #IllegalArgumentException" })
 	@Pos({
-			"!getProcedimiento().contains(procedimiento)",
-			"forall Procedimiento p: getProcedimientos()@Pre � !p.equals(procedimiento) ==> getProcedimientos().contains(p)",
-			"getProcedimiento().size()==getProcedimiento().size()@Pre-1",
-			"getDadoBaja()==getDadoDeBaja()@Pre",
-			"getNombre()==getNombre()@Pre", "getCodigo()==getCodigo()@Pre",
-			"getDescripcion()==getDescripcion()@Pre",
-			"getIncidencias()==getIncidencias()@Pre" })
+			"!getProcedimientos().contains(procedimiento)",
+			"forall Procedimiento p: getProcedimientos()@pre � !p.equals(procedimiento) ==> getProcedimientos().contains(p)",
+			"getProcedimientos().size()==getProcedimientos().size()@pre-1",
+			"getDadoBaja()==getDadoDeBaja()@pre",
+			"getNombre()==getNombre()@pre", "getCodigo()==getCodigo()@pre",
+			"getDescripcion()==getDescripcion()@pre"})
 	void eliminarProcedimiento(Procedimiento procedimiento);
 
 }

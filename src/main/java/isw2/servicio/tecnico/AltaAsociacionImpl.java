@@ -44,12 +44,10 @@ public class AltaAsociacionImpl implements AltaAsociacion {
 		return rp.getProcedimientosNoAsociadosAlTecnico(this.t.getUser());
 	}
 
-	public void asignarProcedimientos(Set<Procedimiento> procedimientos) {
+	public void asignarProcedimientos(Set<String> idProcedimientos) {
 
-		for (Procedimiento p : procedimientos) {
-
-			t.anadirProcedimiento(p);
-		}
+		for (String s : idProcedimientos)
+			t.anadirProcedimiento(rp.getProcedimiento(s));
 
 	}
 }

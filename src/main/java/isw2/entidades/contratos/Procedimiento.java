@@ -27,31 +27,22 @@ public interface Procedimiento{
 
 	@Pre({ "nombre!=\"\" # IllegalArgumentException",
 			"nombre!=null # NullPointerException" })
-	@Pos({ "getNombre()==nombre", "getCodigo()==getCodigo()@Pre",
-			"getDescripcion()==getDescripcion()@Pre",
-			"getDadoDeBaja()==getDadoDeBaja()@Pre",
-			"getProductos()==getProductos()@Pre",
-			"getIncidencias()==getIncidencias()@Pre",
-			"getTecnicos()==getTecnicos()@Pre" })
+	@Pos({ "getNombre()==nombre", "getCodigo()==getCodigo()@pre",
+			"getDescripcion()==getDescripcion()@pre",
+			"getDadoDeBaja()==getDadoDeBaja()@pre" })
 	void setNombre(String nombre);
 
 	@Pre({ "descripcion!=\"\" # IllegalArgumentException",
 			"descripcion!=null # NullPointerException" })
-	@Pos({ "getDescripcion()==descripcion", "getCodigo()==getCodigo()@Pre",
-			"getNombre()==getNombre()@Pre",
-			"getDadoDeBaja()==getDadoDeBaja()@Pre",
-			"getProductos()==getProductos()@Pre",
-			"getIncidencias()==getIncidencias()@Pre",
-			"getTecnicos()==getTecnicos()@Pre" })
+	@Pos({ "getDescripcion()==descripcion", "getCodigo()==getCodigo()@pre",
+			"getNombre()==getNombre()@pre",
+			"getDadoDeBaja()==getDadoDeBaja()@pre" })
 	void setDescripcion(String descripcion);
 
-	@Pre({ "dadobaja!=null # NullPointerException" })
-	@Pos({ "getDadoDeBaja()==dadobaja", "getCodigo()==getCodigo()@Pre",
-			"getDescripcion()==getDescripcion()@Pre",
-			"getNombre()==getNombre()@Pre",
-			"getProductos()==getProductos()@Pre",
-			"getIncidencias()==getIncidencias()@Pre",
-			"getTecnicos()==getTecnicos()@Pre" })
+//	@Pre({ "dadobaja!=null # NullPointerException" })
+	@Pos({ "getDadoDeBaja()==dadobaja", "getCodigo()==getCodigo()@pre",
+			"getDescripcion()==getDescripcion()@pre",
+			"getNombre()==getNombre()@pre" })
 	void setDadoDeBaja(Boolean dadobaja);
 
 

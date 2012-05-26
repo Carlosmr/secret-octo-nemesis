@@ -1,5 +1,7 @@
 package isw2.entidades.implementaciones;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -8,8 +10,12 @@ import isw2.entidades.contratos.Procedimiento;
 
 @Entity
 @Table(name = "Procedimiento")
-public class ProcedimientoImpl implements Procedimiento {
+public class ProcedimientoImpl implements Procedimiento, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2143314761492084326L;
 	@Id
 	private String codigo;
 	private String nombre;

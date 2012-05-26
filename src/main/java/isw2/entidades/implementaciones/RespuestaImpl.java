@@ -1,10 +1,12 @@
 package isw2.entidades.implementaciones;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import isw2.entidades.contratos.Respuesta;
 
 @Embeddable
-public class RespuestaImpl implements Respuesta {
+public class RespuestaImpl implements Respuesta, Serializable {
 
 	/**
 	 * 

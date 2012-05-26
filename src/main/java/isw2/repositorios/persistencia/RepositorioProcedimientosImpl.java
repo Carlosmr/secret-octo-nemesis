@@ -48,8 +48,8 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 
 			getEntityManager().getTransaction().begin();
 			Collection<ProcedimientoImpl> clientRepository = getEntityManager()
-					.createQuery("from ProcedimientoImpl", ProcedimientoImpl.class)
-					.getResultList();
+					.createQuery("from ProcedimientoImpl",
+							ProcedimientoImpl.class).getResultList();
 			System.out.println(clientRepository.size());
 			result = new HashSet<Procedimiento>(clientRepository);
 			getEntityManager().getTransaction().commit();
@@ -70,10 +70,10 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			Collection<Procedimiento> clientRepository = getEntityManager()
+			Collection<ProcedimientoImpl> clientRepository = getEntityManager()
 					.createQuery(
 							"SELECT pr FROM Procedimiento pr WHERE pr.dadoDeBaja = false",
-							Procedimiento.class).getResultList();
+							ProcedimientoImpl.class).getResultList();
 
 			result = new HashSet<Procedimiento>(clientRepository);
 			getEntityManager().getTransaction().commit();
@@ -140,7 +140,7 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 					Tecnico.class, user).getProcedimientos();
 			Set<Procedimiento> procedimientos = new HashSet<Procedimiento>(
 					getEntityManager().createQuery("from Procedimiento",
-							Procedimiento.class).getResultList());
+							ProcedimientoImpl.class).getResultList());
 			procedimientos.removeAll(procedimientosUsuario);
 			result = procedimientos;
 

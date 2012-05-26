@@ -1,5 +1,6 @@
 package isw2.entidades.implementaciones;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,8 +22,9 @@ import isw2.excepciones.InvalidStateException;
 
 @Entity
 @Table(name = "Incidencia")
-public class IncidenciaImpl implements Incidencia {
+public class IncidenciaImpl implements Incidencia, Serializable {
 
+	private static final long serialVersionUID = 5968571211363104822L;
 	@Id
 	@GeneratedValue
 	private Integer id;

@@ -57,42 +57,42 @@ public interface Incidencia {
 			"!getIncidencias().contains(incidencia) #IllegalArgumentException" })
 	@Pos({
 			"getIncidencias().contains(incidencia)",
-			"forall Incidencia i: getIncidencias()@Pre � getIncidencias().contains(i)",
-			"getIncidencias().size()==getIncidencias().size()@Pre+1",
-			"getNombreCliente()==getNombreCliente()@Pre",
+			"forall Incidencia i: getIncidencias()@pre · getIncidencias().contains(i)",
+			"getIncidencias().size()==getIncidencias().size()@pre+1",
+			"getNombreCliente()==getNombreCliente()@pre",
 			"getDNI()==getDNI()@pre", "getEmail()==getEmail()@pre",
-			"getDescripcion()==getDescripcion()@Pre",
-			"getFechaCompra()==getFechaCompra()@Pre",
-			"getRespuesta()==getRespuesta()@Pre",
-			"getProcedimiento()==getProcedimiento()@Pre",
-			"getProducto==getProducto()@Pre", "getTecnico()==getTecnico()@Pre" })
+			"getDescripcion()==getDescripcion()@pre",
+			"getFechaCompra()==getFechaCompra()@pre",
+			"getRespuesta()==getRespuesta()@pre",
+			"getProcedimiento()==getProcedimiento()@pre",
+			"getProducto==getProducto()@pre", "getTecnico()==getTecnico()@pre" })
 	void anadirIncidencia(Incidencia incidencia);
 
 	@Pre({ "tecnico!=null #NullPointerException",
 			"getTecnico()==null #InvalidStateException",
 			"tecnico.getDadoDeBaja()==false #IllegalArgumentException" })
 	@Pos({ "getTecnico().equals(tecnico)",
-			"getNombreCliente()==getNombreCliente()@Pre",
-			"getDNI()==getDNI()@pre", "getEmail()==getEmail()@Pre",
-			"getDescripcion()==getDescripcion()@Pre",
+			"getNombreCliente()==getNombreCliente()@pre",
+			"getDNI()==getDNI()@pre", "getEmail()==getEmail()@pre",
+			"getDescripcion()==getDescripcion()@pre",
 			"getFechaCompra()==getFechaCompra()@pre",
-			"getRespuesta()==getRespuesta()@Pre",
-			"getProcedimiento()==getProcedimiento()@Pre",
-			"getProducto==getProducto()@Pre",
-			"getIncidencias==getIncidencias()@Pre" })
+			"getRespuesta()==getRespuesta()@pre",
+			"getProcedimiento()==getProcedimiento()@pre",
+			"getProducto==getProducto()@pre",
+			"getIncidencias==getIncidencias()@pre" })
 	void setTecnico(Tecnico tecnico) throws InvalidStateException;
 
 	@Pre({ "procedimiento!=null #NullPointerException",
 			"!procedimiento.getDadoDeBaja() #IllegalArgumentException",
 			"getProcedimiento()==null #InvalidStateException" })
 	@Pos({ "getProcedimiento().equals(procedimiento)",
-			"getNombreCliente()==getNombreCliente()@Pre",
-			"getDNI()==getDNI()@pre", "getEmail()==getEmail()@Pre",
-			"getDescripcion()==getDescripcion()@Pre",
-			"getFechaCompra()==getFechaCompra()@Pre",
-			"getRespuesta()==getRespuesta()@Pre",
-			"getTecnico()==getTecnico()@Pre", "getProducto==getProducto()@Pre",
-			"getIncidencias==getIncidencias()@Pre" })
+			"getNombreCliente()==getNombreCliente()@pre",
+			"getDNI()==getDNI()@pre", "getEmail()==getEmail()@pre",
+			"getDescripcion()==getDescripcion()@pre",
+			"getFechaCompra()==getFechaCompra()@pre",
+			"getRespuesta()==getRespuesta()@pre",
+			"getTecnico()==getTecnico()@pre", "getProducto==getProducto()@pre",
+			"getIncidencias==getIncidencias()@pre" })
 	void setProcedimiento(Procedimiento procedimiento)
 			throws InvalidStateException;
 
@@ -100,27 +100,27 @@ public interface Incidencia {
 			"!producto.getDadoDeBaja() #IllegalArgumentException",
 			"getProducto()==null #InvalidStateException" })
 	@Pos({ "getIncidencia().equals(producto)",
-			"getNombreCliente()==getNombreCliente()@Pre",
-			"getDNI()==getDNI()@Pre", "getEmail()==getEmail()@Pre",
-			"getDescripcion()==getDescripcion()@Pre",
-			"getFechaCompra()==getFechaCompra()@Pre",
-			"getRespuesta()==getRespuesta()@Pre",
-			"getProcedimiento()==getProcedimiento()@Pre",
-			"getTecnico==getTecnico()@Pre",
-			"getIncidencias==getIncidencias()@Pre" })
+			"getNombreCliente()==getNombreCliente()@pre",
+			"getDNI()==getDNI()@pre", "getEmail()==getEmail()@pre",
+			"getDescripcion()==getDescripcion()@pre",
+			"getFechaCompra()==getFechaCompra()@pre",
+			"getRespuesta()==getRespuesta()@pre",
+			"getProcedimiento()==getProcedimiento()@pre",
+			"getTecnico==getTecnico()@pre",
+			"getIncidencias==getIncidencias()@pre" })
 	void setProducto(Producto producto) throws InvalidStateException;
 
 	@Pre({ "respuesta!=null #NullPointerException",
 			"getRespuesta()==null #InvalidStateException" })
 	@Pos({ "getRespuesta().equals(respuesta)",
-			"getNombreCliente()==getNombreCliente()@Pre",
-			"getDNI()==getDNI()@pre", "getEmail()==getEmail()@Pre",
-			"getDescripcion()==getDescripcion()@Pre",
-			"getFechaCompra()==getFechaCompra()@Pre",
-			"getTecnico()==getTecnico()@Pre",
-			"getProcedimiento()==getProcedimiento()@Pre",
-			"getProducto==getProducto()@Pre",
-			"getIncidencias==getIncidencias()@Pre" })
+			"getNombreCliente()==getNombreCliente()@pre",
+			"getDNI()==getDNI()@pre", "getEmail()==getEmail()@pre",
+			"getDescripcion()==getDescripcion()@pre",
+			"getFechaCompra()==getFechaCompra()@pre",
+			"getTecnico()==getTecnico()@pre",
+			"getProcedimiento()==getProcedimiento()@pre",
+			"getProducto==getProducto()@pre",
+			"getIncidencias==getIncidencias()@pre" })
 	void setRespuesta(Respuesta respuesta) throws InvalidStateException;
 
 }

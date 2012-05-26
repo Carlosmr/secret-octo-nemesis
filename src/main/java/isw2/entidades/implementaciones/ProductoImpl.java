@@ -1,5 +1,6 @@
 package isw2.entidades.implementaciones;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,13 +14,14 @@ import isw2.entidades.contratos.Producto;
 
 @Entity
 @Table(name = "Producto")
-public class ProductoImpl implements Producto {
+public class ProductoImpl implements Producto, Serializable {
 
+	private static final long serialVersionUID = 6250015112413475753L;
 	@Id
 	private String codigo;
 	private String nombre;
 	private String descripcion;
-	private Boolean dadoDeBaja;
+	private boolean dadoDeBaja;
 	@ManyToMany(targetEntity = ProcedimientoImpl.class)
 	private Set<Procedimiento> procedimientos;
 
@@ -72,14 +74,11 @@ public class ProductoImpl implements Producto {
 		this.descripcion = descripcion;
 	}
 
-	public Boolean getDadoDeBaja() {
+	public boolean getDadoDeBaja() {
 		return dadoDeBaja;
 	}
 
-	public void setDadoDeBaja(Boolean dadoDeBaja) {
-		if (dadoDeBaja == null)
-			throw new NullPointerException();
-
+	public void setDadoDeBaja(boolean dadoDeBaja) {
 		this.dadoDeBaja = dadoDeBaja;
 	}
 

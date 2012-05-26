@@ -43,7 +43,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-
 		return result;
 	}
 
@@ -72,7 +71,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-
 		return result;
 
 	}
@@ -91,7 +89,8 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 
 			getEntityManager().getTransaction().begin();
 			Collection<TecnicoImpl> clientRepository = getEntityManager()
-					.createQuery("from TecnicoImpl", TecnicoImpl.class).getResultList();
+					.createQuery("from TecnicoImpl", TecnicoImpl.class)
+					.getResultList();
 			result = new HashSet<Tecnico>(clientRepository);
 			getEntityManager().getTransaction().commit();
 
@@ -100,7 +99,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
 		}
-
 
 		return result;
 
@@ -113,10 +111,10 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			Collection<Tecnico> clientRepository = getEntityManager()
+			Collection<TecnicoImpl> clientRepository = getEntityManager()
 					.createQuery(
 							"SELECT t FROM Tecnico t WHERE t.dadoDeBaja = false",
-							Tecnico.class).getResultList();
+							TecnicoImpl.class).getResultList();
 
 			result = new HashSet<Tecnico>(clientRepository);
 			getEntityManager().getTransaction().commit();
@@ -127,7 +125,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 			if (getEntityManager().getTransaction().isActive())
 				getEntityManager().getTransaction().rollback();
 		}
-
 
 		return result;
 
@@ -158,7 +155,7 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			result = getEntityManager().find(Tecnico.class, user);
+			result = getEntityManager().find(TecnicoImpl.class, user);
 			getEntityManager().getTransaction().commit();
 
 		}

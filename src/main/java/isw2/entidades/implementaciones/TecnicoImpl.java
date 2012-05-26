@@ -1,5 +1,6 @@
 package isw2.entidades.implementaciones;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,8 +15,12 @@ import isw2.entidades.contratos.Tecnico;
 
 @Entity
 @Table(name = "Tecnico")
-public class TecnicoImpl implements Tecnico {
+public class TecnicoImpl implements Tecnico, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5679363606805553752L;
 	@Id
 	private String user;
 	private String password;
@@ -26,9 +31,10 @@ public class TecnicoImpl implements Tecnico {
 	private String telefono;
 	private Boolean dadoDeBaja;
 	@ManyToMany(targetEntity = ProcedimientoImpl.class)
-	private Set<Procedimiento> procedimientos;
+	private Set<Procedimiento> procedimientos = new HashSet<Procedimiento>();
 
 	public TecnicoImpl() {
+
 	}
 
 	public TecnicoImpl(String user, String password, String nombre,
@@ -162,8 +168,7 @@ public class TecnicoImpl implements Tecnico {
 			throw new NullPointerException();
 
 		else if (getProcedimientos().size() >= 10
-				|| procedimiento.getDadoDeBaja()
-				|| getProcedimientos().contains(procedimiento))
+				|| procedimiento.getDadoDeBaja())
 			throw new IllegalArgumentException();
 
 		procedimientos.add(procedimiento);

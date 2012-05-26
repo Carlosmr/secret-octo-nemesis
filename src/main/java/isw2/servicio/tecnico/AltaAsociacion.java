@@ -13,6 +13,6 @@ public interface AltaAsociacion {
 
 	Set<Procedimiento> listarProcedimientosNoAsociadosAlTecnico();
 
-	void asignarProcedimientos(Set<Procedimiento> procedimientos);
+	void asignarProcedimientos(Set<String> idProcedimientos);
 
 }

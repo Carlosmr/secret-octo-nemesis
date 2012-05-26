@@ -10,7 +10,7 @@ import tdg.contract.semanticAnnotations.Query;
 
 @Init({ "getValoracion()==0" })
 @Inv({ "getValoracion()>=-5 && getValoracion()<=5" })
-public interface Respuesta extends Serializable{
+public interface Respuesta extends Serializable {
 
 	@Query
 	@Pre({ "true" })
@@ -18,8 +18,7 @@ public interface Respuesta extends Serializable{
 
 	@Pre({ "val!=null # NullPointerException",
 			"val>=-5 && val <=5 # IllegalArgumentException" })
-	@Pos({ "getValoracion()==val", "getDescripcion()==getDescripcion()@Pre",
-			"getIncidencia()==getIncidencia()@Pre" })
+	@Pos({ "getValoracion()==val", "getDescripcion()==getDescripcion()@pre" })
 	void setValoracion(Integer val);
 
 	@Query

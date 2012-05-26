@@ -1,4 +1,70 @@
 -------------------------------------------------------------------------------
 Test set: isw2.TestIncidencia
 -------------------------------------------------------------------------------
-Tests run: 18, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 sec
+Tests run: 18, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.092 sec <<< FAILURE!
+testSetRespuesta1(isw2.TestIncidencia)  Time elapsed: 0.005 sec  <<< ERROR!
+java.lang.VerifyError: (class: isw2/entidades/implementaciones/RespuestaImpl, method: getDescripcion signature: ()Ljava/lang/String;) Mismatched stack types
+	at isw2.TestIncidencia.testSetRespuesta1(TestIncidencia.java:146)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:334)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:980)
+
+testSetRespuesta3(isw2.TestIncidencia)  Time elapsed: 0.002 sec  <<< ERROR!
+java.lang.Exception: Unexpected exception, expected<isw2.excepciones.InvalidStateException> but was<java.lang.VerifyError>
+	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:28)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:334)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:980)
+Caused by: java.lang.VerifyError: (class: isw2/entidades/implementaciones/RespuestaImpl, method: getDescripcion signature: ()Ljava/lang/String;) Mismatched stack types
+	at isw2.TestIncidencia.testSetRespuesta3(TestIncidencia.java:158)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.ExpectException.evaluate(ExpectException.java:21)
+	... 19 more
+

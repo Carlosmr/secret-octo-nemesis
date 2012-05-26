@@ -152,14 +152,6 @@ public class TestTecnico {
 		t.anadirProcedimiento(p);
 	}
 
-	@Test(expected = IllegalArgumentException.class)
-	public void testAnadirProcedimiento4() {
-		Procedimiento p = new ProcedimientoImpl("1", "MON-01",
-				"Reparación conector USB");
-		t.anadirProcedimiento(p);
-		t.anadirProcedimiento(p);
-	}
-
 	@Test
 	public void testAnadirProcedimiento5() {
 		Procedimiento p1 = new ProcedimientoImpl("1", "MON-01",
