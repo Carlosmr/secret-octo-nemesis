@@ -28,7 +28,7 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 			getEntityManager().getTransaction().begin();
 			Collection<Incidencia> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT i FROM Incidencia i WHERE i.dni = :dni",
+							"SELECT i FROM IncidenciaImpl i WHERE i.dni = :dni",
 							Incidencia.class).setParameter("dni", dni)
 					.getResultList();
 
@@ -55,7 +55,7 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 			getEntityManager().getTransaction().begin();
 			Collection<Incidencia> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT i FROM Incidencia i WHERE i.nombre LIKE %:busqueda% OR i.email LIKE %:busqueda% OR i.descripcion LIKE %:busqueda%",
+							"SELECT i FROM IncidenciaImpl i WHERE i.nombre LIKE %:busqueda% OR i.email LIKE %:busqueda% OR i.descripcion LIKE %:busqueda%",
 							Incidencia.class)
 					.setParameter("busqueda", busqueda).getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
@@ -75,24 +75,8 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 	public Incidencia crearIncidencia(String nombreCliente, String dni,
 			String email, String descripcion, Date fechaCompra) {
 
-		Incidencia result = new IncidenciaImpl();
-
-		try {
-
-			getEntityManager().getTransaction().begin();
-			result = new IncidenciaImpl(nombreCliente, dni, email, descripcion,
-					fechaCompra);
-			getEntityManager().getTransaction().commit();
-
-		}
-
-		catch (Exception oops) {
-
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
-		}
-
-		return result;
+		return new IncidenciaImpl(nombreCliente, dni, email, descripcion,
+				fechaCompra);
 	}
 
 	public Set<Incidencia> getIncidencias() {

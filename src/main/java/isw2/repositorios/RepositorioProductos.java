@@ -9,9 +9,11 @@ public interface RepositorioProductos {
 	Producto crearProducto(String codigo, String nombre, String descripcion);
 
 	Set<Producto> getProductos();
-	
+
+	Set<Producto> getProductosDadosDeAlta();
+
 	void guardar(Producto producto);
-		
+
 	Producto getProducto(String codigo);
 
 }

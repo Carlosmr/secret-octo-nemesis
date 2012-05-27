@@ -21,24 +21,8 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 
 	public Procedimiento crearProcedimiento(String codigo, String nombre,
 			String descripcion) {
+		return new ProcedimientoImpl(codigo, nombre, descripcion);
 
-		Procedimiento result = new ProcedimientoImpl();
-
-		try {
-
-			getEntityManager().getTransaction().begin();
-			result = new ProcedimientoImpl(codigo, nombre, descripcion);
-			getEntityManager().getTransaction().commit();
-
-		}
-
-		catch (Exception oops) {
-
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
-		}
-
-		return result;
 	}
 
 	public Set<Procedimiento> getProcedimientos() {

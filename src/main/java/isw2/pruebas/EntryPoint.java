@@ -17,6 +17,8 @@ import isw2.servicio.procedimiento.AltaProcedimiento;
 import isw2.servicio.procedimiento.AltaProcedimientoImpl;
 import isw2.servicio.producto.AltaProducto;
 import isw2.servicio.producto.AltaProductoImpl;
+import isw2.servicio.producto.ModificacionProducto;
+import isw2.servicio.producto.ModificacionProductoImpl;
 import isw2.servicio.tecnico.AltaAsociacion;
 import isw2.servicio.tecnico.AltaAsociacionImpl;
 import isw2.servicio.tecnico.AltaTecnico;
@@ -93,12 +95,20 @@ public class EntryPoint {
 
 		AltaProducto p = new AltaProductoImpl();
 		p.datosProducto("132", "test", "pfff");
+		Set<String> setProcedimientos = new HashSet<String>();
+		setProcedimientos.add(rpro.getProcedimiento("0001").getCodigo());
+		System.out.println(setProcedimientos);
+		p.seleccionarProcedimientos(setProcedimientos);
 		p.registrarProducto();
-		AltaProducto p2 = new AltaProductoImpl();
-		p.datosProducto("123", "tasest", "pfff");
-		p.registrarProducto();
-		System.out.println(rp.getProductos());
-		System.out.println(p.listarProcedimientos());
+		System.out.println("productos: " + rp.getProductos());
+		System.out.println("Procedimientos -->"
+				+ rp.getProducto("132").getProcedimientos());
 		System.out.println(p.listarProcedimientosDadosDeAlta());
+		System.out.println("productos dados de alta "
+				+ rp.getProductosDadosDeAlta());
+		rp.getProducto("132").setDadoDeBaja(true);
+		System.out.println("productos dados de alta "
+				+ rp.getProductosDadosDeAlta());
+
 	}
 }
