@@ -24,14 +24,15 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 	}
 
 	public Boolean credencialesValidos(String user, String password) {
-
+		// TODO poner filtro para evitar sql injection
 		Boolean result = false;
 
 		try {
 			getEntityManager().getTransaction().begin();
+
 			result = getEntityManager()
 					.createQuery(
-							"SELECT t FROM Tecnico t WHERE t.user = :user AND t.password = :password",
+							"SELECT t FROM TecnicoImpl t WHERE t.user = :user AND t.password = :password",
 							TecnicoImpl.class).setParameter("user", user)
 					.setParameter("password", password).getResultList().size() > 0;
 			getEntityManager().getTransaction().commit();
@@ -113,7 +114,7 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 			getEntityManager().getTransaction().begin();
 			Collection<TecnicoImpl> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT t FROM Tecnico t WHERE t.dadoDeBaja = false",
+							"SELECT t FROM TecnicoImpl t WHERE t.dadoDeBaja = false",
 							TecnicoImpl.class).getResultList();
 
 			result = new HashSet<Tecnico>(clientRepository);

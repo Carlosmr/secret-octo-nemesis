@@ -7,13 +7,14 @@ import isw2.entidades.contratos.Tecnico;
 
 public interface BajaAsociacion {
 
-	
 	Set<Tecnico> listarTecnicos();
-	
+
 	void seleccionaTecnico(String user);
-	
+
 	Set<Procedimiento> listarProcedimientos();
-	
+
 	void desasociarProcedimientos(Set<Procedimiento> procedimientos);
+
+	Set<Tecnico> listarTecnicosActivos();
 
 }

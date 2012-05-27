@@ -205,4 +205,12 @@ public class TecnicoImpl implements Tecnico, Serializable {
 			return false;
 		return true;
 	}
+
+	public String toString() {
+
+		// TODO elminar toString ya que solo ha sido utilizado para testear los
+		// metodos de repositorios y persistencia de datos.
+
+		return "User : " + getUser() + " apellidos " + getApellidos();
+	}
 }

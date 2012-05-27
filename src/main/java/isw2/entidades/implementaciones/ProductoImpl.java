@@ -132,4 +132,10 @@ public class ProductoImpl implements Producto, Serializable {
 		return true;
 	}
 
+	public String toString() {
+		// TODO eliminar solo sirve para testear en el EntryPoint
+
+		return getCodigo() + getNombre();
+	}
+
 }

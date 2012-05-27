@@ -103,4 +103,12 @@ public class ProcedimientoImpl implements Procedimiento, Serializable {
 		return true;
 	}
 
+	public String toString() {
+
+		// TODO eliminar toString, solo se utiliza para testear en el EntryPoint
+
+		return "codigo " + getCodigo() + " nombre " + getNombre();
+
+	}
+
 }

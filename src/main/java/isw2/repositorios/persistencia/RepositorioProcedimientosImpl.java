@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import isw2.entidades.contratos.Procedimiento;
 import isw2.entidades.contratos.Tecnico;
 import isw2.entidades.implementaciones.ProcedimientoImpl;
+import isw2.entidades.implementaciones.TecnicoImpl;
 import isw2.repositorios.RepositorioProcedimientos;
 
 public class RepositorioProcedimientosImpl extends RepositorioJPA implements
@@ -72,7 +73,7 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 			getEntityManager().getTransaction().begin();
 			Collection<ProcedimientoImpl> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT pr FROM Procedimiento pr WHERE pr.dadoDeBaja = false",
+							"SELECT pr FROM ProcedimientoImpl pr WHERE pr.dadoDeBaja = false",
 							ProcedimientoImpl.class).getResultList();
 
 			result = new HashSet<Procedimiento>(clientRepository);
@@ -137,9 +138,9 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 
 			getEntityManager().getTransaction().begin();
 			Set<Procedimiento> procedimientosUsuario = getEntityManager().find(
-					Tecnico.class, user).getProcedimientos();
+					TecnicoImpl.class, user).getProcedimientos();
 			Set<Procedimiento> procedimientos = new HashSet<Procedimiento>(
-					getEntityManager().createQuery("from Procedimiento",
+					getEntityManager().createQuery("from ProcedimientoImpl",
 							ProcedimientoImpl.class).getResultList());
 			procedimientos.removeAll(procedimientosUsuario);
 			result = procedimientos;

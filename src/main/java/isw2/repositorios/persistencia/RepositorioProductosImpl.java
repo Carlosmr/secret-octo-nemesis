@@ -62,7 +62,6 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-
 	}
 
 	public Producto getProducto(String codigo) {
@@ -83,7 +82,6 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 				getEntityManager().getTransaction().rollback();
 		}
 
-
 		return result;
 
 	}
@@ -97,7 +95,7 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 			getEntityManager().getTransaction().begin();
 			Collection<Producto> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT p FROM Producto p WHERE p.dadoDeBaja = false",
+							"SELECT p FROM ProductoImpl p WHERE p.dadoDeBaja = false",
 							Producto.class).getResultList();
 
 			result = new HashSet<Producto>(clientRepository);

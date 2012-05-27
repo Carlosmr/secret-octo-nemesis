@@ -10,6 +10,8 @@ public interface AltaProducto {
 
 	Set<Procedimiento> listarProcedimientos();
 
+	Set<Procedimiento> listarProcedimientosDadosDeAlta();
+
 	void seleccionarProcedimientos(Set<String> idProcedimientos);
 
 	void registrarProducto();
