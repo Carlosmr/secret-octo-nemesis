@@ -126,7 +126,9 @@ public class IncidenciaImpl implements Incidencia, Serializable {
 	public void setProcedimiento(Procedimiento procedimiento)
 			throws InvalidStateException {
 		if (procedimiento == null)
-			throw new NullPointerException();
+
+			this.procedimiento = procedimiento;
+
 		else if (procedimiento.getDadoDeBaja())
 			throw new IllegalArgumentException();
 		else if (getProcedimiento() != null)
@@ -173,6 +175,12 @@ public class IncidenciaImpl implements Incidencia, Serializable {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	public String toString() {
+
+		return "id: " + getId() + " dni usuario: " + getDni()
+				+ " descripcion: " + getDescripcion();
 	}
 
 }

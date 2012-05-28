@@ -17,5 +17,9 @@ public interface ModificacionProducto {
 
 	Set<Procedimiento> listarProcedimientos();
 
+	Set<Procedimiento> listarProcedimientosDadosDeAlta();
+
 	void guardarProcedimientos(Set<Procedimiento> procedimientos);
+
+	public void registrarDatos();
 }

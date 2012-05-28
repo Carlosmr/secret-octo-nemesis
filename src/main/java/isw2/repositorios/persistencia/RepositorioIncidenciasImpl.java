@@ -55,7 +55,7 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 			getEntityManager().getTransaction().begin();
 			Collection<Incidencia> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT i FROM IncidenciaImpl i WHERE i.nombre LIKE %:busqueda% OR i.email LIKE %:busqueda% OR i.descripcion LIKE %:busqueda%",
+							"SELECT i FROM IncidenciaImpl i WHERE i.nombre LIKE :busqueda OR i.email LIKE :busqueda OR i.descripcion LIKE :busqueda",
 							Incidencia.class)
 					.setParameter("busqueda", busqueda).getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
@@ -151,7 +151,7 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 			getEntityManager().getTransaction().begin();
 			Collection<Incidencia> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT i FROM Incidencia i WHERE i.tecnico = :user",
+							"SELECT i FROM IncidenciaImpl i WHERE i.tecnico = :user",
 							Incidencia.class).setParameter("user", user)
 					.getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
@@ -178,7 +178,7 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 			getEntityManager().getTransaction().begin();
 			Collection<Incidencia> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT i FROM Incidencia i WHERE i.respuesta = :respuesta AND i.tecnico = :user",
+							"SELECT i FROM IncidenciaImpl i WHERE i.respuesta = :respuesta AND i.tecnico = :user",
 							Incidencia.class).setParameter("respuesta", null)
 					.setParameter("tecnico", user).getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
@@ -202,10 +202,10 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 		try {
 			getEntityManager().getTransaction().begin();
-			Collection<Incidencia> clientRepository = getEntityManager()
+			Collection<IncidenciaImpl> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT i FROM Incidencia i WHERE i.tecnico = :user",
-							Incidencia.class).setParameter("user", null)
+							"SELECT i FROM IncidenciaImpl i WHERE i.tecnico = :user",
+							IncidenciaImpl.class).setParameter("user", null)
 					.getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
 			getEntityManager().getTransaction().commit();
