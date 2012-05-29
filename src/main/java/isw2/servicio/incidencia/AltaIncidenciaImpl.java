@@ -3,6 +3,7 @@ package isw2.servicio.incidencia;
 import isw2.entidades.contratos.Incidencia;
 import isw2.entidades.contratos.Procedimiento;
 import isw2.entidades.contratos.Producto;
+import isw2.entidades.implementaciones.RespuestaImpl;
 import isw2.excepciones.InvalidStateException;
 import isw2.repositorios.RepositorioIncidencias;
 import isw2.repositorios.RepositorioProcedimientos;

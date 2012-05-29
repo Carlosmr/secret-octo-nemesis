@@ -19,6 +19,10 @@ import isw2.servicio.incidencia.AltaIncidencia;
 import isw2.servicio.incidencia.AltaIncidenciaImpl;
 import isw2.servicio.incidencia.AsignarIncidencia;
 import isw2.servicio.incidencia.AsignarIncidenciaImpl;
+import isw2.servicio.incidencia.ResponderIncidencia;
+import isw2.servicio.incidencia.ResponderIncidenciaImpl;
+import isw2.servicio.incidencia.ValorarIncidencia;
+import isw2.servicio.incidencia.ValorarIncidenciaImpl;
 import isw2.servicio.procedimiento.AltaProcedimiento;
 import isw2.servicio.procedimiento.AltaProcedimientoImpl;
 import isw2.servicio.producto.AltaProducto;
@@ -79,16 +83,34 @@ public class EntryPoint {
 		i1.seleccionarProducto("0000");
 		i1.registrarIncidencia();
 
-//		AsignarIncidencia asigna = new AsignarIncidenciaImpl();
-//		asigna.seleccionarIncidencia(1);
-//		asigna.asociarIncidenciaTecnico("benito");
+		AsignarIncidencia asigna = new AsignarIncidenciaImpl();
+		asigna.seleccionarIncidencia(1);
+		asigna.asociarIncidenciaTecnico("benito");
+
+		ResponderIncidencia res = new ResponderIncidenciaImpl();
+		res.seleccionarIncidencia(1);
+		res.anadirDescripcion("Reparacion finalizada.");
+		res.registrarRespuesta();
+
+//		ValorarIncidencia val = new ValorarIncidenciaImpl();
+//		val.registrarValoracion(1, 1);
 
 		System.out.println("Incidencias del sistema " + ri.getIncidencias());
 		System.out.println("Tecnico asociado a la incidencia numero 1 "
 				+ ri.getIncidencia(1).getTecnico());
 		System.out.println("Incidencias sin asingar "
 				+ ri.getIncidenciasSinAsignar());
+		System.out.println("Incidencias de un usuario dado "
+				+ ri.getIncidencias("benito"));
+		System.out.println("Buscar incidencia por dni "
+				+ ri.buscarIncidenciasPorDni("53354148"));
 		// System.out.println("Incidencas sin respuesta "+ri.getIncidenciasSinRespuesta("benito"));
+		System.out.println("Credenciales del usuario benito "
+				+ rt.credencialesValidos("benito", "benito"));
+		System.out.println("Respuesta a la incidencia "
+				+ ri.getIncidencia(1).getRespuesta());
+//		System.out.println("Valoracion de larespuesta a la incidencia "
+//				+ ri.getIncidencia(1).getRespuesta().getValoracion());
 
 	}
 }

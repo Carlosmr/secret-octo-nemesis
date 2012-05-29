@@ -19,4 +19,9 @@ public interface RepositorioTecnicos {
 	void guardar(Tecnico tecnico);
 
 	Tecnico getTecnico(String user);
+
+	Boolean isTecnicoLogged();
+
+	Boolean credencialesValidos(String user, String password);
+
 }

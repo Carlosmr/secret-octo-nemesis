@@ -86,8 +86,8 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			Collection<IncidenciaImpl> clientRepository = getEntityManager()
-					.createQuery("from IncidenciaImpl", IncidenciaImpl.class)
+			Collection<Incidencia> clientRepository = getEntityManager()
+					.createQuery("from IncidenciaImpl", Incidencia.class)
 					.getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
 			getEntityManager().getTransaction().commit();
@@ -149,10 +149,10 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 		try {
 
 			getEntityManager().getTransaction().begin();
-			Collection<Incidencia> clientRepository = getEntityManager()
+			Collection<IncidenciaImpl> clientRepository = getEntityManager()
 					.createQuery(
 							"SELECT i FROM IncidenciaImpl i WHERE i.tecnico = :user",
-							Incidencia.class).setParameter("user", user)
+							IncidenciaImpl.class).setParameter("user", user)
 					.getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
 			getEntityManager().getTransaction().commit();
@@ -202,11 +202,10 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 		try {
 			getEntityManager().getTransaction().begin();
-			Collection<IncidenciaImpl> clientRepository = getEntityManager()
+			Collection<Incidencia> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT i FROM IncidenciaImpl i WHERE i.tecnico = :user",
-							IncidenciaImpl.class).setParameter("user", null)
-					.getResultList();
+							"SELECT i FROM IncidenciaImpl i WHERE i.tecnico = NULL ",
+							Incidencia.class).getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
 			getEntityManager().getTransaction().commit();
 

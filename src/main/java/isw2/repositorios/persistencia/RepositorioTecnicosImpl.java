@@ -77,9 +77,9 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 	}
 
 	public void logIn(String user, String password) {
-		if (credencialesValidos(user, password)) {
-			// TODO: Loguear usuario.
-		}
+		 if (credencialesValidos(user, password)) {
+		 // TODO: Loguear usuario.
+		 }
 	}
 
 	public Set<Tecnico> getTecnicos() {
