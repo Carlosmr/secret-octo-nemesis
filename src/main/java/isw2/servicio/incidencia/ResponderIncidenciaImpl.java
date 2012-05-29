@@ -35,6 +35,8 @@ public class ResponderIncidenciaImpl implements ResponderIncidencia {
 	}
 
 	public void registrarRespuesta() {
+		
+		//TODO no asigna correctamente la respuesta a la incidencia
 		Respuesta r = new RespuestaImpl(descripcion);
 		try {
 			incidencia.setRespuesta(r);

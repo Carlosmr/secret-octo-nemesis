@@ -11,8 +11,6 @@ import isw2.entidades.contratos.Incidencia;
 import isw2.entidades.implementaciones.IncidenciaImpl;
 import isw2.repositorios.RepositorioIncidencias;
 
-//TODO revisar al menos esta clase sus transacciones para ver si son correctas o no, las dem�s siguen la misma estructura.
-
 public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 		RepositorioIncidencias {
 
@@ -47,6 +45,8 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 	}
 
 	public Set<Incidencia> buscarIncidencia(String busqueda) {
+
+		// TODO no funciona esta consulta
 
 		Set<Incidencia> result = new HashSet<Incidencia>();
 
@@ -144,6 +144,8 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 	public Set<Incidencia> getIncidencias(String user) {
 
+		// TODO no funciona esta consulta
+
 		Set<Incidencia> result = new HashSet<Incidencia>();
 
 		try {
@@ -170,6 +172,8 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 	}
 
 	public Set<Incidencia> getIncidenciasSinRespuesta(String user) {
+
+		// TODO no funciona esta consulta
 
 		Set<Incidencia> result = new HashSet<Incidencia>();
 
