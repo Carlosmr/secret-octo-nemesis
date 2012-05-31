@@ -23,34 +23,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 		}
 	}
 
-	public Boolean credencialesValidos(String user, String password) {
-		// TODO poner filtro para evitar sql injection
-		Boolean result = false;
-
-		try {
-			getEntityManager().getTransaction().begin();
-
-			result = getEntityManager()
-					.createQuery(
-							"SELECT t FROM TecnicoImpl t WHERE t.user = :user AND t.password = :password",
-							TecnicoImpl.class).setParameter("user", user)
-					.setParameter("password", password).getResultList().size() > 0;
-			getEntityManager().getTransaction().commit();
-
-		}
-
-		catch (Exception oops) {
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
-		}
-
-		return result;
-	}
-
-	public Boolean isTecnicoLogged() {
-		// TODO Completar el LogIn usuario
-		return null;
-	}
 
 	public Tecnico crearTecnico(String user, String password, String nombre,
 			String apellidos, Date fechaNac, String direccion, String telefono) {
@@ -76,11 +48,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 
 	}
 
-	public void logIn(String user, String password) {
-		 if (credencialesValidos(user, password)) {
-		 // TODO: Loguear usuario.
-		 }
-	}
 
 	public Set<Tecnico> getTecnicos() {
 

@@ -10,8 +10,6 @@ public interface RepositorioTecnicos {
 	Tecnico crearTecnico(String user, String password, String nombre,
 			String apellidos, Date fechaNac, String direccion, String telefono);
 
-	void logIn(String user, String password);
-
 	Set<Tecnico> getTecnicos();
 
 	Set<Tecnico> getTecnicosDadosDeAlta();
@@ -19,9 +17,5 @@ public interface RepositorioTecnicos {
 	void guardar(Tecnico tecnico);
 
 	Tecnico getTecnico(String user);
-
-	Boolean isTecnicoLogged();
-
-	Boolean credencialesValidos(String user, String password);
 
 }

@@ -7,7 +7,6 @@ import java.util.Set;
 import javax.persistence.EntityManager;
 
 import isw2.entidades.contratos.Procedimiento;
-import isw2.entidades.contratos.Tecnico;
 import isw2.entidades.implementaciones.ProcedimientoImpl;
 import isw2.entidades.implementaciones.TecnicoImpl;
 import isw2.repositorios.RepositorioProcedimientos;
