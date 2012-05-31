@@ -1,5 +1,7 @@
 package isw2.pruebas;
 
+import isw2.autentificacion.Autentificacion;
+import isw2.autentificacion.AutentificacionGoogle;
 import isw2.repositorios.RepositorioIncidencias;
 import isw2.repositorios.persistencia.RepositorioIncidenciasImpl;
 import isw2.repositorios.persistencia.SingleEntityManager;
@@ -82,6 +84,7 @@ public class EntryPoint {
 				+ ri.getIncidencia(1).getRespuesta());
 //		System.out.println("Valoracion de larespuesta a la incidencia "
 //				+ ri.getIncidencia(1).getRespuesta().getValoracion());
+		
 
 	}
 }

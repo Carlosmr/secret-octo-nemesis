@@ -57,6 +57,11 @@
 			<artifactId>h2</artifactId>
 			<version>1.2.140</version>
 		</dependency>
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>1.9.0-beta</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -70,8 +75,9 @@
 						<include>**/Test*.java</include>
 					</includes>
 					<argLine>
-					-ea -javaagent:"${user.home}\.m2\repository\TDG-Contract\TDG-Contract\3.0\TDG-Contract-3.0.jar"=ondemand
-					</argLine>	
+						-ea
+						-javaagent:"${user.home}\.m2\repository\TDG-Contract\TDG-Contract\3.0\TDG-Contract-3.0.jar"=ondemand
+					</argLine>
 				</configuration>
 			</plugin>
 		</plugins>
