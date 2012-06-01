@@ -7,6 +7,7 @@ import isw2.repositorios.persistencia.RepositorioIncidenciasImpl;
 import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
 import isw2.repositorios.persistencia.SingleEntityManager;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.EntityManager;
@@ -15,7 +16,7 @@ public class AsignarIncidenciaImpl implements AsignarIncidencia {
 
 	private RepositorioIncidenciasImpl ri;
 	private RepositorioTecnicosImpl rt;
-	private Incidencia incidencia;
+	private Tecnico tecnico;
 
 	public AsignarIncidenciaImpl() {
 		EntityManager em = SingleEntityManager.getEntityManager();
@@ -23,20 +24,24 @@ public class AsignarIncidenciaImpl implements AsignarIncidencia {
 		rt = new RepositorioTecnicosImpl(em);
 	}
 
-	public Set<Incidencia> listarIncidenciasSinAsignar() {
-		return ri.getIncidenciasSinAsignar();
+	public Set<Incidencia> listarIncidenciasSinAsignar(String user) {
+		this.tecnico = rt.getTecnico(user);
+		Set<Incidencia> incidencias = ri.getIncidenciasSinAsignar();
+		Set<Incidencia> res = new HashSet<Incidencia>();
+		for (Incidencia i : incidencias)
+			if (tecnico.getProcedimientos().contains(i.getProcedimiento()))
+				res.add(i);
+		return res;
 	}
 
-	public void seleccionarIncidencia(Integer idIncidencia) {
-		incidencia = ri.getIncidencia(idIncidencia);
-	}
-
-	public void asociarIncidenciaTecnico(String user) {
-		Tecnico t = rt.getTecnico(user);
-		try {
-			incidencia.setTecnico(t);
-		} catch (InvalidStateException e) {
-			e.printStackTrace();
+	public void asociarIncidencia(Set<Integer> incidencias) {
+		for (Integer e : incidencias) {
+			Incidencia incidencia = ri.getIncidencia(e);
+			try {
+				incidencia.setTecnico(tecnico);
+			} catch (InvalidStateException ex) {
+				ex.printStackTrace();
+			}
 		}
 	}
 

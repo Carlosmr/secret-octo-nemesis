@@ -2,6 +2,7 @@ package isw2.entidades.implementaciones;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import isw2.entidades.contratos.Respuesta;
 
@@ -13,6 +14,7 @@ public class RespuestaImpl implements Respuesta, Serializable {
 	 */
 	private static final long serialVersionUID = -3336398393774226876L;
 	private Integer valoracion;
+	@Column(name = "respuesta")
 	private String descripcion;
 
 	public RespuestaImpl() {

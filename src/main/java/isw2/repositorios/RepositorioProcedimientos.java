@@ -9,8 +9,6 @@ public interface RepositorioProcedimientos {
 	Procedimiento crearProcedimiento(String codigo, String nombre,
 			String descripcion);
 
-	Set<Procedimiento> getProcedimientos();
-
 	Set<Procedimiento> getProcedimientosDadosDeAlta();
 
 	Set<Procedimiento> getProcedimientosNoAsociadosAlTecnico(String user);

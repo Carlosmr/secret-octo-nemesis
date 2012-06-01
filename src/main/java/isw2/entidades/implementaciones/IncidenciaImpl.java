@@ -13,6 +13,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Target;
+
 import isw2.entidades.contratos.Incidencia;
 import isw2.entidades.contratos.Procedimiento;
 import isw2.entidades.contratos.Producto;
@@ -34,6 +36,7 @@ public class IncidenciaImpl implements Incidencia, Serializable {
 	private String descripcion;
 	private Date fecha;
 	@Embedded
+	@Target(RespuestaImpl.class)
 	private Respuesta respuesta;
 	@ManyToOne(targetEntity = TecnicoImpl.class)
 	private Tecnico tecnico;
@@ -119,7 +122,7 @@ public class IncidenciaImpl implements Incidencia, Serializable {
 		else if (tecnico.getDadoDeBaja())
 			throw new IllegalArgumentException();
 		else if (getTecnico() != null)
-			throw new InvalidStateException();
+			throw new InvalidStateException("Incidencia ya asignada.");
 		this.tecnico = tecnico;
 	}
 

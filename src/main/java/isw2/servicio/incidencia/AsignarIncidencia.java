@@ -6,10 +6,8 @@ import isw2.entidades.contratos.Incidencia;
 
 public interface AsignarIncidencia {
 
-	Set<Incidencia> listarIncidenciasSinAsignar();
+	Set<Incidencia> listarIncidenciasSinAsignar(String user);
 
-	void seleccionarIncidencia(Integer idIncidencia);
-
-	void asociarIncidenciaTecnico(String user);
+	void asociarIncidencia(Set<Integer> incidencias);
 
 }

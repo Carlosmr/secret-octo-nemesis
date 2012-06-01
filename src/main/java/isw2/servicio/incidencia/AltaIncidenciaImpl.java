@@ -68,7 +68,7 @@ public class AltaIncidenciaImpl implements AltaIncidencia {
 	}
 
 	public Set<Procedimiento> listarProcedimientos() {
-		return rpr.getProcedimientos();
+		return producto.getProcedimientos();
 	}
 
 	public void seleccionarProcedimiento(String codigo) {

@@ -4,6 +4,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import isw2.entidades.contratos.Procedimiento;
+import isw2.excepciones.InvalidStateException;
+import isw2.servicio.incidencia.AltaIncidencia;
+import isw2.servicio.incidencia.AltaIncidenciaImpl;
+import isw2.servicio.incidencia.AsignarIncidencia;
+import isw2.servicio.incidencia.AsignarIncidenciaImpl;
+import isw2.servicio.incidencia.ResponderIncidencia;
+import isw2.servicio.incidencia.ResponderIncidenciaImpl;
 import isw2.servicio.procedimiento.AltaProcedimiento;
 import isw2.servicio.procedimiento.AltaProcedimientoImpl;
 import isw2.servicio.producto.AltaProducto;
@@ -144,4 +151,135 @@ public class Pruebas {
 		a.asignarProcedimientos(s);
 	}
 
+	@Test
+	public void asignarProcedimientos3() {
+		AltaAsociacion a = new AltaAsociacionImpl();
+		a.seleccionarTecnico("tecnico3");
+		Set<String> s = new HashSet<String>();
+		s.add("PD1");
+		s.add("WC2");
+		s.add("WC3");
+		s.add("WC1");
+		s.add("M1");
+		s.add("M2");
+		s.add("M3");
+		a.asignarProcedimientos(s);
+	}
+	
+	@Test
+	public void altaIncidencia1(){
+		AltaIncidencia a = new AltaIncidenciaImpl();
+		a.introducirDescripcionIncidencia("web cam rota");
+		a.seleccionarProcedimiento("WC1");
+		a.seleccionarProducto("Webcam1");
+		a.registrarIncidencia();
+	}
+	
+	@Test
+	public void altaIncidencia2(){
+		AltaIncidencia a = new AltaIncidenciaImpl();
+		a.introducirDescripcionIncidencia("web cam rota");
+		a.seleccionarProcedimiento("WC2");
+		a.seleccionarProducto("Webcam1");
+		a.registrarIncidencia();
+	}
+	
+	@Test
+	public void altaIncidencia3(){
+		AltaIncidencia a = new AltaIncidenciaImpl();
+		a.introducirDescripcionIncidencia("pendrive roto");
+		a.seleccionarProcedimiento("PD1");
+		a.seleccionarProducto("P32");
+		a.registrarIncidencia();
+	}
+	
+	@Test
+	public void altaIncidencia4(){
+		AltaIncidencia a = new AltaIncidenciaImpl();
+		a.introducirDescripcionIncidencia("monitor roto");
+		a.seleccionarProcedimiento("M1");
+		a.seleccionarProducto("M24");
+		a.registrarIncidencia();
+	}
+	
+	@Test
+	public void altaIncidencia5(){
+		AltaIncidencia a = new AltaIncidenciaImpl();
+		a.introducirDescripcionIncidencia("monitor roto");
+		a.seleccionarProducto("M32");
+		a.registrarIncidencia();
+	}
+	
+	@Test
+	public void consultaIncidencia1(){
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		assert(a.listarIncidenciasSinAsignar("tecnico1").size()==2);
+	}
+	
+	@Test
+	public void consultaIncidencia2(){
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		assert(a.listarIncidenciasSinAsignar("tecnico2").size()==3);
+	}
+	
+	@Test
+	public void consultaIncidencia3(){
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		assert(a.listarIncidenciasSinAsignar("tecnico3").size()==4);
+	}
+	
+	@Test
+	public void asignarIncidencia1(){
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		a.listarIncidenciasSinAsignar("tecnico1");
+		Set<Integer> s = new HashSet<Integer>();
+		s.add(1);
+		s.add(2);
+		a.asociarIncidencia(s);
+	}
+	
+	@Test(expected = InvalidStateException.class)
+	public void asignarIncidencia2(){
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		a.listarIncidenciasSinAsignar("tecnico2");
+		Set<Integer> s = new HashSet<Integer>();
+		s.add(1);
+		a.asociarIncidencia(s);
+	}
+	
+	@Test(expected = InvalidStateException.class)
+	public void asignarIncidencia3(){
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		a.listarIncidenciasSinAsignar("tecnico3");
+		Set<Integer> s = new HashSet<Integer>();
+		s.add(2);
+		a.asociarIncidencia(s);
+	}
+	
+	@Test
+	public void asignarIncidencia4(){
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		a.listarIncidenciasSinAsignar("tecnico2");
+		Set<Integer> s = new HashSet<Integer>();
+		s.add(3);
+		a.asociarIncidencia(s);
+	}
+	
+	@Test(expected=InvalidStateException.class)
+	public void asignarIncidencia5(){
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		a.listarIncidenciasSinAsignar("tecnico3");
+		Set<Integer> s = new HashSet<Integer>();
+		s.add(3);
+		a.asociarIncidencia(s);
+	}
+	
+	@Test
+	public void resolverIncidencia1(){
+		ResponderIncidencia r = new ResponderIncidenciaImpl();
+		assert(r.listarIncidenciasTecnicoSinRespuesta("tecnico1").size()==1);
+		r.seleccionarIncidencia(1);
+		r.anadirDescripcion("Producto reparado!");
+		r.registrarRespuesta();
+	}
 }

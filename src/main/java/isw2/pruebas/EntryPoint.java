@@ -1,7 +1,5 @@
 package isw2.pruebas;
 
-import isw2.autentificacion.Autentificacion;
-import isw2.autentificacion.AutentificacionGoogle;
 import isw2.repositorios.RepositorioIncidencias;
 import isw2.repositorios.persistencia.RepositorioIncidenciasImpl;
 import isw2.repositorios.persistencia.SingleEntityManager;
@@ -59,8 +57,8 @@ public class EntryPoint {
 		i1.registrarIncidencia();
 
 		AsignarIncidencia asigna = new AsignarIncidenciaImpl();
-		asigna.seleccionarIncidencia(1);
-		asigna.asociarIncidenciaTecnico("benito");
+//		asigna.asociarIncidencia(1);
+		asigna.listarIncidenciasSinAsignar("benito");
 
 		ResponderIncidencia res = new ResponderIncidenciaImpl();
 		res.seleccionarIncidencia(1);

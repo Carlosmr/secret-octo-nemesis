@@ -182,9 +182,8 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 			getEntityManager().getTransaction().begin();
 			Collection<Incidencia> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT i FROM IncidenciaImpl i WHERE i.respuesta = :respuesta AND i.tecnico = :user",
-							Incidencia.class).setParameter("respuesta", null)
-					.setParameter("tecnico", user).getResultList();
+							"SELECT i FROM IncidenciaImpl i WHERE i.respuesta = NULL AND i.tecnico = :user",
+							Incidencia.class).setParameter("tecnico", user).getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
 			getEntityManager().getTransaction().commit();
 
