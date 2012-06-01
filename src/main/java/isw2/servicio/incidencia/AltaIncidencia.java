@@ -12,7 +12,7 @@ public interface AltaIncidencia {
 	Set<Incidencia> seleccionarIncidenciasUsuario(String nombre, String dni,
 			String email, Date fechaCompra);
 
-	void seleccionarIncidenciasRelacionadas(Set<Incidencia> incidencias);
+	void seleccionarIncidenciasRelacionadas(Set<Integer> incidencias);
 
 	Set<Producto> listarProductos();
 

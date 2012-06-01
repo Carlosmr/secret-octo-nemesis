@@ -51,8 +51,9 @@ public class AltaIncidenciaImpl implements AltaIncidencia {
 		return ri.buscarIncidenciasPorDni(dni);
 	}
 
-	public void seleccionarIncidenciasRelacionadas(Set<Incidencia> incidencias) {
-		this.incidencias.addAll(incidencias);
+	public void seleccionarIncidenciasRelacionadas(Set<Integer> incidencias) {
+		for(Integer e: incidencias)
+			this.incidencias.add(ri.getIncidencia(e));
 	}
 
 	public Set<Producto> listarProductos() {

@@ -55,6 +55,14 @@ public class EntryPoint {
 		i1.seleccionarProcedimiento("p0000");
 		i1.seleccionarProducto("0000");
 		i1.registrarIncidencia();
+		
+		AltaIncidencia i2 = new AltaIncidenciaImpl();
+		i2.introducirDescripcionIncidencia("rotura de la base de la pantalla");
+		i2.seleccionarIncidenciasUsuario("javier", "53354148",
+				"javhercop@gmail.com", new Date());
+		i2.seleccionarProcedimiento("p0000");
+		i2.seleccionarProducto("0000");
+		i2.registrarIncidencia();
 
 		AsignarIncidencia asigna = new AsignarIncidenciaImpl();
 //		asigna.asociarIncidencia(1);
@@ -64,6 +72,11 @@ public class EntryPoint {
 		res.seleccionarIncidencia(1);
 		res.anadirDescripcion("Reparacion finalizada.");
 		res.registrarRespuesta();
+
+		ResponderIncidencia res2 = new ResponderIncidenciaImpl();
+		res2.seleccionarIncidencia(2);
+		res2.anadirDescripcion("Reparacion finalizada.");
+		res2.registrarRespuesta();
 
 //		ValorarIncidencia val = new ValorarIncidenciaImpl();
 //		val.registrarValoracion(1, 1);

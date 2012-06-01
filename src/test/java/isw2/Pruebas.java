@@ -11,6 +11,8 @@ import isw2.servicio.incidencia.AsignarIncidencia;
 import isw2.servicio.incidencia.AsignarIncidenciaImpl;
 import isw2.servicio.incidencia.ResponderIncidencia;
 import isw2.servicio.incidencia.ResponderIncidenciaImpl;
+import isw2.servicio.incidencia.ValorarIncidencia;
+import isw2.servicio.incidencia.ValorarIncidenciaImpl;
 import isw2.servicio.procedimiento.AltaProcedimiento;
 import isw2.servicio.procedimiento.AltaProcedimientoImpl;
 import isw2.servicio.producto.AltaProducto;
@@ -282,4 +284,23 @@ public class Pruebas {
 		r.anadirDescripcion("Producto reparado!");
 		r.registrarRespuesta();
 	}
+	
+	@Test
+	public void valorarIncidencia1(){
+		ValorarIncidencia v = new ValorarIncidenciaImpl();
+		v.registrarValoracion(1, -5);
+	}
+	
+	@Test
+	public void altaIncidencia6(){
+		AltaIncidencia a = new AltaIncidenciaImpl();
+		a.introducirDescripcionIncidencia("esto sigue sin funcionar.");
+		Set<Integer> s = new HashSet<Integer>();
+		s.add(1);
+		a.seleccionarProducto("Webcam1");
+		a.seleccionarProcedimiento("WC1");
+		a.seleccionarIncidenciasRelacionadas(s);
+		a.registrarIncidencia();
+	}
+	
 }
