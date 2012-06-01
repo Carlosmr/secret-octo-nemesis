@@ -128,11 +128,7 @@ public class IncidenciaImpl implements Incidencia, Serializable {
 
 	public void setProcedimiento(Procedimiento procedimiento)
 			throws InvalidStateException {
-		if (procedimiento == null)
-
-			this.procedimiento = procedimiento;
-
-		else if (procedimiento.getDadoDeBaja())
+		if (procedimiento.getDadoDeBaja())
 			throw new IllegalArgumentException();
 		else if (getProcedimiento() != null)
 			throw new InvalidStateException();
