@@ -92,13 +92,8 @@ public class TestIncidencia {
 		i.setProcedimiento(p);
 	}
 
-	@Test(expected = NullPointerException.class)
-	public void testSetProcedimiento2() throws InvalidStateException {
-		i.setProcedimiento(null);
-	}
-
 	@Test(expected = InvalidStateException.class)
-	public void testSetProcedimiento3() throws InvalidStateException {
+	public void testSetProcedimiento2() throws InvalidStateException {
 		Procedimiento p1 = new ProcedimientoImpl("1", "MON-01",
 				"Reparación conector USB");
 		Procedimiento p2 = new ProcedimientoImpl("2", "MON-02",
@@ -108,7 +103,7 @@ public class TestIncidencia {
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void testSetProcedimiento4() throws InvalidStateException {
+	public void testSetProcedimiento3() throws InvalidStateException {
 		Procedimiento p = new ProcedimientoImpl("1", "MON-01",
 				"Reparación conector USB");
 		p.setDadoDeBaja(true);
