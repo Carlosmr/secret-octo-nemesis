@@ -41,4 +41,11 @@ public class RespuestaImpl implements Respuesta, Serializable {
 		return descripcion;
 	}
 
+	public String toString() {
+		// TODO eliminar solo sirve para la representacion en el entryPoint
+
+		return "Descripcion: " + getDescripcion() + " valoracion: "
+				+ getValoracion();
+	}
+
 }

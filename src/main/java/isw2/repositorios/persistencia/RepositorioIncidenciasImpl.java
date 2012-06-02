@@ -144,18 +144,20 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 	public Set<Incidencia> getIncidencias(String user) {
 
-		// TODO no funciona esta consulta
-
 		Set<Incidencia> result = new HashSet<Incidencia>();
 
 		try {
 
 			getEntityManager().getTransaction().begin();
 			Collection<IncidenciaImpl> clientRepository = getEntityManager()
-					.createQuery(
-							"SELECT i FROM IncidenciaImpl i WHERE i.tecnico = :user",
-							IncidenciaImpl.class).setParameter("user", user)
-					.getResultList();
+					.createQuery("SELECT i FROM IncidenciaImpl i",
+							IncidenciaImpl.class).getResultList();
+			for (Incidencia i : clientRepository) {
+				if (i.getTecnico().getUser().equals(user))
+					result.add(i);
+
+			}
+
 			result = new HashSet<Incidencia>(clientRepository);
 			getEntityManager().getTransaction().commit();
 

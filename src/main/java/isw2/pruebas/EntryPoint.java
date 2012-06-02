@@ -9,6 +9,8 @@ import isw2.servicio.incidencia.AsignarIncidencia;
 import isw2.servicio.incidencia.AsignarIncidenciaImpl;
 import isw2.servicio.incidencia.ResponderIncidencia;
 import isw2.servicio.incidencia.ResponderIncidenciaImpl;
+import isw2.servicio.incidencia.ValorarIncidencia;
+import isw2.servicio.incidencia.ValorarIncidenciaImpl;
 import isw2.servicio.procedimiento.AltaProcedimiento;
 import isw2.servicio.procedimiento.AltaProcedimientoImpl;
 import isw2.servicio.producto.AltaProducto;
@@ -91,6 +93,10 @@ public class EntryPoint {
 		res2.anadirDescripcion("Reparacion finalizada.");
 		res2.registrarRespuesta();
 
+		ValorarIncidencia valoracion = new ValorarIncidenciaImpl();
+		valoracion.listarIncidenciaPorDni("53354148");
+		valoracion.registrarValoracion(2, 5);
+
 		// ValorarIncidencia val = new ValorarIncidenciaImpl();
 		// val.registrarValoracion(1, 1);
 
@@ -100,13 +106,13 @@ public class EntryPoint {
 		System.out.println("Incidencias sin asingar "
 				+ ri.getIncidenciasSinAsignar());
 		System.out.println("Incidencias de un usuario dado "
-				+ ri.getIncidencias("benito"));
+				+ ri.getIncidencias("currito"));
 		System.out.println("Buscar incidencia por dni "
 				+ ri.buscarIncidenciasPorDni("53354148"));
 		System.out.println("Incidencas sin respuesta "
 				+ ri.getIncidenciasSinRespuesta("benito"));
 		System.out.println("Respuesta a la incidencia "
-				+ ri.getIncidencia(1).getRespuesta());
+				+ ri.getIncidencia(2).getRespuesta());
 		// System.out.println("Valoracion de larespuesta a la incidencia "
 		// + ri.getIncidencia(1).getRespuesta().getValoracion());
 
