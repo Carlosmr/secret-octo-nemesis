@@ -1,7 +1,10 @@
 package isw2.pruebas;
 
+import isw2.entidades.contratos.Incidencia;
 import isw2.repositorios.RepositorioIncidencias;
+import isw2.repositorios.RepositorioTecnicos;
 import isw2.repositorios.persistencia.RepositorioIncidenciasImpl;
+import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
 import isw2.repositorios.persistencia.SingleEntityManager;
 import isw2.servicio.incidencia.AltaIncidencia;
 import isw2.servicio.incidencia.AltaIncidenciaImpl;
@@ -31,6 +34,7 @@ public class EntryPoint {
 
 		EntityManager em = SingleEntityManager.getEntityManager();
 		RepositorioIncidencias ri = new RepositorioIncidenciasImpl(em);
+		RepositorioTecnicos rt = new RepositorioTecnicosImpl(em);
 		AltaTecnico a1 = new AltaTecnicoImpl();
 		a1.introducirCredenciales("benito", "benito");
 		a1.introducirDatosPersonales("benito", "benito", new Date(), "a", "9");
@@ -69,10 +73,13 @@ public class EntryPoint {
 
 		AltaIncidencia i2 = new AltaIncidenciaImpl();
 		i2.introducirDescripcionIncidencia("rotura de la base de la pantalla");
-		i2.seleccionarIncidenciasUsuario("javier", "53354148",
-				"javhercop@gmail.com", new Date());
+		i2.seleccionarIncidenciasUsuario("pi", "53354148",
+				"piIMargall@gmail.com", new Date());
 		i2.seleccionarProcedimiento("p0000");
 		i2.seleccionarProducto("0000");
+		Set<Integer> incidencias2 = new HashSet<Integer>();
+		incidencias2.add(1);
+		i2.seleccionarIncidenciasRelacionadas(incidencias2);
 		i2.registrarIncidencia();
 
 		AsignarIncidencia asigna = new AsignarIncidenciaImpl();
@@ -106,15 +113,17 @@ public class EntryPoint {
 		System.out.println("Incidencias sin asingar "
 				+ ri.getIncidenciasSinAsignar());
 		System.out.println("Incidencias de un usuario dado "
-				+ ri.getIncidencias("currito"));
+				+ ri.getIncidencias("benito"));
 		System.out.println("Buscar incidencia por dni "
 				+ ri.buscarIncidenciasPorDni("53354148"));
 		System.out.println("Incidencas sin respuesta "
 				+ ri.getIncidenciasSinRespuesta("benito"));
 		System.out.println("Respuesta a la incidencia "
 				+ ri.getIncidencia(2).getRespuesta());
-		// System.out.println("Valoracion de larespuesta a la incidencia "
-		// + ri.getIncidencia(1).getRespuesta().getValoracion());
+		System.out.println("Valoracion de la respuesta a la incidencia "
+				+ ri.getIncidencia(2).getRespuesta().getValoracion());
+		System.out.println("Busqueda de incidencias por full text: "
+				+ ri.buscarIncidencia("javi"));
 
 	}
 }

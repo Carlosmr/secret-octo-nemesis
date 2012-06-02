@@ -23,7 +23,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 		}
 	}
 
-
 	public Tecnico crearTecnico(String user, String password, String nombre,
 			String apellidos, Date fechaNac, String direccion, String telefono) {
 
@@ -47,7 +46,6 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 		return result;
 
 	}
-
 
 	public Set<Tecnico> getTecnicos() {
 

@@ -46,21 +46,19 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 	public Set<Incidencia> buscarIncidencia(String busqueda) {
 
-		// TODO no funciona esta consulta
-
 		Set<Incidencia> result = new HashSet<Incidencia>();
 
 		try {
 
 			getEntityManager().getTransaction().begin();
-			Collection<Incidencia> clientRepository = getEntityManager()
+			Collection<IncidenciaImpl> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT i FROM IncidenciaImpl i WHERE i.nombre LIKE :busqueda OR i.email LIKE :busqueda OR i.descripcion LIKE :busqueda",
-							Incidencia.class)
-					.setParameter("busqueda", busqueda).getResultList();
+							"SELECT t FROM IncidenciaImpl t WHERE t.email LIKE :busqueda OR t.descripcion LIKE :busqueda OR t.nombre LIKE :busqueda",
+							IncidenciaImpl.class)
+					.setParameter("busqueda", "%" + busqueda + "%")
+					.getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
 			getEntityManager().getTransaction().commit();
-
 		}
 
 		catch (Exception oops) {
@@ -150,8 +148,10 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 			getEntityManager().getTransaction().begin();
 			Collection<IncidenciaImpl> clientRepository = getEntityManager()
-					.createQuery("SELECT i FROM IncidenciaImpl i",
-							IncidenciaImpl.class).getResultList();
+					.createQuery(
+							"SELECT i FROM IncidenciaImpl i",
+							IncidenciaImpl.class)
+					.getResultList();
 			for (Incidencia i : clientRepository) {
 				if (i.getTecnico().getUser().equals(user))
 					result.add(i);
