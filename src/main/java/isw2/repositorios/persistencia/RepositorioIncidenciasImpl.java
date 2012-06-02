@@ -173,8 +173,6 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 
 	public Set<Incidencia> getIncidenciasSinRespuesta(String user) {
 
-		// TODO no funciona esta consulta
-
 		Set<Incidencia> result = new HashSet<Incidencia>();
 
 		try {
@@ -182,8 +180,14 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 			getEntityManager().getTransaction().begin();
 			Collection<Incidencia> clientRepository = getEntityManager()
 					.createQuery(
-							"SELECT i FROM IncidenciaImpl i WHERE i.respuesta = NULL AND i.tecnico = :user",
-							Incidencia.class).setParameter("tecnico", user).getResultList();
+							"SELECT i FROM IncidenciaImpl i WHERE i.respuesta = NULL ",
+							Incidencia.class).getResultList();
+			for (Incidencia i : clientRepository) {
+				if (i.getTecnico().getUser().equals(user))
+					result.add(i);
+
+			}
+
 			result = new HashSet<Incidencia>(clientRepository);
 			getEntityManager().getTransaction().commit();
 
