@@ -3,7 +3,6 @@ package isw2.repositorios;
 import java.util.Date;
 import java.util.Set;
 
-import isw2.entidades.contratos.Incidencia;
 import isw2.entidades.contratos.Tecnico;
 
 public interface RepositorioTecnicos {
