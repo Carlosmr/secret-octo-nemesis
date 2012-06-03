@@ -1,5 +1,7 @@
 package isw2.pruebas;
 
+import isw2.autentificacion.Autentificacion;
+import isw2.autentificacion.AutentificacionGmail;
 import isw2.entidades.contratos.Incidencia;
 import isw2.repositorios.RepositorioIncidencias;
 import isw2.repositorios.RepositorioTecnicos;
@@ -124,6 +126,10 @@ public class EntryPoint {
 				+ ri.getIncidencia(2).getRespuesta().getValoracion());
 		System.out.println("Busqueda de incidencias por full text: "
 				+ ri.buscarIncidencia("javi"));
+		Autentificacion autentificacion = new AutentificacionGmail();
+//		System.out.println("Autentificacion correcta?: "
+//				+ autentificacion.credencialesValidos("user",
+//						"password"));
 
 	}
 }
