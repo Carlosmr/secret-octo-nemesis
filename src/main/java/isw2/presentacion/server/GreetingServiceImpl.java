@@ -12,6 +12,8 @@ import isw2.presentacion.client.GreetingService;
 import isw2.presentacion.shared.FieldVerifier;
 import isw2.servicio.tecnico.AltaTecnico;
 import isw2.servicio.tecnico.AltaTecnicoImpl;
+import isw2.servicio.tecnico.ModificacionTecnico;
+import isw2.servicio.tecnico.ModificacionTecnicoImpl;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -40,11 +42,20 @@ public class GreetingServiceImpl extends RemoteServiceServlet implements
 //
 //		return "Hello, " + input + "!<br><br>I am running " + serverInfo
 //				+ ".<br><br>It looks like you are using:<br>" + userAgent;
-		Tecnico t = new TecnicoImpl(input, input, input, input, new Date(), input, input);
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("isw2.acme");
-		EntityManager em = emf.createEntityManager();
-		em.persist(t);
-		return "Hola señor "+t.getFechaNacimiento().toString();
+//		Tecnico t = new TecnicoImpl(input, input, input, input, new Date(), input, input);
+//		EntityManagerFactory emf = Persistence.createEntityManagerFactory("isw2.acme");
+//		EntityManager em = emf.createEntityManager();
+//		em.persist(t);
+//		t=null;
+//		t=em.find(TecnicoImpl.class,input);
+		Tecnico t=null;
+		AltaTecnico a = new AltaTecnicoImpl();
+		a.introducirCredenciales(input, input);
+		a.registrarTecnico();
+		ModificacionTecnico b = new ModificacionTecnicoImpl();
+		for(Tecnico r : b.listarTecnicos())
+			t=r;
+		return "Hola señor "+t.getUser().toString();
 		
 	}
 

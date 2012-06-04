@@ -81,12 +81,12 @@
 			<version>3.6.2.Final</version>
 		</dependency>
 
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-c3p0</artifactId>
 			<version>3.6.3.Final</version>
 		</dependency>
-
+ -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -116,11 +116,6 @@
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.2.140</version>
-		</dependency>
-		<dependency>
-			<groupId>com.google.api-client</groupId>
-			<artifactId>google-api-client</artifactId>
-			<version>1.9.0-beta</version>
 		</dependency>
 	</dependencies>
 	<build>
