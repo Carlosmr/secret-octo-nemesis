@@ -4,12 +4,8 @@ import isw2.entidades.contratos.Procedimiento;
 import isw2.entidades.contratos.Producto;
 import isw2.repositorios.persistencia.RepositorioProcedimientosImpl;
 import isw2.repositorios.persistencia.RepositorioProductosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
-
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.persistence.EntityManager;
 
 public class AltaProductoImpl implements AltaProducto {
 
@@ -21,9 +17,8 @@ public class AltaProductoImpl implements AltaProducto {
 	private Set<Procedimiento> procedimientos = new HashSet<Procedimiento>();
 
 	public AltaProductoImpl() {
-		EntityManager em = SingleEntityManager.getEntityManager();
-		rp = new RepositorioProductosImpl(em);
-		rpr = new RepositorioProcedimientosImpl(em);
+		rp = new RepositorioProductosImpl();
+		rpr = new RepositorioProcedimientosImpl();
 	}
 
 	public void datosProducto(String codigo, String nombre, String descripcion) {

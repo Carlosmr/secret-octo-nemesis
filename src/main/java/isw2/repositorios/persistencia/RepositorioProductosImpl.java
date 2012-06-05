@@ -12,8 +12,7 @@ import isw2.repositorios.RepositorioProductos;
 public class RepositorioProductosImpl extends RepositorioJPA implements
 		RepositorioProductos {
 
-	public RepositorioProductosImpl(EntityManager em) {
-		super(em);
+	public RepositorioProductosImpl() {
 	}
 
 	public Producto crearProducto(String codigo, String nombre,
@@ -25,21 +24,23 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 
 	public Set<Producto> getProductos() {
 
+		EntityManager em = getEntityManager();
 		Set<Producto> result = new HashSet<Producto>();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			Collection<ProductoImpl> clientRepository = getEntityManager()
-					.createQuery("from ProductoImpl", ProductoImpl.class)
-					.getResultList();
+			em.getTransaction().begin();
+			Collection<ProductoImpl> clientRepository = em.createQuery(
+					"from ProductoImpl", ProductoImpl.class).getResultList();
 			result = new HashSet<Producto>(clientRepository);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().commit();
 
 		} catch (Exception oops) {
 
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 		return result;
@@ -47,39 +48,45 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 	}
 
 	public void guardar(Producto producto) {
+		EntityManager em = getEntityManager();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			getEntityManager().persist(producto);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().begin();
+			em.persist(producto);
+			em.getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 	}
 
 	public Producto getProducto(String codigo) {
+		EntityManager em = getEntityManager();
 
 		Producto result = new ProductoImpl();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			result = getEntityManager().find(ProductoImpl.class, codigo);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().begin();
+			result = em.find(ProductoImpl.class, codigo);
+			em.getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 		return result;
@@ -87,25 +94,26 @@ public class RepositorioProductosImpl extends RepositorioJPA implements
 	}
 
 	public Set<Producto> getProductosDadosDeAlta() {
-
+		EntityManager em = getEntityManager();
 		Set<Producto> result = new HashSet<Producto>();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			Collection<Producto> clientRepository = getEntityManager()
-					.createQuery(
-							"SELECT p FROM ProductoImpl p WHERE p.dadoDeBaja = false",
-							Producto.class).getResultList();
+			em.getTransaction().begin();
+			Collection<Producto> clientRepository = em.createQuery(
+					"SELECT p FROM ProductoImpl p WHERE p.dadoDeBaja = false",
+					Producto.class).getResultList();
 
 			result = new HashSet<Producto>(clientRepository);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 		return result;

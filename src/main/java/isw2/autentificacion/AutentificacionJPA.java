@@ -2,9 +2,7 @@ package isw2.autentificacion;
 
 import isw2.entidades.contratos.Tecnico;
 import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
 
-import javax.persistence.EntityManager;
 
 public class AutentificacionJPA implements Autentificacion {
 
@@ -13,8 +11,7 @@ public class AutentificacionJPA implements Autentificacion {
 
 
 	public AutentificacionJPA(){
-		EntityManager em = SingleEntityManager.getEntityManager();
-		this.rt = new RepositorioTecnicosImpl(em);
+		this.rt = new RepositorioTecnicosImpl();
 	}
 	
 	

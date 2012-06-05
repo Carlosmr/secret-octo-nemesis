@@ -1,19 +1,16 @@
 package isw2.repositorios.persistencia;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public abstract class RepositorioJPA {
-	private EntityManager entityManager;
-	
-	public RepositorioJPA(EntityManager em) {
-		this.entityManager = em;
-	}
+	private static EntityManagerFactory emf;
 
 	public EntityManager getEntityManager() {
-		return entityManager;
-	}
-
-	public void setEntityManager(EntityManager entityManager) {
-		this.entityManager = entityManager;
+		if (emf == null) {
+			emf = Persistence.createEntityManagerFactory("isw2.acme");
+		}
+		return emf.createEntityManager();
 	}
 }

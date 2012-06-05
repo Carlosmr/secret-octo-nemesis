@@ -1,6 +1,9 @@
 package isw2.presentacion.client;
 
 import isw2.presentacion.shared.FieldVerifier;
+//import isw2.servicio.tecnico.AltaTecnico;
+//import isw2.servicio.tecnico.AltaTecnicoImpl;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -16,6 +19,7 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.PasswordTextBox;
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
@@ -49,12 +53,35 @@ public class Acme implements EntryPoint {
 
 		// Add the nameField and sendButton to the RootPanel
 		// Use RootPanel.get() to get the entire body element
-		RootPanel.get("nameFieldContainer").add(nameField);
+		RootPanel rootPanel = RootPanel.get("nameFieldContainer");
+		rootPanel.add(nameField);
 		RootPanel.get("sendButtonContainer").add(sendButton);
 		RootPanel.get("errorLabelContainer").add(errorLabel);
 
 		// Focus the cursor on the name field when the app loads
 		nameField.setFocus(true);
+		
+		VerticalPanel verticalPanel = new VerticalPanel();
+		rootPanel.add(verticalPanel, 10, 90);
+		verticalPanel.setSize("258px", "146px");
+		
+		final TextBox textBox = new TextBox();
+		verticalPanel.add(textBox);
+		textBox.setWidth("244px");
+		
+		final PasswordTextBox textBox_1 = new PasswordTextBox();
+		verticalPanel.add(textBox_1);
+		textBox_1.setWidth("239px");
+		
+		Button btnLogin = new Button("Registrame nigger!");
+		btnLogin.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent arg0) {
+//				AltaTecnico a = new AltaTecnicoImpl();
+//				a.introducirCredenciales(textBox.getText(), textBox_1.getText());
+//				a.registrarTecnico();
+			}
+		});
+		verticalPanel.add(btnLogin);
 		nameField.selectAll();
 
 		// Create the popup dialog box

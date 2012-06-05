@@ -14,8 +14,7 @@ import isw2.repositorios.RepositorioProcedimientos;
 public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 		RepositorioProcedimientos {
 
-	public RepositorioProcedimientosImpl(EntityManager em) {
-		super(em);
+	public RepositorioProcedimientosImpl() {
 	}
 
 	public Procedimiento crearProcedimiento(String codigo, String nombre,
@@ -26,47 +25,53 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 
 	public Set<Procedimiento> getProcedimientos() {
 
+		EntityManager em = getEntityManager();
 		Set<Procedimiento> result = new HashSet<Procedimiento>();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			Collection<ProcedimientoImpl> clientRepository = getEntityManager()
-					.createQuery("from ProcedimientoImpl",
-							ProcedimientoImpl.class).getResultList();
+			em.getTransaction().begin();
+			Collection<ProcedimientoImpl> clientRepository = em.createQuery(
+					"from ProcedimientoImpl", ProcedimientoImpl.class)
+					.getResultList();
 			System.out.println(clientRepository.size());
 			result = new HashSet<Procedimiento>(clientRepository);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().commit();
 
 		} catch (Exception oops) {
 
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 		return result;
 	}
 
 	public Set<Procedimiento> getProcedimientosDadosDeAlta() {
+		EntityManager em = getEntityManager();
 
 		Set<Procedimiento> result = new HashSet<Procedimiento>();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			Collection<ProcedimientoImpl> clientRepository = getEntityManager()
+			em.getTransaction().begin();
+			Collection<ProcedimientoImpl> clientRepository = em
 					.createQuery(
 							"SELECT pr FROM ProcedimientoImpl pr WHERE pr.dadoDeBaja = false",
 							ProcedimientoImpl.class).getResultList();
 
 			result = new HashSet<Procedimiento>(clientRepository);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 		return result;
@@ -74,19 +79,22 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 	}
 
 	public void guardar(Procedimiento procedimiento) {
+		EntityManager em = getEntityManager();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			getEntityManager().persist(procedimiento);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().begin();
+			em.persist(procedimiento);
+			em.getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 	}
@@ -94,19 +102,22 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 	public Procedimiento getProcedimiento(String codigo) {
 
 		Procedimiento result = new ProcedimientoImpl();
+		EntityManager em = getEntityManager();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			result = getEntityManager().find(ProcedimientoImpl.class, codigo);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().begin();
+			result = em.find(ProcedimientoImpl.class, codigo);
+			em.getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 		return result;
@@ -116,24 +127,27 @@ public class RepositorioProcedimientosImpl extends RepositorioJPA implements
 	public Set<Procedimiento> getProcedimientosNoAsociadosAlTecnico(String user) {
 
 		Set<Procedimiento> result = new HashSet<Procedimiento>();
+		EntityManager em = getEntityManager();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			Set<Procedimiento> procedimientosUsuario = getEntityManager().find(
+			em.getTransaction().begin();
+			Set<Procedimiento> procedimientosUsuario = em.find(
 					TecnicoImpl.class, user).getProcedimientos();
-			Set<Procedimiento> procedimientos = new HashSet<Procedimiento>(
-					getEntityManager().createQuery("from ProcedimientoImpl",
+			Set<Procedimiento> procedimientos = new HashSet<Procedimiento>(em
+					.createQuery("from ProcedimientoImpl",
 							ProcedimientoImpl.class).getResultList());
 			procedimientos.removeAll(procedimientosUsuario);
 			result = procedimientos;
 
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().commit();
 
 		} catch (Exception oops) {
 
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 		return result;

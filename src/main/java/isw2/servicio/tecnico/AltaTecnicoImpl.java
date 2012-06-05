@@ -2,11 +2,7 @@ package isw2.servicio.tecnico;
 
 import isw2.repositorios.RepositorioTecnicos;
 import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
-
 import java.util.Date;
-
-import javax.persistence.EntityManager;
 
 public class AltaTecnicoImpl implements AltaTecnico {
 
@@ -21,8 +17,7 @@ public class AltaTecnicoImpl implements AltaTecnico {
 
 	public AltaTecnicoImpl() {
 
-		EntityManager em = SingleEntityManager.getEntityManager();
-		rt = new RepositorioTecnicosImpl(em);
+		rt = new RepositorioTecnicosImpl();
 
 	}
 

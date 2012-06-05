@@ -2,11 +2,9 @@ package isw2.servicio.procedimiento;
 
 import isw2.entidades.contratos.Procedimiento;
 import isw2.repositorios.persistencia.RepositorioProcedimientosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
 
 import java.util.Set;
 
-import javax.persistence.EntityManager;
 
 public class ModificacionProcedimientoImpl implements ModificacionProcedimiento {
 
@@ -14,8 +12,7 @@ public class ModificacionProcedimientoImpl implements ModificacionProcedimiento 
 	private Procedimiento procedimiento;
 
 	public ModificacionProcedimientoImpl(){
-		EntityManager em = SingleEntityManager.getEntityManager();
-		rp = new RepositorioProcedimientosImpl(em);
+		rp = new RepositorioProcedimientosImpl();
 	}
 	
 	public Set<Procedimiento> listarProcedimientos() {

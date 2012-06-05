@@ -1,13 +1,10 @@
 package isw2.servicio.incidencia;
 
-import javax.persistence.EntityManager;
-
 import isw2.entidades.contratos.Incidencia;
 import isw2.entidades.contratos.Respuesta;
 import isw2.entidades.implementaciones.RespuestaImpl;
 import isw2.excepciones.InvalidStateException;
 import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
 
 public class ResponderIncidenciaSinProcedimientoImpl implements
 		ResponderIncidenciaSinProcedimiento {
@@ -15,8 +12,7 @@ public class ResponderIncidenciaSinProcedimientoImpl implements
 	private RepositorioTecnicosImpl rt;
 
 	public ResponderIncidenciaSinProcedimientoImpl() {
-		EntityManager em = SingleEntityManager.getEntityManager();
-		rt = new RepositorioTecnicosImpl(em);
+		rt = new RepositorioTecnicosImpl();
 	}
 
 	public void responderIncidenciaSinMantenimiento(Incidencia i) {

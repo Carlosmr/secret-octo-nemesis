@@ -12,10 +12,10 @@ public class AutentificacionTecnico {
 
 	public Boolean logIn(String user, String password) {
 		if (autentificacion.credencialesValidos(user, password)) {
-			/*
-			 * HttpServletRequest request = this.getThreadLocalRequest();
-			 * request.getSession().setAttribute("session.user", user);
-			 */
+//
+//			HttpServletRequest request = this.getThreadLocalRequest();
+//			request.getSession().setAttribute("session.user", user);
+
 			return true;
 		} else {
 			return false;

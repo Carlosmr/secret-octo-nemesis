@@ -5,11 +5,10 @@ import isw2.entidades.contratos.Respuesta;
 import isw2.entidades.implementaciones.RespuestaImpl;
 import isw2.excepciones.InvalidStateException;
 import isw2.repositorios.persistencia.RepositorioIncidenciasImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
 
 import java.util.Set;
 
-import javax.persistence.EntityManager;
+
 
 public class ResponderIncidenciaImpl implements ResponderIncidencia {
 
@@ -18,8 +17,7 @@ public class ResponderIncidenciaImpl implements ResponderIncidencia {
 	private String descripcion;
 
 	public ResponderIncidenciaImpl() {
-		EntityManager em = SingleEntityManager.getEntityManager();
-		ri = new RepositorioIncidenciasImpl(em);
+		ri = new RepositorioIncidenciasImpl();
 	}
 
 	public Set<Incidencia> listarIncidenciasTecnicoSinRespuesta(String user) {

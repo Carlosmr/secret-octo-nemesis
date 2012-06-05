@@ -3,11 +3,9 @@ package isw2.servicio.tecnico;
 import isw2.entidades.contratos.Tecnico;
 import isw2.repositorios.RepositorioTecnicos;
 import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
 
 import java.util.Set;
 
-import javax.persistence.EntityManager;
 
 public class BajaTecnicoImpl implements BajaTecnico {
 
@@ -16,8 +14,7 @@ public class BajaTecnicoImpl implements BajaTecnico {
 
 	public BajaTecnicoImpl() {
 
-		EntityManager em = SingleEntityManager.getEntityManager();
-		rt = new RepositorioTecnicosImpl(em);
+		rt = new RepositorioTecnicosImpl();
 
 	}
 

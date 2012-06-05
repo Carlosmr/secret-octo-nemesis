@@ -129,8 +129,8 @@
 					<includes>
 						<include>**/Test*.java</include>
 					</includes>
-					<!-- <argLine> -ea -javaagent:"${user.home}\.m2\repository\TDG-Contract\TDG-Contract\3.0\TDG-Contract-3.0.jar"=ondemand 
-						</argLine> -->
+					<argLine> -ea -javaagent:"${user.home}\.m2\repository\TDG-Contract\TDG-Contract\3.0\TDG-Contract-3.0.jar"=ondemand 
+					</argLine> 
 				</configuration>
 			</plugin>
 			<plugin>

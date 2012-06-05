@@ -1,13 +1,8 @@
 package isw2.pruebas;
 
-import isw2.autentificacion.Autentificacion;
 //import isw2.autentificacion.AutentificacionGmail;
-import isw2.entidades.contratos.Incidencia;
 import isw2.repositorios.RepositorioIncidencias;
-import isw2.repositorios.RepositorioTecnicos;
 import isw2.repositorios.persistencia.RepositorioIncidenciasImpl;
-import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
 import isw2.servicio.incidencia.AltaIncidencia;
 import isw2.servicio.incidencia.AltaIncidenciaImpl;
 import isw2.servicio.incidencia.AsignarIncidencia;
@@ -28,15 +23,12 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
 
 public class EntryPoint {
 
 	public static void main(String[] args) {
 
-		EntityManager em = SingleEntityManager.getEntityManager();
-		RepositorioIncidencias ri = new RepositorioIncidenciasImpl(em);
-		RepositorioTecnicos rt = new RepositorioTecnicosImpl(em);
+		RepositorioIncidencias ri = new RepositorioIncidenciasImpl();
 		AltaTecnico a1 = new AltaTecnicoImpl();
 		a1.introducirCredenciales("benito", "benito");
 		a1.introducirDatosPersonales("benito", "benito", new Date(), "a", "9");

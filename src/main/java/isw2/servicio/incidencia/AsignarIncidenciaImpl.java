@@ -5,12 +5,10 @@ import isw2.entidades.contratos.Tecnico;
 import isw2.excepciones.InvalidStateException;
 import isw2.repositorios.persistencia.RepositorioIncidenciasImpl;
 import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
 
 public class AsignarIncidenciaImpl implements AsignarIncidencia {
 
@@ -19,9 +17,8 @@ public class AsignarIncidenciaImpl implements AsignarIncidencia {
 	private Tecnico tecnico;
 
 	public AsignarIncidenciaImpl() {
-		EntityManager em = SingleEntityManager.getEntityManager();
-		ri = new RepositorioIncidenciasImpl(em);
-		rt = new RepositorioTecnicosImpl(em);
+		ri = new RepositorioIncidenciasImpl();
+		rt = new RepositorioTecnicosImpl();
 	}
 
 	public Set<Incidencia> listarIncidenciasSinAsignar(String user) {

@@ -3,12 +3,10 @@ package isw2.servicio.tecnico;
 import isw2.entidades.contratos.Tecnico;
 import isw2.repositorios.RepositorioTecnicos;
 import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
 
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
 
 public class ModificacionTecnicoImpl implements ModificacionTecnico {
 
@@ -17,8 +15,7 @@ public class ModificacionTecnicoImpl implements ModificacionTecnico {
 
 	public ModificacionTecnicoImpl() {
 
-		EntityManager em = SingleEntityManager.getEntityManager();
-		rt = new RepositorioTecnicosImpl(em);
+		rt = new RepositorioTecnicosImpl();
 	}
 
 	public Set<Tecnico> listarTecnicos() {

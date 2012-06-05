@@ -4,11 +4,8 @@ import isw2.entidades.contratos.Procedimiento;
 import isw2.entidades.contratos.Producto;
 import isw2.repositorios.persistencia.RepositorioProcedimientosImpl;
 import isw2.repositorios.persistencia.RepositorioProductosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
 
 import java.util.Set;
-
-import javax.persistence.EntityManager;
 
 public class ModificacionProductoImpl implements ModificacionProducto {
 
@@ -20,9 +17,8 @@ public class ModificacionProductoImpl implements ModificacionProducto {
 	private Producto producto;
 
 	public ModificacionProductoImpl() {
-		EntityManager em = SingleEntityManager.getEntityManager();
-		rp = new RepositorioProductosImpl(em);
-		rpr = new RepositorioProcedimientosImpl(em);
+		rp = new RepositorioProductosImpl();
+		rpr = new RepositorioProcedimientosImpl();
 	}
 
 	public Set<Producto> listarProductosDadosDeAlta() {

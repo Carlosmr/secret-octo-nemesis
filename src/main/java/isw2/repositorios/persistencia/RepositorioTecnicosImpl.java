@@ -14,9 +14,9 @@ import javax.persistence.EntityManager;
 public class RepositorioTecnicosImpl extends RepositorioJPA implements
 		RepositorioTecnicos {
 
-	public RepositorioTecnicosImpl(EntityManager em) {
-		super(em);
-		if (getEntityManager().find(TecnicoImpl.class, "SYSTEM") == null) {
+	public RepositorioTecnicosImpl() {
+		EntityManager em = getEntityManager();
+		if (em.find(TecnicoImpl.class, "SYSTEM") == null) {
 			Tecnico t = new TecnicoImpl("SYSTEM", "", "SYSTEM", "SYSTEM",
 					new Date(), "", "");
 			em.persist(t);
@@ -27,20 +27,23 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 			String apellidos, Date fechaNac, String direccion, String telefono) {
 
 		Tecnico result = new TecnicoImpl();
+		EntityManager em = getEntityManager();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
+			em.getTransaction().begin();
 			result = new TecnicoImpl(user, password, nombre, apellidos,
 					fechaNac, direccion, telefono);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 		return result;
@@ -50,20 +53,22 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 	public Set<Tecnico> getTecnicos() {
 
 		Set<Tecnico> result = new HashSet<Tecnico>();
+		EntityManager em = getEntityManager();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			Collection<TecnicoImpl> clientRepository = getEntityManager()
-					.createQuery("from TecnicoImpl", TecnicoImpl.class)
-					.getResultList();
+			em.getTransaction().begin();
+			Collection<TecnicoImpl> clientRepository = em.createQuery(
+					"from TecnicoImpl", TecnicoImpl.class).getResultList();
 			result = new HashSet<Tecnico>(clientRepository);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().commit();
 
 		} catch (Exception oops) {
 
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 		return result;
@@ -73,23 +78,25 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 	public Set<Tecnico> getTecnicosDadosDeAlta() {
 
 		Set<Tecnico> result = new HashSet<Tecnico>();
+		EntityManager em = getEntityManager();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			Collection<TecnicoImpl> clientRepository = getEntityManager()
-					.createQuery(
-							"SELECT t FROM TecnicoImpl t WHERE t.dadoDeBaja = false",
-							TecnicoImpl.class).getResultList();
+			em.getTransaction().begin();
+			Collection<TecnicoImpl> clientRepository = em.createQuery(
+					"SELECT t FROM TecnicoImpl t WHERE t.dadoDeBaja = false",
+					TecnicoImpl.class).getResultList();
 
 			result = new HashSet<Tecnico>(clientRepository);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 		return result;
@@ -97,39 +104,45 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 	}
 
 	public void guardar(Tecnico tecnico) {
+		EntityManager em = getEntityManager();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			getEntityManager().persist(tecnico);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().begin();
+			em.persist(tecnico);
+			em.getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 	}
 
 	public Tecnico getTecnico(String user) {
+		EntityManager em = getEntityManager();
 
 		Tecnico result = new TecnicoImpl();
 
 		try {
 
-			getEntityManager().getTransaction().begin();
-			result = getEntityManager().find(TecnicoImpl.class, user);
-			getEntityManager().getTransaction().commit();
+			em.getTransaction().begin();
+			result = em.find(TecnicoImpl.class, user);
+			em.getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (getEntityManager().getTransaction().isActive())
-				getEntityManager().getTransaction().rollback();
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+		} finally {
+			em.close();
 		}
 
 		return result;

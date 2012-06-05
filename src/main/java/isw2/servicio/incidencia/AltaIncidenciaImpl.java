@@ -10,13 +10,9 @@ import isw2.repositorios.RepositorioProductos;
 import isw2.repositorios.persistencia.RepositorioIncidenciasImpl;
 import isw2.repositorios.persistencia.RepositorioProcedimientosImpl;
 import isw2.repositorios.persistencia.RepositorioProductosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.persistence.EntityManager;
 
 public class AltaIncidenciaImpl implements AltaIncidencia {
 
@@ -33,10 +29,9 @@ public class AltaIncidenciaImpl implements AltaIncidencia {
 	private Date fechaCompra;
 
 	public AltaIncidenciaImpl() {
-		EntityManager em = SingleEntityManager.getEntityManager();
-		ri = new RepositorioIncidenciasImpl(em);
-		rp = new RepositorioProductosImpl(em);
-		rpr = new RepositorioProcedimientosImpl(em);
+		ri = new RepositorioIncidenciasImpl();
+		rp = new RepositorioProductosImpl();
+		rpr = new RepositorioProcedimientosImpl();
 		incidencias = new HashSet<Incidencia>();
 
 	}
@@ -52,7 +47,7 @@ public class AltaIncidenciaImpl implements AltaIncidencia {
 	}
 
 	public void seleccionarIncidenciasRelacionadas(Set<Integer> incidencias) {
-		for(Integer e: incidencias)
+		for (Integer e : incidencias)
 			this.incidencias.add(ri.getIncidencia(e));
 	}
 
