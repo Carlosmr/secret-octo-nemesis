@@ -25,28 +25,8 @@ public class RepositorioTecnicosImpl extends RepositorioJPA implements
 
 	public Tecnico crearTecnico(String user, String password, String nombre,
 			String apellidos, Date fechaNac, String direccion, String telefono) {
-
-		Tecnico result = new TecnicoImpl();
-		EntityManager em = getEntityManager();
-
-		try {
-
-			em.getTransaction().begin();
-			result = new TecnicoImpl(user, password, nombre, apellidos,
-					fechaNac, direccion, telefono);
-			em.getTransaction().commit();
-
-		}
-
-		catch (Exception oops) {
-
-			if (em.getTransaction().isActive())
-				em.getTransaction().rollback();
-		} finally {
-			em.close();
-		}
-
-		return result;
+		return new TecnicoImpl(user, password, nombre, apellidos, fechaNac,
+				direccion, telefono);
 
 	}
 
