@@ -80,13 +80,14 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>3.6.2.Final</version>
 		</dependency>
-
-<!-- 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-c3p0</artifactId>
-			<version>3.6.3.Final</version>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.5</version>
 		</dependency>
- -->
+
+		<!-- <dependency> <groupId>org.hibernate</groupId> <artifactId>hibernate-c3p0</artifactId> 
+			<version>3.6.3.Final</version> </dependency> -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
@@ -129,8 +130,8 @@
 					<includes>
 						<include>**/Test*.java</include>
 					</includes>
-					<argLine> -ea -javaagent:"${user.home}\.m2\repository\TDG-Contract\TDG-Contract\3.0\TDG-Contract-3.0.jar"=ondemand 
-					</argLine> 
+					<!-- <argLine> -ea -javaagent:"${user.home}\.m2\repository\TDG-Contract\TDG-Contract\3.0\TDG-Contract-3.0.jar"=ondemand 
+						</argLine> -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -176,7 +177,8 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
