@@ -1,7 +1,7 @@
 package isw2.presentacion.client;
 
-import isw2.presentacion.client.presenter.RegistroTecnicoPresenter;
-import isw2.presentacion.client.view.RegistroTecnicoView;
+import isw2.presentacion.client.presenter.AltaTecnicoPresenter;
+import isw2.presentacion.client.view.AltaTecnicoView;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.shared.HandlerManager;

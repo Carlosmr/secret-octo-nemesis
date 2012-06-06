@@ -1,7 +1,7 @@
 package isw2.presentacion.client;
 
 import isw2.presentacion.client.presenter.Presenter;
-import isw2.presentacion.client.presenter.RegistroTecnicoPresenter;
+import isw2.presentacion.client.presenter.AltaTecnicoPresenter;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.event.shared.HandlerManager;
@@ -41,7 +41,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
 			Presenter presenter = null;
 
 			if (token.equals("registro")) {
-				presenter = new RegistroTecnicoPresenter(eventBus);
+				presenter = new AltaTecnicoPresenter(eventBus);
 			}
 			if (presenter != null) {
 				presenter.go(container);
