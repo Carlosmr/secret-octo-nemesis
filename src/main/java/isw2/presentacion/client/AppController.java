@@ -40,13 +40,11 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
 		if (token != null) {
 			Presenter presenter = null;
 
-			if (token.equals("registro")) {
+			if (token.equals("registro"))
 				presenter = new AltaTecnicoPresenter(eventBus);
-			}
 			if (presenter != null) {
 				presenter.go(container);
 			}
 		}
 	}
-
 }

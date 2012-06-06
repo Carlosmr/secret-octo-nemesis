@@ -1,6 +1,4 @@
-package isw2.entidades.implementaciones;
-
-import isw2.entidades.contratos.Procedimiento;
+package isw2.presentacion.shared;
 
 import java.io.Serializable;
 

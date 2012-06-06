@@ -2,9 +2,7 @@ package isw2;
 
 
 import isw2.entidades.contratos.Procedimiento;
-import isw2.presentacion.client.AltaAsociacion;
 import isw2.presentacion.client.AltaTecnico;
-import isw2.presentacion.server.AltaAsociacionImpl;
 import isw2.presentacion.server.AltaTecnicoImpl;
 import isw2.servicio.incidencia.AltaIncidencia;
 import isw2.servicio.incidencia.AltaIncidenciaImpl;
@@ -18,6 +16,8 @@ import isw2.servicio.procedimiento.AltaProcedimiento;
 import isw2.servicio.procedimiento.AltaProcedimientoImpl;
 import isw2.servicio.producto.AltaProducto;
 import isw2.servicio.producto.AltaProductoImpl;
+import isw2.servicio.tecnico.AltaAsociacion;
+import isw2.servicio.tecnico.AltaAsociacionImpl;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -36,22 +36,22 @@ public class TestEvaluacion {
 	@Test
 	public void crearTecnico1() {
 		AltaTecnico a = new AltaTecnicoImpl();
-		a.introducirCredenciales("tecnico1", "tecnico1");
-		a.registrarTecnico();
+		// a.introducirCredenciales("tecnico1", "tecnico1");
+		//	a.registrarTecnico();
 	}
 
 	@Test
 	public void crearTecnico2() {
 		AltaTecnico a = new AltaTecnicoImpl();
-		a.introducirCredenciales("tecnico2", "tecnico2");
-		a.registrarTecnico();
+//		a.introducirCredenciales("tecnico2", "tecnico2");
+//		a.registrarTecnico();
 	}
 
 	@Test
 	public void crearTecnico3() {
 		AltaTecnico a = new AltaTecnicoImpl();
-		a.introducirCredenciales("tecnico3", "tecnico3");
-		a.registrarTecnico();
+//		a.introducirCredenciales("tecnico3", "tecnico3");
+//		a.registrarTecnico();
 	}
 
 	@Test

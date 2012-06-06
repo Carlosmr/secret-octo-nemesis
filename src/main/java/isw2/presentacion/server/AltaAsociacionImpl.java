@@ -1,13 +1,15 @@
 package isw2.presentacion.server;
 
-import isw2.entidades.contratos.Procedimiento;
-import isw2.entidades.contratos.Tecnico;
 import isw2.presentacion.client.AltaAsociacion;
+import isw2.presentacion.shared.Procedimiento;
+import isw2.presentacion.shared.Tecnico;
 import isw2.repositorios.RepositorioProcedimientos;
 import isw2.repositorios.RepositorioTecnicos;
 import isw2.repositorios.persistencia.RepositorioProcedimientosImpl;
 import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
 
+import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
@@ -32,7 +34,18 @@ public class AltaAsociacionImpl extends RemoteServiceServlet implements
 
 	public Set<Tecnico> listarTecnicosRegistrados() {
 
-		return rt.getTecnicosDadosDeAlta();
+		Set<Tecnico> tecnicos = new HashSet<Tecnico>();
+		rt.guardar(rt.crearTecnico("benito", "perez", "benito", "perez",
+				new Date(), "", ""));
+		rt.guardar(rt.crearTecnico("lopera", "perez", "benito", "perez",
+				new Date(), "", ""));
+		rt.guardar(rt.crearTecnico("nigger", "perez", "benito", "perez",
+				new Date(), "", ""));
+		rt.guardar(rt.crearTecnico("manolo", "perez", "benito", "perez",
+				new Date(), "", ""));
+
+		tecnicos.addAll(rt.getTecnicosDadosDeAlta());
+		return tecnicos;
 
 	}
 

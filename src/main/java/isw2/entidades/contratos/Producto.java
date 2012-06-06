@@ -1,5 +1,6 @@
 package isw2.entidades.contratos;
 
+
 import java.util.Set;
 
 import tdg.contract.semanticAnnotations.Init;

@@ -1,7 +1,7 @@
 package isw2.presentacion.client;
 
-import isw2.entidades.contratos.Procedimiento;
-import isw2.entidades.contratos.Tecnico;
+import isw2.presentacion.shared.Procedimiento;
+import isw2.presentacion.shared.Tecnico;
 
 import java.util.Set;
 

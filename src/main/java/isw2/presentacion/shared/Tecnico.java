@@ -1,4 +1,4 @@
-package isw2.entidades.contratos;
+package isw2.presentacion.shared;
 
 
 import java.util.Date;

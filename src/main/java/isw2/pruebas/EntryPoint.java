@@ -1,9 +1,7 @@
 package isw2.pruebas;
 
 //import isw2.autentificacion.AutentificacionGmail;
-import isw2.presentacion.client.AltaAsociacion;
 import isw2.presentacion.client.AltaTecnico;
-import isw2.presentacion.server.AltaAsociacionImpl;
 import isw2.presentacion.server.AltaTecnicoImpl;
 import isw2.repositorios.RepositorioIncidencias;
 import isw2.repositorios.persistencia.RepositorioIncidenciasImpl;
@@ -19,6 +17,9 @@ import isw2.servicio.procedimiento.AltaProcedimiento;
 import isw2.servicio.procedimiento.AltaProcedimientoImpl;
 import isw2.servicio.producto.AltaProducto;
 import isw2.servicio.producto.AltaProductoImpl;
+import isw2.servicio.tecnico.AltaAsociacion;
+import isw2.servicio.tecnico.AltaAsociacionImpl;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,15 +31,15 @@ public class EntryPoint {
 
 		RepositorioIncidencias ri = new RepositorioIncidenciasImpl();
 		AltaTecnico a1 = new AltaTecnicoImpl();
-		a1.introducirCredenciales("benito", "benito");
-		a1.introducirDatosPersonales("benito", "benito", new Date(), "a", "9");
-		a1.registrarTecnico();
-
-		AltaTecnico a2 = new AltaTecnicoImpl();
-		a2.introducirCredenciales("currito", "currito");
-		a2.introducirDatosPersonales("curro", "herrera", new Date(),
-				"guadalquivir n� 25", "955552321");
-		a2.registrarTecnico();
+//		a1.introducirCredenciales("benito", "benito");
+//		a1.introducirDatosPersonales("benito", "benito", new Date(), "a", "9");
+//		a1.registrarTecnico();
+//
+//		AltaTecnico a2 = new AltaTecnicoImpl();
+//		a2.introducirCredenciales("currito", "currito");
+//		a2.introducirDatosPersonales("curro", "herrera", new Date(),
+//				"guadalquivir n� 25", "955552321");
+//		a2.registrarTecnico();
 
 		AltaProcedimiento altaP1 = new AltaProcedimientoImpl();
 		altaP1.introducirDatosProcedimiento("p0000", "rotura pantalla",
