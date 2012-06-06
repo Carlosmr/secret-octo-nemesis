@@ -2,6 +2,8 @@ package isw2;
 
 
 import isw2.entidades.contratos.Procedimiento;
+import isw2.presentacion.client.AltaTecnico;
+import isw2.presentacion.server.AltaTecnicoImpl;
 import isw2.servicio.incidencia.AltaIncidencia;
 import isw2.servicio.incidencia.AltaIncidenciaImpl;
 import isw2.servicio.incidencia.AsignarIncidencia;
@@ -16,8 +18,6 @@ import isw2.servicio.producto.AltaProducto;
 import isw2.servicio.producto.AltaProductoImpl;
 import isw2.servicio.tecnico.AltaAsociacion;
 import isw2.servicio.tecnico.AltaAsociacionImpl;
-import isw2.servicio.tecnico.AltaTecnico;
-import isw2.servicio.tecnico.AltaTecnicoImpl;
 
 import java.util.HashSet;
 import java.util.Set;

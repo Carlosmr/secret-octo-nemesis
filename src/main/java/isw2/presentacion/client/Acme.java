@@ -11,7 +11,8 @@ public class Acme implements EntryPoint {
 
 	public void onModuleLoad() {
 		HandlerManager eventBus = new HandlerManager(null);
-		new RegistroTecnicoPresenter(eventBus, new RegistroTecnicoView());
+		AppController a = new AppController(eventBus);
+		a.go(RootPanel.get());
 
 	}
 

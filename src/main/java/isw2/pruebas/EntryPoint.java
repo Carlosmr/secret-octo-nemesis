@@ -1,6 +1,8 @@
 package isw2.pruebas;
 
 //import isw2.autentificacion.AutentificacionGmail;
+import isw2.presentacion.client.AltaTecnico;
+import isw2.presentacion.server.AltaTecnicoImpl;
 import isw2.repositorios.RepositorioIncidencias;
 import isw2.repositorios.persistencia.RepositorioIncidenciasImpl;
 import isw2.servicio.incidencia.AltaIncidencia;
@@ -17,8 +19,6 @@ import isw2.servicio.producto.AltaProducto;
 import isw2.servicio.producto.AltaProductoImpl;
 import isw2.servicio.tecnico.AltaAsociacion;
 import isw2.servicio.tecnico.AltaAsociacionImpl;
-import isw2.servicio.tecnico.AltaTecnico;
-import isw2.servicio.tecnico.AltaTecnicoImpl;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;

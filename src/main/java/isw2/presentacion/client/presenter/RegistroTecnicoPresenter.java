@@ -1,6 +1,9 @@
 package isw2.presentacion.client.presenter;
 
-import isw2.presentacion.client.RegistroTecnicoService;
+import java.util.Date;
+
+import isw2.presentacion.client.AltaTecnico;
+import isw2.presentacion.client.AltaTecnicoAsync;
 import isw2.presentacion.client.RegistroTecnicoServiceAsync;
 import isw2.presentacion.client.view.RegistroTecnicoView;
 
@@ -9,6 +12,7 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
+import com.google.gwt.rpc.client.RpcService;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -16,7 +20,7 @@ import com.google.gwt.user.client.ui.Widget;
 
 public class RegistroTecnicoPresenter implements Presenter {
 	private final Display display;
-	private RegistroTecnicoServiceAsync rpcService;
+	private AltaTecnicoAsync rpcService;
 
 	public interface Display {
 		Widget asWidget();
@@ -26,12 +30,21 @@ public class RegistroTecnicoPresenter implements Presenter {
 		String getUser();
 
 		String getPassword();
+
+		String getNombre();
+
+		String getApellidos();
+
+		Date getFechaNac();
+
+		String getDireccion();
+
+		String getTelefono();
 	}
 
-	public RegistroTecnicoPresenter(HandlerManager eventBus,
-			RegistroTecnicoView registroTecnicoView) {
-		this.rpcService = GWT.create(RegistroTecnicoService.class);
-		this.display = registroTecnicoView;
+	public RegistroTecnicoPresenter(HandlerManager eventBus) {
+		this.rpcService = GWT.create(AltaTecnico.class);
+		this.display = new RegistroTecnicoView();
 	}
 
 	public void bind() {
@@ -43,29 +56,48 @@ public class RegistroTecnicoPresenter implements Presenter {
 	}
 
 	protected void registroTecnico() {
-		Window.alert("AY oma, que bien va esto");
-		rpcService.registrar(display.getUser(), display.getPassword(),
-				new AsyncCallback<Boolean>() {
-					public void onSuccess(Boolean result) {
-						if (result) {
-							Window.alert("Todo ha ido canelita.");
-						} else {
-							Window.alert("Ay niño, que esto ha pegao un petardo.");
-						}
-					}
+		rpcService.introducirCredenciales(display.getUser(), display.getPassword(), new AsyncCallback<Void>() {
 
-					public void onFailure(Throwable caught) {
-						Window.alert("Petardazo en (" + caught.getMessage()
-								+ ")");
-					}
-				});
+			@Override
+			public void onFailure(Throwable arg0) {
+				Window.alert("FAIL1");
+			}
+
+			@Override
+			public void onSuccess(Void arg0) {
+				Window.alert("OK1");	
+			}
+		});
+		rpcService.introducirDatosPersonales(display.getNombre(), display.getApellidos(), display.getFechaNac(), display.getDireccion(), display.getTelefono(), new AsyncCallback<Void>() {
+
+			@Override
+			public void onFailure(Throwable arg0) {
+				Window.alert("FAIL2");				
+			}
+
+			@Override
+			public void onSuccess(Void arg0) {
+				Window.alert("OK2");
+			}});
+		rpcService.registrarTecnico(new AsyncCallback<Void>() {
+
+			@Override
+			public void onFailure(Throwable arg0) {
+				Window.alert("FAIL3");				
+			}
+
+			@Override
+			public void onSuccess(Void arg0) {
+				Window.alert("OK3");				
+			}
+		});
+		
 	}
 
-	@Override
 	public void go(HasWidgets container) {
 		bind();
-		container.clear();
-		container.add(display.asWidget());
+		// container.clear();
+		// container.add(display.asWidget());
 	}
 
 }
