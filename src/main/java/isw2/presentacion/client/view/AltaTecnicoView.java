@@ -11,6 +11,7 @@ import com.google.gwt.user.client.ui.PasswordTextBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.DatePicker;
 
 import isw2.presentacion.client.presenter.AltaTecnicoPresenter;
@@ -80,7 +81,11 @@ public class AltaTecnicoView extends Composite implements
 		formulario.add(panel_direccion);
 		formulario.add(panel_telefono);
 		formulario.add(registrar);
-		RootPanel.get().add(formulario);
+		initWidget(formulario);
+	}
+
+	public Widget asWidget() {
+		return this;
 	}
 
 	public HasClickHandlers getRegistro() {

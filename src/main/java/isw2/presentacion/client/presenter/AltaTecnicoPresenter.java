@@ -4,7 +4,6 @@ import java.util.Date;
 
 import isw2.presentacion.client.AltaTecnico;
 import isw2.presentacion.client.AltaTecnicoAsync;
-import isw2.presentacion.client.RegistroTecnicoServiceAsync;
 import isw2.presentacion.client.view.AltaTecnicoView;
 
 import com.google.gwt.core.client.GWT;
@@ -12,7 +11,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerManager;
-import com.google.gwt.rpc.client.RpcService;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
@@ -56,48 +54,30 @@ public class AltaTecnicoPresenter implements Presenter {
 	}
 
 	protected void registroTecnico() {
-		rpcService.introducirCredenciales(display.getUser(), display.getPassword(), new AsyncCallback<Void>() {
+		rpcService.registrarTecnico(display.getUser(), display.getPassword(),
+				display.getNombre(), display.getApellidos(),
+				display.getFechaNac(), display.getDireccion(),
+				display.getTelefono(), new AsyncCallback<Boolean>() {
 
-			@Override
-			public void onFailure(Throwable arg0) {
-				Window.alert("FAIL1");
-			}
+					@Override
+					public void onFailure(Throwable arg0) {
+						Window.alert("Se ha producido un error al hacer la llamada al servidor.");
+					}
 
-			@Override
-			public void onSuccess(Void arg0) {
-				Window.alert("OK1");	
-			}
-		});
-		rpcService.introducirDatosPersonales(display.getNombre(), display.getApellidos(), display.getFechaNac(), display.getDireccion(), display.getTelefono(), new AsyncCallback<Void>() {
-
-			@Override
-			public void onFailure(Throwable arg0) {
-				Window.alert("FAIL2");				
-			}
-
-			@Override
-			public void onSuccess(Void arg0) {
-				Window.alert("OK2");
-			}});
-		rpcService.registrarTecnico(new AsyncCallback<Void>() {
-
-			@Override
-			public void onFailure(Throwable arg0) {
-				Window.alert("FAIL3");				
-			}
-
-			@Override
-			public void onSuccess(Void arg0) {
-				Window.alert("OK3");				
-			}
-		});
-		
+					@Override
+					public void onSuccess(Boolean arg0) {
+						if (arg0)
+							Window.alert("Registro correcto.");
+						else
+							Window.alert("El nombre de usuario ya se encuentra registrado.");
+					}
+				});
 	}
 
 	public void go(HasWidgets container) {
 		bind();
-		// container.clear();
-		// container.add(display.asWidget());
+		container.clear();
+		container.add(display.asWidget());
 	}
 
 }

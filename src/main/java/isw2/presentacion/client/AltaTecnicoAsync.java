@@ -6,13 +6,8 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface AltaTecnicoAsync {
 
-	void introducirCredenciales(String user, String password,
-			AsyncCallback<Void> callback);
-
-	void introducirDatosPersonales(String nombre, String apellidos,
-			Date fechaNac, String direccion, String telefono,
-			AsyncCallback<Void> callback);
-
-	void registrarTecnico(AsyncCallback<Void> callback);
+	void registrarTecnico(String user, String password, String nombre,
+			String apellidos, Date fechaNac, String direccion, String telefono,
+			AsyncCallback<Boolean> callback);
 
 }
