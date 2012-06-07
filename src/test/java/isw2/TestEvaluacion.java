@@ -1,6 +1,5 @@
 package isw2;
 
-
 import isw2.entidades.contratos.Procedimiento;
 import isw2.presentacion.client.AltaTecnico;
 import isw2.presentacion.server.AltaTecnicoImpl;
@@ -19,9 +18,9 @@ import isw2.servicio.producto.AltaProductoImpl;
 import isw2.servicio.tecnico.AltaAsociacion;
 import isw2.servicio.tecnico.AltaAsociacionImpl;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-
 
 import org.junit.Before;
 import org.junit.Test;
@@ -36,22 +35,22 @@ public class TestEvaluacion {
 	@Test
 	public void crearTecnico1() {
 		AltaTecnico a = new AltaTecnicoImpl();
-		// a.introducirCredenciales("tecnico1", "tecnico1");
-		//	a.registrarTecnico();
+		a.registrarTecnico("tecnico1", "tecnico1", "tecnico1", "tecnico1",
+				new Date(), "tecnico1", "955555555");
 	}
 
 	@Test
 	public void crearTecnico2() {
 		AltaTecnico a = new AltaTecnicoImpl();
-//		a.introducirCredenciales("tecnico2", "tecnico2");
-//		a.registrarTecnico();
+		a.registrarTecnico("tecnico2", "tecnico2", "tecnico2", "tecnico2",
+				new Date(), "tecnico2", "955555555");
 	}
 
 	@Test
 	public void crearTecnico3() {
 		AltaTecnico a = new AltaTecnicoImpl();
-//		a.introducirCredenciales("tecnico3", "tecnico3");
-//		a.registrarTecnico();
+		a.registrarTecnico("tecnico3", "tecnico3", "tecnico3", "tecnico3",
+				new Date(), "tecnico3", "955555555");
 	}
 
 	@Test
@@ -168,71 +167,71 @@ public class TestEvaluacion {
 		s.add("M3");
 		a.asignarProcedimientos(s);
 	}
-	
+
 	@Test
-	public void altaIncidencia1(){
+	public void altaIncidencia1() {
 		AltaIncidencia a = new AltaIncidenciaImpl();
 		a.introducirDescripcionIncidencia("web cam rota");
 		a.seleccionarProcedimiento("WC1");
 		a.seleccionarProducto("Webcam1");
 		a.registrarIncidencia();
 	}
-	
+
 	@Test
-	public void altaIncidencia2(){
+	public void altaIncidencia2() {
 		AltaIncidencia a = new AltaIncidenciaImpl();
 		a.introducirDescripcionIncidencia("web cam rota");
 		a.seleccionarProcedimiento("WC2");
 		a.seleccionarProducto("Webcam1");
 		a.registrarIncidencia();
 	}
-	
+
 	@Test
-	public void altaIncidencia3(){
+	public void altaIncidencia3() {
 		AltaIncidencia a = new AltaIncidenciaImpl();
 		a.introducirDescripcionIncidencia("pendrive roto");
 		a.seleccionarProcedimiento("PD1");
 		a.seleccionarProducto("P32");
 		a.registrarIncidencia();
 	}
-	
+
 	@Test
-	public void altaIncidencia4(){
+	public void altaIncidencia4() {
 		AltaIncidencia a = new AltaIncidenciaImpl();
 		a.introducirDescripcionIncidencia("monitor roto");
 		a.seleccionarProcedimiento("M1");
 		a.seleccionarProducto("M24");
 		a.registrarIncidencia();
 	}
-	
+
 	@Test
-	public void altaIncidencia5(){
+	public void altaIncidencia5() {
 		AltaIncidencia a = new AltaIncidenciaImpl();
 		a.introducirDescripcionIncidencia("monitor roto");
 		a.seleccionarProducto("M32");
 		a.registrarIncidencia();
 	}
-	
+
 	@Test
-	public void consultaIncidencia1(){
+	public void consultaIncidencia1() {
 		AsignarIncidencia a = new AsignarIncidenciaImpl();
-		assert(a.listarIncidenciasSinAsignar("tecnico1").size()==2);
+		assert (a.listarIncidenciasSinAsignar("tecnico1").size() == 2);
 	}
-	
+
 	@Test
-	public void consultaIncidencia2(){
+	public void consultaIncidencia2() {
 		AsignarIncidencia a = new AsignarIncidenciaImpl();
-		assert(a.listarIncidenciasSinAsignar("tecnico2").size()==3);
+		assert (a.listarIncidenciasSinAsignar("tecnico2").size() == 3);
 	}
-	
+
 	@Test
-	public void consultaIncidencia3(){
+	public void consultaIncidencia3() {
 		AsignarIncidencia a = new AsignarIncidenciaImpl();
-		assert(a.listarIncidenciasSinAsignar("tecnico3").size()==4);
+		assert (a.listarIncidenciasSinAsignar("tecnico3").size() == 4);
 	}
-	
+
 	@Test
-	public void asignarIncidencia1(){
+	public void asignarIncidencia1() {
 		AsignarIncidencia a = new AsignarIncidenciaImpl();
 		a.listarIncidenciasSinAsignar("tecnico1");
 		Set<Integer> s = new HashSet<Integer>();
@@ -240,27 +239,27 @@ public class TestEvaluacion {
 		s.add(2);
 		a.asociarIncidencia(s);
 	}
-	
+
 	@Test
-	public void asignarIncidencia2(){
+	public void asignarIncidencia2() {
 		AsignarIncidencia a = new AsignarIncidenciaImpl();
 		a.listarIncidenciasSinAsignar("tecnico2");
 		Set<Integer> s = new HashSet<Integer>();
 		s.add(1);
 		a.asociarIncidencia(s);
 	}
-	
+
 	@Test
-	public void asignarIncidencia3(){
+	public void asignarIncidencia3() {
 		AsignarIncidencia a = new AsignarIncidenciaImpl();
 		a.listarIncidenciasSinAsignar("tecnico3");
 		Set<Integer> s = new HashSet<Integer>();
 		s.add(2);
 		a.asociarIncidencia(s);
 	}
-	
+
 	@Test
-	public void asignarIncidencia4(){
+	public void asignarIncidencia4() {
 		AsignarIncidencia a = new AsignarIncidenciaImpl();
 		a.listarIncidenciasSinAsignar("tecnico2");
 		Set<Integer> s = new HashSet<Integer>();
@@ -269,30 +268,30 @@ public class TestEvaluacion {
 	}
 
 	@Test
-	public void asignarIncidencia5(){
+	public void asignarIncidencia5() {
 		AsignarIncidencia a = new AsignarIncidenciaImpl();
 		a.listarIncidenciasSinAsignar("tecnico3");
 		Set<Integer> s = new HashSet<Integer>();
 		s.add(3);
 		a.asociarIncidencia(s);
 	}
-	
+
 	@Test
-	public void resolverIncidencia1(){
+	public void resolverIncidencia1() {
 		ResponderIncidencia r = new ResponderIncidenciaImpl();
 		r.seleccionarIncidencia(1);
 		r.anadirDescripcion("Producto reparado!");
 		r.registrarRespuesta();
 	}
-	
+
 	@Test
-	public void valorarIncidencia1(){
+	public void valorarIncidencia1() {
 		ValorarIncidencia v = new ValorarIncidenciaImpl();
 		v.registrarValoracion(1, -5);
 	}
-	
+
 	@Test
-	public void altaIncidencia6(){
+	public void altaIncidencia6() {
 		AltaIncidencia a = new AltaIncidenciaImpl();
 		a.introducirDescripcionIncidencia("esto sigue sin funcionar.");
 		Set<Integer> s = new HashSet<Integer>();
@@ -302,5 +301,5 @@ public class TestEvaluacion {
 		a.seleccionarIncidenciasRelacionadas(s);
 		a.registrarIncidencia();
 	}
-	
+
 }

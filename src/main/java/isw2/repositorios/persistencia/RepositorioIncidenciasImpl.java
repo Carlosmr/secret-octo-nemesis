@@ -15,29 +15,29 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 		RepositorioIncidencias {
 
 	public RepositorioIncidenciasImpl() {
+		super();
 	}
 
 	public Set<Incidencia> buscarIncidenciasPorDni(String dni) {
-		EntityManager em = getEntityManager();
+
 		Set<Incidencia> result = new HashSet<Incidencia>();
+
 		try {
-			em.getTransaction().begin();
-			Collection<Incidencia> clientRepository = em
+			getEntityManager().getTransaction().begin();
+			Collection<Incidencia> clientRepository = getEntityManager()
 					.createQuery(
 							"SELECT i FROM IncidenciaImpl i WHERE i.dni = :dni",
 							Incidencia.class).setParameter("dni", dni)
 					.getResultList();
 
 			result = new HashSet<Incidencia>(clientRepository);
-			em.getTransaction().commit();
+			getEntityManager().getTransaction().commit();
 		}
 
 		catch (Exception oops) {
 
-			if (em.getTransaction().isActive())
-				em.getTransaction().rollback();
-		} finally {
-			em.close();
+			if (getEntityManager().getTransaction().isActive())
+				getEntityManager().getTransaction().rollback();
 		}
 
 		return result;
@@ -47,27 +47,24 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 	public Set<Incidencia> buscarIncidencia(String busqueda) {
 
 		Set<Incidencia> result = new HashSet<Incidencia>();
-		EntityManager em = getEntityManager();
 
 		try {
 
-			em.getTransaction().begin();
-			Collection<IncidenciaImpl> clientRepository = em
+			getEntityManager().getTransaction().begin();
+			Collection<IncidenciaImpl> clientRepository = getEntityManager()
 					.createQuery(
 							"SELECT t FROM IncidenciaImpl t WHERE t.email LIKE :busqueda OR t.descripcion LIKE :busqueda OR t.nombre LIKE :busqueda",
 							IncidenciaImpl.class)
 					.setParameter("busqueda", "%" + busqueda + "%")
 					.getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
-			em.getTransaction().commit();
+			getEntityManager().getTransaction().commit();
 		}
 
 		catch (Exception oops) {
 
-			if (em.getTransaction().isActive())
-				em.getTransaction().rollback();
-		} finally {
-			em.close();
+			if (getEntityManager().getTransaction().isActive())
+				getEntityManager().getTransaction().rollback();
 		}
 
 		return result;
@@ -83,70 +80,61 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 	public Set<Incidencia> getIncidencias() {
 
 		Set<Incidencia> result = new HashSet<Incidencia>();
-		EntityManager em = getEntityManager();
 
 		try {
 
-			em.getTransaction().begin();
-			Collection<Incidencia> clientRepository = em.createQuery(
-					"from IncidenciaImpl", Incidencia.class).getResultList();
+			getEntityManager().getTransaction().begin();
+			Collection<Incidencia> clientRepository = getEntityManager()
+					.createQuery("from IncidenciaImpl", Incidencia.class)
+					.getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
-			em.getTransaction().commit();
+			getEntityManager().getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (em.getTransaction().isActive())
-				em.getTransaction().rollback();
-		} finally {
-			em.close();
+			if (getEntityManager().getTransaction().isActive())
+				getEntityManager().getTransaction().rollback();
 		}
 
 		return result;
 	}
 
 	public void guardar(Incidencia incidencia) {
-		EntityManager em = getEntityManager();
 
 		try {
 
-			em.getTransaction().begin();
-			em.persist(incidencia);
-			em.getTransaction().commit();
+			getEntityManager().getTransaction().begin();
+			getEntityManager().persist(incidencia);
+			getEntityManager().getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (em.getTransaction().isActive())
-				em.getTransaction().rollback();
+			if (getEntityManager().getTransaction().isActive())
+				getEntityManager().getTransaction().rollback();
 		}
 
-		finally {
-			em.close();
-		}
 	}
 
 	public Incidencia getIncidencia(Integer id) {
 
 		Incidencia result = new IncidenciaImpl();
-		EntityManager em = getEntityManager();
 
 		try {
 
-			em.getTransaction().begin();
-			result = em.find(IncidenciaImpl.class, id);
-			em.getTransaction().commit();
+			getEntityManager().getTransaction().begin();
+			result = getEntityManager().find(IncidenciaImpl.class, id);
+			getEntityManager().getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (em.getTransaction().isActive())
-				em.getTransaction().rollback();
-		} finally {
-			em.close();
+			if (getEntityManager().getTransaction().isActive())
+				getEntityManager().getTransaction().rollback();
 		}
 
 		return result;
@@ -155,13 +143,14 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 	public Set<Incidencia> getIncidencias(String user) {
 
 		Set<Incidencia> result = new HashSet<Incidencia>();
-		EntityManager em = getEntityManager();
 
 		try {
 
-			em.getTransaction().begin();
-			Collection<IncidenciaImpl> clientRepository = em.createQuery(
-					"SELECT i FROM IncidenciaImpl i", IncidenciaImpl.class)
+			getEntityManager().getTransaction().begin();
+			Collection<IncidenciaImpl> clientRepository = getEntityManager()
+					.createQuery(
+							"SELECT i FROM IncidenciaImpl i",
+							IncidenciaImpl.class)
 					.getResultList();
 			for (Incidencia i : clientRepository) {
 				if (i.getTecnico().getUser().equals(user))
@@ -170,16 +159,14 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 			}
 
 			result = new HashSet<Incidencia>(clientRepository);
-			em.getTransaction().commit();
+			getEntityManager().getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (em.getTransaction().isActive())
-				em.getTransaction().rollback();
-		} finally {
-			em.close();
+			if (getEntityManager().getTransaction().isActive())
+				getEntityManager().getTransaction().rollback();
 		}
 
 		return result;
@@ -189,14 +176,14 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 	public Set<Incidencia> getIncidenciasSinRespuesta(String user) {
 
 		Set<Incidencia> result = new HashSet<Incidencia>();
-		EntityManager em = getEntityManager();
 
 		try {
 
-			em.getTransaction().begin();
-			Collection<Incidencia> clientRepository = em.createQuery(
-					"SELECT i FROM IncidenciaImpl i WHERE i.respuesta = NULL ",
-					Incidencia.class).getResultList();
+			getEntityManager().getTransaction().begin();
+			Collection<Incidencia> clientRepository = getEntityManager()
+					.createQuery(
+							"SELECT i FROM IncidenciaImpl i WHERE i.respuesta = NULL ",
+							Incidencia.class).getResultList();
 			for (Incidencia i : clientRepository) {
 				if (i.getTecnico().getUser().equals(user))
 					result.add(i);
@@ -204,16 +191,14 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 			}
 
 			result = new HashSet<Incidencia>(clientRepository);
-			em.getTransaction().commit();
+			getEntityManager().getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (em.getTransaction().isActive())
-				em.getTransaction().rollback();
-		} finally {
-			em.close();
+			if (getEntityManager().getTransaction().isActive())
+				getEntityManager().getTransaction().rollback();
 		}
 
 		return result;
@@ -223,24 +208,22 @@ public class RepositorioIncidenciasImpl extends RepositorioJPA implements
 	public Set<Incidencia> getIncidenciasSinAsignar() {
 
 		Set<Incidencia> result = new HashSet<Incidencia>();
-		EntityManager em = getEntityManager();
 
 		try {
-			em.getTransaction().begin();
-			Collection<Incidencia> clientRepository = em.createQuery(
-					"SELECT i FROM IncidenciaImpl i WHERE i.tecnico = NULL ",
-					Incidencia.class).getResultList();
+			getEntityManager().getTransaction().begin();
+			Collection<Incidencia> clientRepository = getEntityManager()
+					.createQuery(
+							"SELECT i FROM IncidenciaImpl i WHERE i.tecnico = NULL ",
+							Incidencia.class).getResultList();
 			result = new HashSet<Incidencia>(clientRepository);
-			em.getTransaction().commit();
+			getEntityManager().getTransaction().commit();
 
 		}
 
 		catch (Exception oops) {
 
-			if (em.getTransaction().isActive())
-				em.getTransaction().rollback();
-		} finally {
-			em.close();
+			if (getEntityManager().getTransaction().isActive())
+				getEntityManager().getTransaction().rollback();
 		}
 
 		return result;

@@ -45,7 +45,7 @@ public class Pruebas {
 	@Test
 	public void crearTecnico2() {
 		AltaTecnico a = new AltaTecnicoImpl();
-		a.registrarTecnico("tecnico22", "tecnico2", "tecnico2", "tecnico2",
+		a.registrarTecnico("tecnico2", "tecnico2", "tecnico2", "tecnico2",
 				new Date(), "tecnico2", "955555555");
 	}
 
