@@ -1,5 +1,6 @@
 package isw2;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -35,23 +36,24 @@ public class Pruebas {
 	@Test
 	public void crearTecnico1() {
 		AltaTecnico a = new AltaTecnicoImpl();
-		//TODO: Cambiar estos 2 tests usando el nuevo metodo.
-		a.introducirCredenciales("tecnico1", "tecnico1");
-		a.registrarTecnico();
+		// TODO: Cambiar estos 2 tests usando el nuevo metodo.
+		a.registrarTecnico("tecnico1", "tecnico1", "tecnico1", "tecnico1",
+				new Date(), "tecnico1", "955555555");
+
 	}
 
 	@Test
 	public void crearTecnico2() {
 		AltaTecnico a = new AltaTecnicoImpl();
-		a.introducirCredenciales("tecnico2", "tecnico2");
-		a.registrarTecnico();
+		a.registrarTecnico("tecnico22", "tecnico2", "tecnico2", "tecnico2",
+				new Date(), "tecnico2", "955555555");
 	}
 
 	@Test
 	public void crearTecnico3() {
 		AltaTecnico a = new AltaTecnicoImpl();
-		a.introducirCredenciales("tecnico3", "tecnico3");
-		a.registrarTecnico();
+		a.registrarTecnico("tecnico3", "tecnico3", "tecnico3", "tecnico3",
+				new Date(), "tecnico3", "955555555");
 	}
 
 	@Test
