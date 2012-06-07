@@ -5,10 +5,6 @@ import java.util.Set;
 
 import isw2.entidades.contratos.Procedimiento;
 import isw2.excepciones.InvalidStateException;
-import isw2.presentacion.client.AltaAsociacion;
-import isw2.presentacion.client.AltaTecnico;
-import isw2.presentacion.server.AltaAsociacionImpl;
-import isw2.presentacion.server.AltaTecnicoImpl;
 import isw2.servicio.incidencia.AltaIncidencia;
 import isw2.servicio.incidencia.AltaIncidenciaImpl;
 import isw2.servicio.incidencia.AsignarIncidencia;
@@ -21,6 +17,10 @@ import isw2.servicio.procedimiento.AltaProcedimiento;
 import isw2.servicio.procedimiento.AltaProcedimientoImpl;
 import isw2.servicio.producto.AltaProducto;
 import isw2.servicio.producto.AltaProductoImpl;
+import isw2.servicio.tecnico.AltaAsociacion;
+import isw2.servicio.tecnico.AltaAsociacionImpl;
+import isw2.servicio.tecnico.AltaTecnico;
+import isw2.servicio.tecnico.AltaTecnicoImpl;
 
 import org.junit.Before;
 import org.junit.Test;
