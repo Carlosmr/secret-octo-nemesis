@@ -7,19 +7,15 @@ import isw2.repositorios.RepositorioTecnicos;
 import isw2.repositorios.persistencia.RepositorioProcedimientosImpl;
 import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
 
-import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
-public class AltaAsociacionImpl extends RemoteServiceServlet implements
+public class AltaAsociacionImpl implements
 		AltaAsociacion {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -684489499547037848L;
 	private RepositorioTecnicos rt;
 	private RepositorioProcedimientos rp;
 	private Tecnico t;
