@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
 
 import isw2.entidades.contratos.Procedimiento;
 import isw2.entidades.implementaciones.ProcedimientoImpl;

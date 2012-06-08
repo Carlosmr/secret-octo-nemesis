@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
 
 import isw2.entidades.contratos.Incidencia;
 import isw2.entidades.implementaciones.IncidenciaImpl;

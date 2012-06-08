@@ -15,15 +15,6 @@
 		<url-pattern>/acme/altatecnico</url-pattern>
 	</servlet-mapping>
 
-	<servlet>
-		<servlet-name>altaAsociacionImpl</servlet-name>
-		<servlet-class>isw2.servicio.tecnico.AltaAsociacionImpl</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>altaAsociacionImpl</servlet-name>
-		<url-pattern>/acme/altaasociacion</url-pattern>
-	</servlet-mapping>
-
 	<!-- Default page to serve -->
 	<welcome-file-list>
 		<welcome-file>Acme.html</welcome-file>

@@ -1,8 +1,14 @@
 package isw2;
 
+import isw2.entidades.contratos.Incidencia;
 import isw2.entidades.contratos.Procedimiento;
+import isw2.entidades.contratos.Tecnico;
 import isw2.presentacion.client.AltaTecnico;
 import isw2.presentacion.server.AltaTecnicoImpl;
+import isw2.repositorios.RepositorioIncidencias;
+import isw2.repositorios.RepositorioTecnicos;
+import isw2.repositorios.persistencia.RepositorioIncidenciasImpl;
+import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
 import isw2.servicio.incidencia.AltaIncidencia;
 import isw2.servicio.incidencia.AltaIncidenciaImpl;
 import isw2.servicio.incidencia.AsignarIncidencia;
@@ -240,7 +246,7 @@ public class TestEvaluacion {
 		a.asociarIncidencia(s);
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void asignarIncidencia2() {
 		AsignarIncidencia a = new AsignarIncidenciaImpl();
 		a.listarIncidenciasSinAsignar("tecnico2");
@@ -249,7 +255,7 @@ public class TestEvaluacion {
 		a.asociarIncidencia(s);
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void asignarIncidencia3() {
 		AsignarIncidencia a = new AsignarIncidenciaImpl();
 		a.listarIncidenciasSinAsignar("tecnico3");
@@ -267,7 +273,7 @@ public class TestEvaluacion {
 		a.asociarIncidencia(s);
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void asignarIncidencia5() {
 		AsignarIncidencia a = new AsignarIncidenciaImpl();
 		a.listarIncidenciasSinAsignar("tecnico3");
@@ -300,6 +306,94 @@ public class TestEvaluacion {
 		a.seleccionarProcedimiento("WC1");
 		a.seleccionarIncidenciasRelacionadas(s);
 		a.registrarIncidencia();
+	}
+
+	@Test
+	public void consultaIncidenciaTecnico1() {
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		RepositorioIncidencias ri = new RepositorioIncidenciasImpl();
+		Incidencia i = ri.getIncidencia(6);
+		a.listarIncidenciasSinAsignar("tecnico1").contains(i);
+
+	}
+
+	@Test
+	public void consultaIncidenciaTecnico2() {
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		RepositorioIncidencias ri = new RepositorioIncidenciasImpl();
+		Incidencia i = ri.getIncidencia(6);
+		a.listarIncidenciasSinAsignar("tecnico2").contains(i);
+
+	}
+
+	@Test
+	public void consultaIncidenciaTecnico3() {
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		RepositorioIncidencias ri = new RepositorioIncidenciasImpl();
+		Incidencia i = ri.getIncidencia(6);
+		a.listarIncidenciasSinAsignar("tecnico3").contains(i);
+
+	}
+
+	@Test
+	public void asignarIncidenciaTecnico1() {
+		AsignarIncidencia a = new AsignarIncidenciaImpl();
+		a.listarIncidenciasSinAsignar("tecnico1");
+		Set<Integer> s = new HashSet<Integer>();
+		s.add(6);
+		a.asociarIncidencia(s);
+
+	}
+
+	@Test
+	public void resolverIncidenciaTecnico1() {
+		ResponderIncidencia r = new ResponderIncidenciaImpl();
+		ResponderIncidencia r1 = new ResponderIncidenciaImpl();
+		r1.seleccionarIncidencia(6);
+		r1.anadirDescripcion("Producto reparado!");
+		r1.registrarRespuesta();
+		r.seleccionarIncidencia(2);
+		r.anadirDescripcion("Producto reparado!");
+		r.registrarRespuesta();
+
+	}
+
+	@Test
+	public void incidenciasTecnico1Resueltas() {
+		RepositorioIncidencias ri = new RepositorioIncidenciasImpl();
+		RepositorioTecnicos rt = new RepositorioTecnicosImpl();
+		Incidencia i1 = ri.getIncidencia(1);
+		Incidencia i2 = ri.getIncidencia(2);
+		Incidencia i3 = ri.getIncidencia(6);
+		Tecnico t = rt.getTecnico("tecnico1");
+
+		assert (i1.getTecnico().equals(t) && i1.getRespuesta() != null
+				&& i2.getTecnico().equals(t) && i2.getRespuesta() != null
+				&& i3.getTecnico().equals(t) && i3.getRespuesta() != null);
+
+	}
+
+	@Test
+	public void incidenciasNoResueltasTecnico2() {
+		ResponderIncidencia r = new ResponderIncidenciaImpl();
+		assert (r.listarIncidenciasTecnicoSinRespuesta("tecnico2").size() == 0);
+
+	}
+
+	@Test
+	public void incidenciasNoResueltasTecnico3() {
+		ResponderIncidencia r = new ResponderIncidenciaImpl();
+		assert (r.listarIncidenciasTecnicoSinRespuesta("tecnico3").size() == 0);
+
+	}
+
+	@Test
+	public void resolucionSystem() {
+		RepositorioIncidencias ri = new RepositorioIncidenciasImpl();
+		RepositorioTecnicos rt = new RepositorioTecnicosImpl();
+		Incidencia i = ri.getIncidencia(5);
+		assert (i.getTecnico().equals(rt.getTecnico("SYSTEM")));
+
 	}
 
 }

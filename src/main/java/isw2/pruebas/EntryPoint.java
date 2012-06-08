@@ -24,22 +24,18 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-
 public class EntryPoint {
 
 	public static void main(String[] args) {
 
 		RepositorioIncidencias ri = new RepositorioIncidenciasImpl();
 		AltaTecnico a1 = new AltaTecnicoImpl();
-//		a1.introducirCredenciales("benito", "benito");
-//		a1.introducirDatosPersonales("benito", "benito", new Date(), "a", "9");
-//		a1.registrarTecnico();
-//
-//		AltaTecnico a2 = new AltaTecnicoImpl();
-//		a2.introducirCredenciales("currito", "currito");
-//		a2.introducirDatosPersonales("curro", "herrera", new Date(),
-//				"guadalquivir n� 25", "955552321");
-//		a2.registrarTecnico();
+		a1.registrarTecnico("benito", "benito", "benito", "benito", new Date(),
+				"a", "9");
+
+		AltaTecnico a2 = new AltaTecnicoImpl();
+		a2.registrarTecnico("currito", "currito", "curro", "herrera",
+				new Date(), "guadalquivir n� 25", "955552321");
 
 		AltaProcedimiento altaP1 = new AltaProcedimientoImpl();
 		altaP1.introducirDatosProcedimiento("p0000", "rotura pantalla",
@@ -119,10 +115,10 @@ public class EntryPoint {
 				+ ri.getIncidencia(2).getRespuesta().getValoracion());
 		System.out.println("Busqueda de incidencias por full text: "
 				+ ri.buscarIncidencia("javi"));
-//		Autentificacion autentificacion = new AutentificacionGmail();
-//		System.out.println("Autentificacion correcta?: "
-//				+ autentificacion.credencialesValidos("user",
-//						"password"));
+		// Autentificacion autentificacion = new AutentificacionGmail();
+		// System.out.println("Autentificacion correcta?: "
+		// + autentificacion.credencialesValidos("user",
+		// "password"));
 
 	}
 }

@@ -122,7 +122,7 @@ public class IncidenciaImpl implements Incidencia, Serializable {
 		else if (tecnico.getDadoDeBaja())
 			throw new IllegalArgumentException();
 		else if (getTecnico() != null)
-			throw new InvalidStateException("Incidencia ya asignada.");
+			throw new IllegalArgumentException("Incidencia ya asignada.");
 		this.tecnico = tecnico;
 	}
 

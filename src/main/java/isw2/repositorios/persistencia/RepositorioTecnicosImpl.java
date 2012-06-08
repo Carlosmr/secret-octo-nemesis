@@ -9,7 +9,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
 
 public class RepositorioTecnicosImpl extends RepositorioJPA implements
 		RepositorioTecnicos {

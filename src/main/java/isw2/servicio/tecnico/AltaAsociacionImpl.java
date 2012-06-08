@@ -6,7 +6,6 @@ import isw2.repositorios.RepositorioProcedimientos;
 import isw2.repositorios.RepositorioTecnicos;
 import isw2.repositorios.persistencia.RepositorioProcedimientosImpl;
 import isw2.repositorios.persistencia.RepositorioTecnicosImpl;
-import isw2.repositorios.persistencia.SingleEntityManager;
 
 import java.util.Set;
 
